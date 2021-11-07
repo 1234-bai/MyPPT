@@ -12,7 +12,6 @@ public class DrawJPanel extends JPanel {
 
     private Graphics2D drawBoardPen;  //画板的画笔通过监听器中的画笔展现。只有在父类容器可视化之后才能获得画笔！！
     private Graphics2D drawBoardPenCopy;    //画笔的副本
-
     private DrawListener drawListener;  //画正在运行板的监听器，当按下不同的功能按钮的时候，将此监听器设置为按钮所对应的监听器
 
     public BufferedImage getDrawBoardCopy() {
@@ -41,8 +40,9 @@ public class DrawJPanel extends JPanel {
      */
     public void drawBoardPenInitial() {
         drawBoardPen = (Graphics2D) super.getGraphics();    //将父类画笔赋值给本身画笔
-        if(drawBoardCopy == null){
-            drawBoardCopy = (BufferedImage) this.createImage(getWidth(), getHeight());  //创建画板副本
+        if(drawBoardCopy == null){  //直接设置成最大尺寸的画布。这样在重绘过程中，不会因画板尺寸改变（画板以前画的东西都会丢失），引起副本的改变（副本不会更新，画的东西也就不会丢失了）
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            drawBoardCopy = (BufferedImage) this.createImage((int)screenSize.getWidth(), (int)screenSize.getHeight());  //创建画板副本
        }
         drawBoardPenCopy = drawBoardCopy.createGraphics();  //创建副本画笔。
     }
@@ -68,5 +68,17 @@ public class DrawJPanel extends JPanel {
         if(drawBoardPen == null){return;}
         drawBoardPen.setColor(c);
         drawBoardPenCopy.setColor(c);
+    }
+
+    /**
+     * 窗口改变大小之后，调用此函数，然后原先绑定的Graphic全部换新了，指向了另一个对象。就得重新绑定一遍。
+     * 但是画板本身还是自己，没有更换新的对象。
+     * @param g 目前仍未搞清楚，这个g到底是谁的画笔
+     */
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.drawImage(drawBoardCopy, 0, 0, null); //重绘
+        drawBoardPen = (Graphics2D) super.getGraphics();    //将父类画笔赋值给本身画笔
     }
 }
