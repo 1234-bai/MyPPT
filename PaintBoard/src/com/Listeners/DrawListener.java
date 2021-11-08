@@ -1,7 +1,6 @@
 package com.Listeners;
 
 import com.Paint.DrawJPanel;
-
 import java.awt.*;
 import java.awt.event.*;
 
