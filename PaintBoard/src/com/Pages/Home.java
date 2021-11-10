@@ -1,6 +1,7 @@
 package com.Pages;
 
 import com.Listeners.LineListener;
+import com.Listeners.PolygonListener;
 import com.Paint.DrawJPanel;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ public class Home extends JFrame {
 
     private final DrawJPanel drawBoard = new DrawJPanel();
     private final LineListener lineListener = new LineListener();
+    private final PolygonListener polygonListener = new PolygonListener();
     public Home() throws HeadlessException {
 
         //定义图形按钮
@@ -20,6 +22,31 @@ public class Home extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 drawBoard.setBoardListener(lineListener);
+            }
+        });
+        JButton polyButton = new JButton("多边形");
+        polyButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                drawBoard.setBoardListener(polygonListener);
+            }
+        });
+
+        //定义样式按钮
+        JButton yellowButton = new JButton("黄色");
+        yellowButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                drawBoard.setPenStyle(Color.yellow);
+            }
+        });
+        JButton lineWidthButton = new JButton("增大线宽");
+        lineWidthButton.addMouseListener(new MouseAdapter() {
+            float lineWidth = 1.0f;
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                lineWidth+=0.5f;
+                drawBoard.setPenStyle(lineWidth);
             }
         });
 
@@ -32,6 +59,9 @@ public class Home extends JFrame {
 
         setLayout(new BorderLayout());
         add(BorderLayout.WEST, lineButton);
+        add(BorderLayout.EAST, polyButton);
+        add(BorderLayout.NORTH, yellowButton);
+        add(BorderLayout.SOUTH, lineWidthButton);
         add(BorderLayout.CENTER,drawBoard);
     }
 
