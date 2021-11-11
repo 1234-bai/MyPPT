@@ -1,10 +1,14 @@
-package com.Listeners;
+package com.Listeners.ParentListener;
 
 import com.Paint.DrawJPanel;
+
 import java.awt.*;
 import java.awt.event.*;
 
-public abstract class DrawListener  extends MouseAdapter implements ActionListener {
+/**
+ * 同画板绑定的鼠标监听器。
+ */
+public class DrawListener extends MouseAdapter {
 
     private DrawJPanel drawBoard;  //同此监听器绑定的画板
     //本监听器画的图形，用于本图形的删除和重绘，在图形的相同位置，用背景色画相同图形，但有产生了其它问题：
@@ -26,7 +30,7 @@ public abstract class DrawListener  extends MouseAdapter implements ActionListen
      *
      * @return 获得本监听器画笔，一般供子类调用
      */
-    Graphics2D getListenerPen() {
+    protected Graphics2D getListenerPen() {
         return drawBoard.getDrawBoardPen();
     }
 
@@ -34,8 +38,7 @@ public abstract class DrawListener  extends MouseAdapter implements ActionListen
      *
      * @return 获得本监听器画笔副本，一般供子类调用
      */
-    Graphics2D getListenerPen_copy() {
+    protected Graphics2D getListenerPen_copy() {
         return drawBoard.getDrawBoardPen_copy();
     }
-
 }
