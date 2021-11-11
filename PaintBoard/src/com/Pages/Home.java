@@ -1,7 +1,9 @@
 package com.Pages;
 
+import com.Listeners.CircleListener;
 import com.Listeners.LineListener;
 import com.Listeners.PolygonListener;
+import com.Listeners.RectangleListener;
 import com.Paint.DrawJPanel;
 
 import javax.swing.*;
@@ -14,6 +16,8 @@ public class Home extends JFrame {
     private final DrawJPanel drawBoard = new DrawJPanel();
     private final LineListener lineListener = new LineListener();
     private final PolygonListener polygonListener = new PolygonListener();
+    private final CircleListener circleListener = new CircleListener();
+    private final RectangleListener rectangleListener = new RectangleListener();
     public Home() throws HeadlessException {
 
         //定义图形按钮
@@ -31,15 +35,30 @@ public class Home extends JFrame {
                 drawBoard.setBoardListener(polygonListener);
             }
         });
-
-        //定义样式按钮
-        JButton yellowButton = new JButton("黄色");
-        yellowButton.addMouseListener(new MouseAdapter() {
+        JButton circButton = new JButton("圆形");
+        circButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                drawBoard.setPenStyle(Color.yellow);
+                drawBoard.setBoardListener(circleListener);
             }
         });
+        JButton rectButton = new JButton("矩形");
+        rectButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                drawBoard.setBoardListener(rectangleListener);
+            }
+        });
+
+
+        //定义样式按钮
+//        JButton yellowButton = new JButton("黄色");
+//        yellowButton.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                drawBoard.setPenStyle(Color.yellow);
+//            }
+//        });
         JButton lineWidthButton = new JButton("增大线宽");
         lineWidthButton.addMouseListener(new MouseAdapter() {
             float lineWidth = 1.0f;
@@ -60,8 +79,10 @@ public class Home extends JFrame {
         setLayout(new BorderLayout());
         add(BorderLayout.WEST, lineButton);
         add(BorderLayout.EAST, polyButton);
-        add(BorderLayout.NORTH, yellowButton);
-        add(BorderLayout.SOUTH, lineWidthButton);
+        add(BorderLayout.NORTH, circButton);
+        add(BorderLayout.SOUTH, rectButton);
+        //add(BorderLayout.NORTH, yellowButton);
+        //add(BorderLayout.SOUTH, lineWidthButton);
         add(BorderLayout.CENTER,drawBoard);
     }
 
