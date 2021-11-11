@@ -1,11 +1,11 @@
-package com.Listeners;
+package com.Listeners.ChildrenListener;
+
+import com.Listeners.ParentListener.DrawListener;
 
 import java.awt.event.*;
-import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
 
-public class LineListener extends DrawListener{
-
-    //想办法把此监听器画的图形传出去
+public class RectangleListener extends DrawListener {
     int startX, startY;
     int endX, endY;
 
@@ -27,22 +27,17 @@ public class LineListener extends DrawListener{
     @Override
     public void mouseReleased(MouseEvent e) {
         endX = e.getX(); endY = e.getY();   //记录终点位置
-        Line2D line = new Line2D.Double(startX, startY, endX, endY);
-        super.getListenerPen().draw(line);
-        super.getListenerPen_copy().draw(line);
+        Rectangle2D rectangle = new Rectangle2D.Double(startX, startY, endX-startX, endY-startY);
+        super.getListenerPen().draw(rectangle);
+        super.getListenerPen_copy().draw(rectangle);
     }
-
 
     @Override
     public void mouseDragged(MouseEvent e) {
         getDrawBoard().refresh();
         endX = e.getX(); endY = e.getY();   //记录终点位置
-        Line2D line = new Line2D.Double(startX, startY, endX, endY);
-        getListenerPen().draw(line);
+        Rectangle2D rectangle = new Rectangle2D.Double(startX, startY, endX-startX, endY-startY);
+        getListenerPen().draw(rectangle);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }

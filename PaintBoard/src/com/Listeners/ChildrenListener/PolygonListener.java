@@ -1,7 +1,8 @@
-package com.Listeners;
+package com.Listeners.ChildrenListener;
+
+import com.Listeners.ParentListener.DrawListener;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Line2D;
 
@@ -53,8 +54,4 @@ public class PolygonListener extends DrawListener {
         }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }
