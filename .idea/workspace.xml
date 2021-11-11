@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="对代码的小小重构。对问题6和问题7的解决。增加了线条的润滑度。修改了副本的名字。" />
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="项目的其余部分">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +19,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -26,9 +27,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="GiteeDefaultAccount">
-    <option name="defaultAccountId" value="866ae700-b201-4cf9-ad8e-e367c27f2b63" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -112,7 +110,8 @@
       <workItem from="1636383229072" duration="677000" />
       <workItem from="1636426555852" duration="5053000" />
       <workItem from="1636448689530" duration="2132000" />
-      <workItem from="1636547101576" duration="11973000" />
+      <workItem from="1636547101576" duration="12163000" />
+      <workItem from="1636614775763" duration="252000" />
     </task>
     <task id="LOCAL-00001" summary="初始化提交">
       <created>1636189148998</created>
@@ -184,7 +183,21 @@
       <option name="project" value="LOCAL" />
       <updated>1636560653972</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="项目的其余部分">
+      <created>1636561225442</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1636561225442</updated>
+    </task>
+    <task id="LOCAL-00012" summary="项目的其余部分">
+      <created>1636561269904</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1636561269904</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +238,8 @@
     <MESSAGE value="看起来没做修改" />
     <MESSAGE value="增加了对新增功能的测试" />
     <MESSAGE value="对代码的小小重构。对问题6和问题7的解决。增加了线条的润滑度。修改了副本的名字。" />
-    <option name="LAST_COMMIT_MESSAGE" value="对代码的小小重构。对问题6和问题7的解决。增加了线条的润滑度。修改了副本的名字。" />
+    <MESSAGE value="项目的其余部分" />
+    <option name="LAST_COMMIT_MESSAGE" value="项目的其余部分" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
