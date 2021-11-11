@@ -1,9 +1,10 @@
 package com.Paint;
 
-import com.Listeners.DrawListener;
+import com.Listeners.ParentListener.DrawListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 public class DrawJPanel extends JPanel {
@@ -73,6 +74,8 @@ public class DrawJPanel extends JPanel {
 
         drawBoardPen_copy.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         drawBoardPen_copy.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);
+
+        setPenStyle(1.5f);
     }
 
     /**
@@ -142,7 +145,7 @@ public class DrawJPanel extends JPanel {
 
     /**
      * 设置画笔样式，多个函数重载，通过参数类型调用的不同的函数
-     * @param c 颜色变量
+     * @param c 颜色变量：能够改变颜色和透明度，能够实现类荧光笔的效果
      */
     public void setPenStyle(Color c){
         if(drawBoardPen == null){return;}
@@ -159,7 +162,7 @@ public class DrawJPanel extends JPanel {
      */
     public void setPenStyle(float lineWidth){
         if(drawBoardPen == null){return;}
-        BasicStroke stroke = new BasicStroke(lineWidth);
+        BasicStroke stroke = new BasicStroke(lineWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
         drawBoardPen.setStroke(stroke);
         drawBoardPen_copy.setStroke(stroke);
     }
