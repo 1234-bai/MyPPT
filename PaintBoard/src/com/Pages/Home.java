@@ -43,6 +43,7 @@ public class Home extends JFrame {
         shapesButtons.add(rectButton);
         shapesButtons.add(imageButton);
 
+
         //定义样式按钮
         JButton yellowButton = new JButton("黄色");
         yellowButton.addMouseListener(new MouseAdapter() {
