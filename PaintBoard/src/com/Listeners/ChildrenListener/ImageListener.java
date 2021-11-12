@@ -15,6 +15,8 @@ public class ImageListener extends DrawListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
+        //点击画板选点并弹出文件选择框，后续图片以该点为左上角显示
         x = e.getX();
         y = e.getY();
 
@@ -38,6 +40,8 @@ public class ImageListener extends DrawListener {
             image = Toolkit.getDefaultToolkit().createImage(path);
 //            image = new ImageIcon(ClassLoader.getSystemResource(path)).getImage();
 
+
+            //存在问题，图片不显示
             getListenerPen().drawImage(image, x, y, getDrawBoard());
 
             System.out.println("图像绘制完毕");
