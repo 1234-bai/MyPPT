@@ -19,7 +19,6 @@ public class DrawJPanel extends JPanel {
 
 
 
-
     /**
      * 外界通过获得本画板的画笔，从而达到在本画板画笔的基础上改变样式的功能
      * @return 本画板画笔
@@ -27,7 +26,6 @@ public class DrawJPanel extends JPanel {
     public Graphics2D getDrawBoardPen() {
         return drawBoardPen;
     }
-
 
 
 
@@ -41,12 +39,21 @@ public class DrawJPanel extends JPanel {
 
 
 
-
     /**
      * 刷新本画板，将副本内容载入画板。
      */
     public void refresh(){
         drawBoardPen.drawImage(drawBoard_copy, 0 ,0, null);
+    }
+
+
+
+    /**
+     *
+     * @return 获得现在同画板绑定的监听器
+     */
+    public DrawListener getDrawListener() {
+        return drawListener;
     }
 
 
