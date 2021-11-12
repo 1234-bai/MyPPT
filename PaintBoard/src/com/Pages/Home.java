@@ -31,12 +31,17 @@ public class Home extends JFrame {
         JButton curveButton = createShapeButton("曲线", new CurveListener());
         JButton circButton = createShapeButton("圆形", new CircleListener());
         JButton rectButton = createShapeButton("矩形", new RectangleListener());
+        JButton imageButton = createShapeButton("插入图片", new ImageListener());
+
         //创建按钮框
         JPanel shapesButtons = new JPanel();
-        shapesButtons.setLayout(new GridLayout(5, 1));
-        shapesButtons.add(lineButton); shapesButtons.add(curveButton); shapesButtons.add(polyButton);shapesButtons.add(circButton);
+        shapesButtons.setLayout(new GridLayout(6, 1));
+        shapesButtons.add(lineButton);
+        shapesButtons.add(curveButton);
+        shapesButtons.add(polyButton);
+        shapesButtons.add(circButton);
         shapesButtons.add(rectButton);
-
+        shapesButtons.add(imageButton);
 
         //定义样式按钮
         JButton yellowButton = new JButton("黄色");
