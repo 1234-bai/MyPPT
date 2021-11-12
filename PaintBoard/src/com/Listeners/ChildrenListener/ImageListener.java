@@ -2,11 +2,14 @@ package com.Listeners.ChildrenListener;
 
 import com.Listeners.ParentListener.DrawListener;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
 public class ImageListener extends DrawListener {
     int x;
@@ -37,12 +40,16 @@ public class ImageListener extends DrawListener {
             //测试输出
             System.out.println("path: " + path);
 
-            image = Toolkit.getDefaultToolkit().createImage(path);
+//            image = Toolkit.getDefaultToolkit().getImage(path);
 //            image = new ImageIcon(ClassLoader.getSystemResource(path)).getImage();
+            try {
+                image = ImageIO.read(new File(path));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
 
-
-            //存在问题，图片不显示
-            getListenerPen().drawImage(image, x, y, getDrawBoard());
+            getListenerPen().drawImage(image, x, y,null);
+            getListenerPen_copy().drawImage(image, x, y, null);
 
             System.out.println("图像绘制完毕");
         }
