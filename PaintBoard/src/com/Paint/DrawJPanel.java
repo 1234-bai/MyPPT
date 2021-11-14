@@ -1,14 +1,12 @@
 package com.Paint;
 
-import com.Listeners.BaseListener.DrawListener;
+import com.Listeners.ParentListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
 import com.MyShapes.ChildrenShapes.MyContentText;
 import com.MyShapes.ChildrenShapes.MyCurve;
-import com.MyShapes.ChildrenShapes.MyImage;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 

@@ -1,8 +1,8 @@
 package com.Pages;
 
 import com.Listeners.ChoseListener;
-import com.Listeners.ContentListener.*;
-import com.Listeners.BaseListener.DrawListener;
+import com.Listeners.ChildrenListener.*;
+import com.Listeners.ParentListener.DrawListener;
 import com.Paint.DrawJPanel;
 
 import javax.swing.*;

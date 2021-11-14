@@ -1,12 +1,8 @@
 package com.Listeners;
 
-import com.Listeners.BaseListener.DrawListener;
+import com.Listeners.ParentListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
-import com.MyShapes.ChildrenShapes.MyContentText;
-import com.MyShapes.ChildrenShapes.MyCurve;
-import com.MyShapes.ChildrenShapes.MyImage;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
