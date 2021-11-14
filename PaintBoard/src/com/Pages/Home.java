@@ -87,6 +87,7 @@ public class Home extends JFrame {
         add(BorderLayout.NORTH, styleButtons);
         add(BorderLayout.EAST, textButton);
         add(BorderLayout.CENTER,drawBoard);
+        //bbb
     }
 
     public void Run(){
