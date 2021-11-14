@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="项目的其余部分">
-      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/ImageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_7_16_53__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_7_16_53__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_7_16_53__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_7_16_53__Changes_1.xml" afterDir="false" />
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="插入字体的监听器">
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChoseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/MyShapes/BaseShape/MyShape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/MyShapes/ChildrenShapes/MyContentText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/MyShapes/ChildrenShapes/MyCurve.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/MyShapes/ChildrenShapes/MyImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/MyShapes/ChildrenShapes/MyLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CircleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ContentListener/CircleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CurveListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ContentListener/CurveListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/FontListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ContentListener/TextListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/ImageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ContentListener/ImageListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/LineListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ContentListener/LineListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/PolygonListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ContentListener/PolygonListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/RectangleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ContentListener/RectangleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ParentListener/DrawListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/BaseListener/DrawListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +97,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.Home" />
+        <item itemvalue="Application.Home" />
       </list>
     </recent_temporary>
   </component>
@@ -117,6 +129,7 @@
       <workItem from="1636547101576" duration="12163000" />
       <workItem from="1636614775763" duration="252000" />
       <workItem from="1636715076825" duration="1145000" />
+      <workItem from="1636871358027" duration="17700000" />
     </task>
     <task id="LOCAL-00001" summary="初始化提交">
       <created>1636189148998</created>
@@ -250,14 +263,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java</url>
-          <line>105</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/PaintBoard/src/com/MyShapes/ChildrenShapes/MyLine.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

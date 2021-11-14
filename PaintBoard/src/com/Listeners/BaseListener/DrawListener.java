@@ -1,9 +1,11 @@
-package com.Listeners.ParentListener;
+package com.Listeners.BaseListener;
 
+import com.MyShapes.BaseShape.MyShape;
 import com.Paint.DrawJPanel;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  * 同画板绑定的鼠标监听器。
@@ -11,10 +13,8 @@ import java.awt.event.*;
 public class DrawListener extends MouseAdapter {
 
     private DrawJPanel drawBoard;  //同此监听器绑定的画板
-    //本监听器画的图形，用于本图形的删除和重绘，在图形的相同位置，用背景色画相同图形，但有产生了其它问题：
-    //当更换背景颜色的时候，这些图形又会显现出来
 
-    public DrawJPanel getDrawBoard() {
+    protected DrawJPanel getDrawBoard() {
         return drawBoard;
     }
 
@@ -41,4 +41,9 @@ public class DrawListener extends MouseAdapter {
     protected Graphics2D getListenerPen_copy() {
         return drawBoard.getDrawBoardPen_copy();
     }
+
+    protected ArrayList<MyShape> getContentsGroup() {
+        return drawBoard.getContentsGroup();
+    }
+
 }

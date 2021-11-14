@@ -1,7 +1,8 @@
 package com.Pages;
 
-import com.Listeners.ChildrenListener.*;
-import com.Listeners.ParentListener.DrawListener;
+import com.Listeners.ChoseListener;
+import com.Listeners.ContentListener.*;
+import com.Listeners.BaseListener.DrawListener;
 import com.Paint.DrawJPanel;
 
 import javax.swing.*;
@@ -70,7 +71,16 @@ public class Home extends JFrame {
         textButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                drawBoard.setBoardListener(new FontListener());
+                drawBoard.setBoardListener(new TextListener());
+            }
+        });
+
+        //定义选择按钮
+        JButton choseButton = new JButton("chose");
+        choseButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                drawBoard.setBoardListener(new ChoseListener());
             }
         });
 
@@ -86,6 +96,7 @@ public class Home extends JFrame {
         add(BorderLayout.WEST, shapesButtons);
         add(BorderLayout.NORTH, styleButtons);
         add(BorderLayout.EAST, textButton);
+        add(BorderLayout.SOUTH, choseButton);
         add(BorderLayout.CENTER,drawBoard);
     }
 

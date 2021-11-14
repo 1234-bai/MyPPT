@@ -1,6 +1,6 @@
-package com.Listeners.ChildrenListener;
+package com.Listeners.ContentListener;
 
-import com.Listeners.ParentListener.DrawListener;
+import com.Listeners.BaseListener.DrawListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -47,11 +47,8 @@ public class ImageListener extends DrawListener {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-
             getListenerPen().drawImage(image, x, y,null);
             getListenerPen_copy().drawImage(image, x, y, null);
-
-            System.out.println("图像绘制完毕");
         }
     }
 }
