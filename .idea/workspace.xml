@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="test">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_7_16_53_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_7_16_53__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_7_16_53__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_11_7_16_53__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="修复了矩形向左上拉拽问题">
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/FillCircleListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/FillRectangleListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CircleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CircleListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CurveListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CurveListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/RectangleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/RectangleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +144,7 @@
       <workItem from="1636614775763" duration="252000" />
       <workItem from="1636715076825" duration="1145000" />
       <workItem from="1636726117273" duration="5298000" />
-      <workItem from="1636894950540" duration="1313000" />
+      <workItem from="1636894950540" duration="5310000" />
     </task>
     <task id="LOCAL-00001" summary="初始化提交">
       <created>1636189148998</created>
@@ -237,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636726183310</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="修复了矩形向左上拉拽问题">
+      <created>1636896351461</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1636896351461</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,6 +287,7 @@
     <MESSAGE value="对代码的小小重构。对问题6和问题7的解决。增加了线条的润滑度。修改了副本的名字。" />
     <MESSAGE value="项目的其余部分" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="修复了矩形向左上拉拽问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了矩形向左上拉拽问题" />
   </component>
 </project>
