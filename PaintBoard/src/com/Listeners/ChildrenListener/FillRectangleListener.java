@@ -1,11 +1,9 @@
 package com.Listeners.ChildrenListener;
-
 import com.Listeners.ParentListener.DrawListener;
 
 import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
-
-public class RectangleListener extends DrawListener {
+public class FillRectangleListener extends DrawListener {
     int startX, startY;
     int endX, endY;
 
@@ -33,13 +31,13 @@ public class RectangleListener extends DrawListener {
         System.out.print(endY+" ");
         if (startX < endX){
             Rectangle2D rectangle = new Rectangle2D.Double(startX, startY, endX-startX, endY-startY);
-            super.getListenerPen().draw(rectangle);
-            super.getListenerPen_copy().draw(rectangle);
+            super.getListenerPen().fill(rectangle);
+            super.getListenerPen_copy().fill(rectangle);
         }
         else {
             Rectangle2D rectangle = new Rectangle2D.Double(endX, endY, startX-endX, startY-endY);
-            super.getListenerPen().draw(rectangle);
-            super.getListenerPen_copy().draw(rectangle);
+            super.getListenerPen().fill(rectangle);
+            super.getListenerPen_copy().fill(rectangle);
         }
 
 
@@ -51,11 +49,11 @@ public class RectangleListener extends DrawListener {
         endX = e.getX(); endY = e.getY();   //记录终点位置
         if (startX < endX){
             Rectangle2D rectangle = new Rectangle2D.Double(startX, startY, endX-startX, endY-startY);
-            super.getListenerPen().draw(rectangle);
+            super.getListenerPen().fill(rectangle);
         }
         else {
             Rectangle2D rectangle = new Rectangle2D.Double(endX, endY, startX-endX, startY-endY);
-            super.getListenerPen().draw(rectangle);
+            super.getListenerPen().fill(rectangle);
         }
     }
 

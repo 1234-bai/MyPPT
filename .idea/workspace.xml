@@ -1,26 +1,215 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="选取器的大部分。对代码框架微调。为了完成选取器，增加自定义图形（原图形加属性）。" />
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="修复了矩形向左上拉拽问题">
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/FillCircleListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/FillRectangleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CircleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CircleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CurveListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CurveListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/Zihao" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Zihao" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ChangesTree.GroupingKeys" value="module" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaFinalWork-master" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="com.gitee.ui.GiteeSettingsConfigurable" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/PaintBoard/src/com/Listeners/DrawListener.java" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Home" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.Pages.Home" />
+      <module name="MyPPT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.Pages.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Home" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="" />
+      <created>1636041467685</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636041467685</updated>
+      <workItem from="1636041469420" duration="4731000" />
+      <workItem from="1636078517775" duration="10820000" />
+      <workItem from="1636127167435" duration="107000" />
+      <workItem from="1636169446399" duration="2965000" />
+      <workItem from="1636176213426" duration="8157000" />
+      <workItem from="1636184503868" duration="295000" />
+      <workItem from="1636184906022" duration="514000" />
+      <workItem from="1636188035417" duration="382000" />
+      <workItem from="1636188436262" duration="1347000" />
+      <workItem from="1636243327665" duration="1777000" />
+      <workItem from="1636268451467" duration="6730000" />
+      <workItem from="1636275635129" duration="416000" />
+      <workItem from="1636381857022" duration="46000" />
+      <workItem from="1636381918866" duration="1271000" />
+      <workItem from="1636383229072" duration="677000" />
+      <workItem from="1636426555852" duration="5053000" />
+      <workItem from="1636448689530" duration="2132000" />
+      <workItem from="1636547101576" duration="12163000" />
+      <workItem from="1636614775763" duration="252000" />
+      <workItem from="1636715076825" duration="1145000" />
+      <workItem from="1636726117273" duration="5298000" />
+      <workItem from="1636894950540" duration="5310000" />
+    </task>
+    <task id="LOCAL-00001" summary="初始化提交">
+      <created>1636189148998</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1636189148998</updated>
+    </task>
+    <task id="LOCAL-00002" summary="解决了窗口变化画板上的图形重绘问题">
+      <created>1636274919365</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1636274919365</updated>
+    </task>
+    <task id="LOCAL-00003" summary="解决了窗口变化画板上的图形重绘问题">
+      <created>1636274960704</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1636274960704</updated>
+    </task>
+    <task id="LOCAL-00004" summary="多边形监听器">
+      <created>1636274980460</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1636274980460</updated>
+    </task>
+    <task id="LOCAL-00005" summary="解决鼠标拖动过程中的产生的问题">
+      <created>1636383395502</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1636383395502</updated>
+    </task>
+    <task id="LOCAL-00006" summary="增加了最近发现的两个bug以及对应解决方案">
+      <created>1636556752712</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1636556752712</updated>
+    </task>
+    <task id="LOCAL-00007" summary="删去了一些不必要的重载函数名。对副本使用函数名做了对应的修改。修改了副本的使用语句。">
+      <created>1636558847049</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1636558847049</updated>
+    </task>
+    <task id="LOCAL-00008" summary="看起来没做修改">
+      <created>1636559878197</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1636559878197</updated>
+    </task>
+    <task id="LOCAL-00009" summary="增加了对新增功能的测试">
+      <created>1636560011865</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1636560011865</updated>
+    </task>
+    <task id="LOCAL-00010" summary="对代码的小小重构。对问题6和问题7的解决。增加了线条的润滑度。修改了副本的名字。">
+      <created>1636560653972</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1636560653972</updated>
+    </task>
+    <task id="LOCAL-00011" summary="项目的其余部分">
+      <created>1636561225442</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1636561225442</updated>
+    </task>
+    <task id="LOCAL-00012" summary="项目的其余部分">
+      <created>1636561269904</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1636561269904</updated>
+    </task>
+    <task id="LOCAL-00013" summary="test">
+      <created>1636726183310</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1636726183310</updated>
+    </task>
+    <task id="LOCAL-00014" summary="修复了矩形向左上拉拽问题">
+      <created>1636896351461</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1636896351461</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -28,11 +217,39 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Zihao" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="初始化提交" />
+    <MESSAGE value="解决了窗口变化画板上的图形重绘问题" />
+    <MESSAGE value="多边形监听器" />
+    <MESSAGE value="解决鼠标拖动过程中的产生的问题" />
+    <MESSAGE value="增加了最近发现的两个bug以及对应解决方案" />
+    <MESSAGE value="删去了一些不必要的重载函数名。对副本使用函数名做了对应的修改。修改了副本的使用语句。" />
+    <MESSAGE value="看起来没做修改" />
+    <MESSAGE value="增加了对新增功能的测试" />
+    <MESSAGE value="对代码的小小重构。对问题6和问题7的解决。增加了线条的润滑度。修改了副本的名字。" />
+    <MESSAGE value="项目的其余部分" />
+    <MESSAGE value="test" />
+    <MESSAGE value="修复了矩形向左上拉拽问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了矩形向左上拉拽问题" />
   </component>
 </project>

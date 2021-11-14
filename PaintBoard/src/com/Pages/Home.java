@@ -31,17 +31,21 @@ public class Home extends JFrame {
         JButton polyButton = createShapeButton("多边形", new PolygonListener());
         JButton curveButton = createShapeButton("曲线", new CurveListener());
         JButton circButton = createShapeButton("圆形", new CircleListener());
+        JButton fillcircButton = createShapeButton("实心圆形", new FillCircleListener());
         JButton rectButton = createShapeButton("矩形", new RectangleListener());
+        JButton fillrectButton = createShapeButton("实心矩形", new FillRectangleListener());
         JButton imageButton = createShapeButton("插入图片", new ImageListener());
 
         //创建按钮框
         JPanel shapesButtons = new JPanel();
-        shapesButtons.setLayout(new GridLayout(6, 1));
+        shapesButtons.setLayout(new GridLayout(8, 1));
         shapesButtons.add(lineButton);
         shapesButtons.add(curveButton);
         shapesButtons.add(polyButton);
         shapesButtons.add(circButton);
+        shapesButtons.add(fillcircButton);
         shapesButtons.add(rectButton);
+        shapesButtons.add(fillrectButton);
         shapesButtons.add(imageButton);
 
 
@@ -98,6 +102,7 @@ public class Home extends JFrame {
         add(BorderLayout.EAST, textButton);
         add(BorderLayout.SOUTH, choseButton);
         add(BorderLayout.CENTER,drawBoard);
+        //bbb
     }
 
     public void Run(){
