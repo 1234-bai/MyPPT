@@ -1,11 +1,14 @@
 package com.Paint;
 
-import com.Listeners.ParentListener.DrawListener;
+import com.Listeners.BaseListener.DrawListener;
+import com.MyShapes.BaseShape.MyShape;
+import com.MyShapes.ChildrenShapes.MyContentText;
+import com.MyShapes.ChildrenShapes.MyCurve;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class DrawJPanel extends JPanel {
 
@@ -16,6 +19,7 @@ public class DrawJPanel extends JPanel {
 
     private DrawListener drawListener;  //画正在运行板的监听器，当按下不同的功能按钮的时候，将此监听器设置为按钮所对应的监听器
 
+    private final ArrayList<MyShape> contentsGroup = new ArrayList<>();    //内容数组，存放画过的图形
 
 
 
@@ -27,8 +31,6 @@ public class DrawJPanel extends JPanel {
         return drawBoardPen;
     }
 
-
-
     /**
      *
      * @return 画板画笔的副本
@@ -37,16 +39,12 @@ public class DrawJPanel extends JPanel {
         return drawBoardPen_copy;
     }
 
-
-
     /**
      * 刷新本画板，将副本内容载入画板。
      */
     public void refresh(){
         drawBoardPen.drawImage(drawBoard_copy, 0 ,0, null);
     }
-
-
 
     /**
      *
@@ -57,6 +55,9 @@ public class DrawJPanel extends JPanel {
     }
 
 
+    public ArrayList<MyShape> getContentsGroup() {
+        return contentsGroup;
+    }
 
     /**
      * 窗口改变大小之后，调用此函数，然后原先绑定的Graphic全部换新了，指向了另一个对象。就得重新绑定一遍，并且样式也要全部载入一遍。
@@ -70,7 +71,32 @@ public class DrawJPanel extends JPanel {
         drawBoardPenInitial();
     }
 
-
+    /**
+     * 重画，画笔更新，副本更新
+     */
+    public void redraw(){
+        //清空所画的一切
+        super.paint(drawBoardPen);  //试水，看看是不是这个g
+        drawBoardPen_copy = null; drawBoard_copy = null;    //清空副本，但是监听器不清空
+        drawBoardPenInitial();  //初始化画笔，重新开始画
+        for(MyShape myShape : contentsGroup){    //因为重画后需要刷新，所以只在副本上画就可以了
+            setPenStyle(myShape.getColor()); setPenStyle(myShape.getLineWidth());   //将储存的样式赋给副本
+            if(myShape instanceof MyCurve){
+                ((MyCurve) myShape).drawInBoard(drawBoardPen_copy);
+            } else{
+                Object con = myShape.getDrawContent();
+                if(con instanceof Shape){
+                    drawBoardPen_copy.draw((Shape) con);
+                } else if(con instanceof Image){
+                    drawBoardPen_copy.drawImage((Image) con, (int)myShape.getCoordinateX(), (int)myShape.getCoordinateY(), null);
+                } else if(con instanceof String){
+                    setTextFont(((MyContentText)myShape).getFont());
+                    drawBoardPen_copy.drawString(((String) con), (int)myShape.getCoordinateX(), (int)myShape.getCoordinateY());
+                }
+            }
+        }
+        refresh();
+    }
 
     /**
      * 初始化画笔，是线条更加圆滑，减小锯齿。看起来更美观。
@@ -112,7 +138,7 @@ public class DrawJPanel extends JPanel {
     public void drawBoardPenInitial() {
         drawBoardPen = (Graphics2D) super.getGraphics();    //将父类画笔赋值给本身画笔
         if(drawBoard_copy == null){  //直接设置成最大尺寸的画布。这样在重绘过程中，不会因画板尺寸改变（画板以前画的东西都会丢失），引起副本的改变（副本不会更新，画的东西也就不会丢失了）
-            createCopy();
+            createCopy();   //创造副本
             penStyleInitial();  //样式初始化
        } else{  //说明副本不为空，说明是画板重绘了。则将画笔样式全部复制给现在的画笔
             penStyleRecover();  //样式还原。
@@ -172,6 +198,14 @@ public class DrawJPanel extends JPanel {
         BasicStroke stroke = new BasicStroke(lineWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
         drawBoardPen.setStroke(stroke);
         drawBoardPen_copy.setStroke(stroke);
+    }
+
+
+
+    public void setTextFont(Font font){
+        if(drawBoardPen == null){return;}
+        drawBoardPen.setFont(font);
+        drawBoardPen_copy.setFont(font);
     }
 
 }

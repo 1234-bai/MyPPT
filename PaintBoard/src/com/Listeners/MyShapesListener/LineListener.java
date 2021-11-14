@@ -1,9 +1,13 @@
-package com.Listeners.ChildrenListener;
+package com.Listeners.MyShapesListener;
 
-import com.Listeners.ParentListener.DrawListener;
+import com.Listeners.BaseListener.DrawListener;
+import com.MyShapes.ChildrenShapes.MyLine;
 
+
+import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Line2D;
+
 
 public class LineListener extends DrawListener {
 
@@ -19,8 +23,12 @@ public class LineListener extends DrawListener {
     public void mouseReleased(MouseEvent e) {
         endX = e.getX(); endY = e.getY();   //记录终点位置
         Line2D line = new Line2D.Double(startX, startY, endX, endY);
-        super.getListenerPen().draw(line);
-        super.getListenerPen_copy().draw(line);
+        getListenerPen().draw(line); getListenerPen_copy().draw(line);
+        getContentsGroup().add(new MyLine(
+                line,
+                getListenerPen().getColor(),
+                ((BasicStroke)getListenerPen().getStroke()).getLineWidth()
+        ));
     }
 
     @Override
