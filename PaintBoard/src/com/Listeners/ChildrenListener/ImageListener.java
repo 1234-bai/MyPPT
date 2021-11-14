@@ -47,11 +47,8 @@ public class ImageListener extends DrawListener {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-
             getListenerPen().drawImage(image, x, y,null);
             getListenerPen_copy().drawImage(image, x, y, null);
-
-            System.out.println("图像绘制完毕");
         }
     }
 }

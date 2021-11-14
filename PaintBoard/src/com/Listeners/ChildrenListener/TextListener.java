@@ -1,6 +1,7 @@
 package com.Listeners.ChildrenListener;
 
 import com.Listeners.ParentListener.DrawListener;
+import com.Paint.DrawJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.event.MouseEvent;
 /*
 * 文本框不透明。
 * */
-public class FontListener extends DrawListener{
+public class TextListener extends DrawListener{
 
     int clickX, clickY;
     JTextField textField;
@@ -25,38 +26,41 @@ public class FontListener extends DrawListener{
         getDrawBoard().refresh();
     }
 
+    private final static int TEXT_OFFSET = 6;   //为了让字体在文本框消失后的中间显示，将入的偏移量
     private void drawString(){
+        DrawJPanel drawBoard = getDrawBoard();
         Graphics2D listenerPen = getListenerPen();
         Graphics2D listenerPen_copy = getListenerPen_copy();
 
         String str = textField.getText();   //获得文本
         Color oldColor = listenerPen.getColor();    //记录画笔原来的颜色
 
-        listenerPen.setColor(textColor); listenerPen_copy.setColor(textColor);  //设置画笔颜色同要求字体颜色一致
-        listenerPen.setFont(textFont); listenerPen_copy.setFont(textFont);  //将字体样式赋值给字体
-        listenerPen.drawString(str, clickX, clickY+6); listenerPen_copy.drawString(str, clickX, clickY + 5);
+        drawBoard.setPenStyle(textColor);  //设置画笔颜色同要求字体颜色一致
+        drawBoard.setTextFont(textFont);  //将字体样式赋值给字体
+        listenerPen.drawString(str, clickX, clickY+TEXT_OFFSET); listenerPen_copy.drawString(str, clickX, clickY + TEXT_OFFSET);
 
-        getDrawBoard().remove(textField);   //移除组件
+        drawBoard.remove(textField);   //移除组件
         textField = null;   //文本框清空
-        listenerPen.setColor(oldColor); listenerPen_copy.setColor(oldColor);    //恢复原来的颜色
-        getDrawBoard().refresh();   //刷新，将添加的组件在画板上移除
+        drawBoard.setPenStyle(textColor);    //恢复原来的颜色
+        drawBoard.refresh();   //刷新，将添加的组件在画板上移除
     }
 
     private class FontKeyListener extends KeyAdapter {
         /**
          * 按下回车键画上线段。
-         * @param e
+         * @param e 鼠标事件
          */
         @Override
         public void keyPressed(KeyEvent e) {
-            if(e.getKeyCode() == 10){
+            int keyCode = e.getKeyCode();
+            if(keyCode == 10 || keyCode == 13){   //回车键
                 drawString();
             }
         }
 
         /**
          * 当文本框长度不够时，检测到按键抬起就变长。
-         * @param e
+         * @param e 鼠标事件
          */
         @Override
         public void keyReleased(KeyEvent e) {
@@ -71,6 +75,7 @@ public class FontListener extends DrawListener{
     }
 
 
+    private final static int TEXT_FIELD_OFFSET = -15;   //为了让鼠标点击后，鼠标在显示的文本框正中间，文本框出现的偏移量
     @Override
     public void mouseClicked(MouseEvent e) {
         if(textField != null){  //存在正在输入的文本框
@@ -85,7 +90,7 @@ public class FontListener extends DrawListener{
     private void putTextField(int x, int y, int width, int length, String placeHolder){
         textField = createTextField(textFont, textColor, placeHolder);  //输入的文本框
         textField.addKeyListener(new FontKeyListener());    //添加按键监听器，当按下回车。就画图
-        textField.setBounds(x, y-15, width, length);
+        textField.setBounds(x, y+ TEXT_FIELD_OFFSET, width, length);
         getDrawBoard().add(textField);
         textRefresh();
         textField.requestFocus();   //文本框获得焦点。
@@ -104,7 +109,7 @@ public class FontListener extends DrawListener{
 
     /**
      * 设置要写的文字颜色
-     * @param color
+     * @param color 文字颜色
      */
     public void setFontColor(Color color){
         textColor = color;

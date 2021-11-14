@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="选取器的大部分。对代码框架微调。为了完成选取器，增加自定义图形（原图形加属性）。" />
     <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="修复了矩形向左上拉拽问题">
       <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/FillCircleListener.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/FillRectangleListener.java" afterDir="false" />
@@ -16,14 +17,6 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <favorite-branches>
@@ -46,35 +39,8 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="localRepository" value="D:\Programs\Apache\apache-maven-3.6.3\repository" />
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../Programs/Apache/apache-maven-3.6.3" />
-        <option name="userSettingsFile" value="D:\Programs\Apache\apache-maven-3.6.3\conf\settings.xml" />
-      </MavenGeneralSettings>
-    </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="vmOptionsForImporter" value="-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="20ScX2xsP4mNdcXx3sXpddybZnn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
@@ -115,7 +81,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="" />
@@ -246,9 +211,6 @@
     </task>
     <option name="localTasksCounter" value="15" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
