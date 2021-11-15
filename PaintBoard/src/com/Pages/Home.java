@@ -30,10 +30,10 @@ public class Home extends JFrame {
         JButton lineButton = createShapeButton("直线", new LineListener());
         JButton polyButton = createShapeButton("多边形", new PolygonListener());
         JButton curveButton = createShapeButton("曲线", new CurveListener());
-        JButton circButton = createShapeButton("圆形", new CircleListener());
-        JButton fillCircButton = createShapeButton("实心圆形", new FillCircleListener());
-        JButton rectButton = createShapeButton("矩形", new RectangleListener());
-        JButton fillRectButton = createShapeButton("实心矩形", new FillRectangleListener());
+        JButton circButton = createShapeButton("圆形", new CircleListener(false));
+        JButton fillCircButton = createShapeButton("实心圆形", new CircleListener(true));
+        JButton rectButton = createShapeButton("矩形", new RectangleListener(false));
+        JButton fillRectButton = createShapeButton("实心矩形", new RectangleListener(true));
         JButton imageButton = createShapeButton("插入图片", new ImageListener());
 
         //创建按钮框
