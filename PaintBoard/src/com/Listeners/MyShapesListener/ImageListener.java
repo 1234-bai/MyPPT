@@ -1,6 +1,7 @@
 package com.Listeners.MyShapesListener;
 
 import com.Listeners.BaseListener.DrawListener;
+import com.MyShapes.ChildrenShapes.MyImage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -12,16 +13,12 @@ import java.io.File;
 import java.io.IOException;
 
 public class ImageListener extends DrawListener {
-    int x;
-    int y;
-    Image image;
 
     @Override
     public void mouseClicked(MouseEvent e) {
 
         //点击画板选点并弹出文件选择框，后续图片以该点为左上角显示
-        x = e.getX();
-        y = e.getY();
+        int x = e.getX(), y = e.getY();
 
         //从硬盘中选择图片
         FileSystemView fileSystemView = FileSystemView.getFileSystemView();
@@ -40,8 +37,9 @@ public class ImageListener extends DrawListener {
             //测试输出
             System.out.println("path: " + path);
 
-//            image = Toolkit.getDefaultToolkit().getImage(path);
-//            image = new ImageIcon(ClassLoader.getSystemResource(path)).getImage();
+            Image image = null;
+            //image = Toolkit.getDefaultToolkit().getImage(path);
+            //image = new ImageIcon(ClassLoader.getSystemResource(path)).getImage();
             try {
                 image = ImageIO.read(new File(path));
             } catch (IOException ex) {
@@ -49,6 +47,14 @@ public class ImageListener extends DrawListener {
             }
             getListenerPen().drawImage(image, x, y,null);
             getListenerPen_copy().drawImage(image, x, y, null);
+
+            getContentsGroup().add(new MyImage(
+                    image,
+                    x,
+                    y,
+                    getListenerPen().getColor(),
+                    ((BasicStroke)getListenerPen().getStroke()).getLineWidth()
+            ));
         }
     }
 }
