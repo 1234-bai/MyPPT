@@ -1,6 +1,8 @@
 package com.Listeners.MyShapesListener;
 
 import com.Listeners.BaseListener.DrawListener;
+import com.MyShapes.ChildrenShapes.MyLine;
+import com.MyShapes.ChildrenShapes.MyText;
 import com.Paint.DrawJPanel;
 
 import javax.swing.*;
@@ -38,6 +40,16 @@ public class TextListener extends DrawListener{
         drawBoard.setPenStyle(textColor);  //设置画笔颜色同要求字体颜色一致
         drawBoard.setTextFont(textFont);  //将字体样式赋值给字体
         listenerPen.drawString(str, clickX, clickY+TEXT_OFFSET); listenerPen_copy.drawString(str, clickX, clickY + TEXT_OFFSET);
+        getContentsGroup().add(new MyText(  //保存到图形栈里
+                clickX,
+                clickY + TEXT_OFFSET,
+                textField.getWidth(),
+                textField.getHeight(),
+                textColor,
+                ((BasicStroke)getListenerPen().getStroke()).getLineWidth(),
+                textFont,
+                str
+        ));
 
         drawBoard.remove(textField);   //移除组件
         textField = null;   //文本框清空

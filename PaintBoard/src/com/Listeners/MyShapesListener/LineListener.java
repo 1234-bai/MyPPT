@@ -16,25 +16,37 @@ public class LineListener extends DrawListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        startX = e.getX(); startY = e.getY();   //记录起点位置
+
+        //记录起点位置
+        startX = e.getX();
+        startY = e.getY();
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        endX = e.getX(); endY = e.getY();   //记录终点位置
+
+        //记录终点位置
+        endX = e.getX();
+        endY = e.getY();
+
         Line2D line = new Line2D.Double(startX, startY, endX, endY);
-        getListenerPen().draw(line); getListenerPen_copy().draw(line);
+        getListenerPen().draw(line);
+        getListenerPen_copy().draw(line);
         getContentsGroup().add(new MyLine(
                 line,
                 getListenerPen().getColor(),
-                ((BasicStroke)getListenerPen().getStroke()).getLineWidth()
+                ((BasicStroke) getListenerPen().getStroke()).getLineWidth()
         ));
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
         getDrawBoard().refresh();
-        endX = e.getX(); endY = e.getY();   //记录终点位置
+
+        //记录终点位置
+        endX = e.getX();
+        endY = e.getY();
+
         Line2D line = new Line2D.Double(startX, startY, endX, endY);
         getListenerPen().draw(line);
     }

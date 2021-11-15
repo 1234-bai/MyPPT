@@ -22,6 +22,6 @@ public class MyImage extends MyShape {
     public boolean contains(double x, double y) {
         int width = image.getWidth(null);
         int height = image.getHeight(null);
-        return (x - coordinateX >= width) && (y - coordinateY >= height);
+        return (x - coordinateX <= width) && (y - coordinateY <= height);
     }
 }
