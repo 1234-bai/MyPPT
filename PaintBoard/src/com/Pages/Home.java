@@ -1,10 +1,9 @@
 package com.Pages;
 
+import com.Listeners.BaseListener.DrawListener;
 import com.Listeners.ChoseListener;
-import com.Listeners.ChildrenListener.*;
-import com.Listeners.ParentListener.DrawListener;
+import com.Listeners.MyShapesListener.*;
 import com.Paint.DrawJPanel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -14,7 +13,7 @@ public class Home extends JFrame {
 
     private final DrawJPanel drawBoard = new DrawJPanel();
 
-    private JButton createShapeButton(String name, DrawListener listener){
+    private JButton createShapeButton(String name, DrawListener listener) {
         JButton jButton = new JButton(name);
         jButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -24,6 +23,7 @@ public class Home extends JFrame {
         });
         return jButton;
     }
+
     public Home() throws HeadlessException {
 
         //定义图形按钮
@@ -31,9 +31,9 @@ public class Home extends JFrame {
         JButton polyButton = createShapeButton("多边形", new PolygonListener());
         JButton curveButton = createShapeButton("曲线", new CurveListener());
         JButton circButton = createShapeButton("圆形", new CircleListener());
-        JButton fillcircButton = createShapeButton("实心圆形", new FillCircleListener());
+        JButton fillCircButton = createShapeButton("实心圆形", new FillCircleListener());
         JButton rectButton = createShapeButton("矩形", new RectangleListener());
-        JButton fillrectButton = createShapeButton("实心矩形", new FillRectangleListener());
+        JButton fillRectButton = createShapeButton("实心矩形", new FillRectangleListener());
         JButton imageButton = createShapeButton("插入图片", new ImageListener());
 
         //创建按钮框
@@ -43,9 +43,9 @@ public class Home extends JFrame {
         shapesButtons.add(curveButton);
         shapesButtons.add(polyButton);
         shapesButtons.add(circButton);
-        shapesButtons.add(fillcircButton);
+        shapesButtons.add(fillCircButton);
         shapesButtons.add(rectButton);
-        shapesButtons.add(fillrectButton);
+        shapesButtons.add(fillRectButton);
         shapesButtons.add(imageButton);
 
 
@@ -60,15 +60,18 @@ public class Home extends JFrame {
         JButton lineWidthButton = new JButton("增大线宽");
         lineWidthButton.addMouseListener(new MouseAdapter() {
             float lineWidth = 1.0f;
+
             @Override
             public void mouseClicked(MouseEvent e) {
-                lineWidth+=0.5f;
+                lineWidth += 0.5f;
                 drawBoard.setPenStyle(lineWidth);
             }
         });
+
         //创建样式按钮框
         JPanel styleButtons = new JPanel();
-        styleButtons.add(yellowButton); styleButtons.add(lineWidthButton);
+        styleButtons.add(yellowButton);
+        styleButtons.add(lineWidthButton);
 
         //定义文字按钮
         JButton textButton = new JButton("输入文字");
@@ -88,10 +91,35 @@ public class Home extends JFrame {
             }
         });
 
+        //定义撤销按钮
+        JButton revokeButton = new JButton("撤销");
+        revokeButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                drawBoard.revoke();
+            }
+        });
+
+        //定义重做按钮
+        JButton redoButton = new JButton("重做");
+        redoButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                drawBoard.redo();
+            }
+        });
+
+        //创建操作按钮框
+        JPanel operateButtons = new JPanel();
+        operateButtons.setLayout(new GridLayout(1,3));
+        operateButtons.add(revokeButton);
+        operateButtons.add(redoButton);
+        operateButtons.add(choseButton);
+
         //画出界面的大小
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation((int)screenSize.getWidth() / 4, (int)screenSize.getHeight() / 4);
-        setSize((int)screenSize.getWidth() / 2, (int)screenSize.getHeight() / 2);
+        setLocation((int) screenSize.getWidth() / 4, (int) screenSize.getHeight() / 4);
+        setSize((int) screenSize.getWidth() / 2, (int) screenSize.getHeight() / 2);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("测试画板");
         setLayout(new BorderLayout());  //定义界面布局样式
@@ -100,12 +128,12 @@ public class Home extends JFrame {
         add(BorderLayout.WEST, shapesButtons);
         add(BorderLayout.NORTH, styleButtons);
         add(BorderLayout.EAST, textButton);
-        add(BorderLayout.SOUTH, choseButton);
-        add(BorderLayout.CENTER,drawBoard);
+        add(BorderLayout.SOUTH, operateButtons);
+        add(BorderLayout.CENTER, drawBoard);
         //bbb
     }
 
-    public void Run(){
+    public void Run() {
         setVisible(true);
         drawBoard.drawBoardPenInitial();
     }
