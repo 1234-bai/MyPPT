@@ -2,15 +2,20 @@ package com.Paint;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
-import com.MyShapes.ChildrenShapes.MyContentText;
+import com.MyShapes.ChildrenShapes.MyCircle;
+import com.MyShapes.ChildrenShapes.MyRectangle;
+import com.MyShapes.ChildrenShapes.MyText;
 import com.MyShapes.ChildrenShapes.MyCurve;
+import javafx.scene.shape.Circle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class DrawJPanel extends JPanel {
+public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
     private Graphics2D drawBoardPen;  //画板的画笔通过监听器中的画笔展现。只有在父类容器可视化之后才能获得画笔！！
 
@@ -73,30 +78,39 @@ public class DrawJPanel extends JPanel {
     }
 
     /**
-     * 重画，画笔更新，副本更新
+     * 重画，画笔更新，副本更新。
+     * 选取时调用。
      */
     public void redraw(){
         //清空所画的一切
-        super.paint(drawBoardPen);  //试水，看看是不是这个g
+        super.paint(drawBoardPen);  //不明白这个参数的含义
         drawBoardPen_copy = null; drawBoard_copy = null;    //清空副本，但是监听器不清空
         drawBoardPenInitial();  //初始化画笔，重新开始画
+
         for(MyShape myShape : contentsGroup){    //因为重画后需要刷新，所以只在副本上画就可以了
             setPenStyle(myShape.getColor()); setPenStyle(myShape.getLineWidth());   //将储存的样式赋给副本
-            if(myShape instanceof MyCurve){
+            if(myShape instanceof MyCurve){     //图形是曲线
                 ((MyCurve) myShape).drawInBoard(drawBoardPen_copy);
             } else{
-                Object con = myShape.getDrawContent();
-                if(con instanceof Shape){
+                Object con = myShape.getDrawContent();  //获得MyShape中封装的真实图形，根据真实图形采取不同的绘画函数
+                if(con instanceof Shape){   //是图形类
                     drawBoardPen_copy.draw((Shape) con);
-                } else if(con instanceof Image){
+                    if(con instanceof Rectangle2D && ((MyRectangle) myShape).isFilled() ){   //是矩形，并且为填充图形
+                        drawBoardPen_copy.fill(((Rectangle2D) con));
+                    } else if(con instanceof Ellipse2D && (((MyCircle) myShape).isFilled()) ){   //是（椭）圆形，并且为填充图形
+                        drawBoardPen_copy.fill(((Ellipse2D) con));
+                    } else{ //区域图形直接画即可
+                        drawBoardPen_copy.draw(((Shape) con));
+                    }
+                } else if(con instanceof Image){    //是照片
                     drawBoardPen_copy.drawImage((Image) con, (int)myShape.getCoordinateX(), (int)myShape.getCoordinateY(), null);
-                } else if(con instanceof String){
-                    setTextFont(((MyContentText)myShape).getFont());
+                } else if(con instanceof String){   //是String
+                    setTextFont(((MyText)myShape).getFont());   //获得画时的字体
                     drawBoardPen_copy.drawString(((String) con), (int)myShape.getCoordinateX(), (int)myShape.getCoordinateY());
                 }
             }
         }
-        refresh();
+        refresh();  //载入副本
     }
 
     /**
