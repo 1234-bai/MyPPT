@@ -21,6 +21,7 @@ public class DrawJPanel extends JPanel {
 
     private final ArrayList<MyShape> contentsGroup = new ArrayList<>();    //内容数组，存放画过的图形
 
+    private final ArrayList<MyShape> redoContentsGroup = new ArrayList<>();   //重做内容数组，存放撤销操作删除的图形
 
 
     /**
@@ -207,5 +208,28 @@ public class DrawJPanel extends JPanel {
         drawBoardPen.setFont(font);
         drawBoardPen_copy.setFont(font);
     }
+
+    /**
+     * 撤销
+     */
+    public void revoke(){
+        redoContentsGroup.add(contentsGroup.get(contentsGroup.size()-1));   //撤销图形移入重做图形栈
+        contentsGroup.remove(contentsGroup.size()-1);   //移除栈顶图形
+        redraw();
+    }
+
+    /**
+     * 重做
+     */
+    public void redo(){
+
+        //重做栈非空时才能重做
+        if(!redoContentsGroup.isEmpty()){
+            contentsGroup.add(redoContentsGroup.get(redoContentsGroup.size()-1));
+            redoContentsGroup.remove(redoContentsGroup.size()-1);
+            redraw();
+        }
+    }
+
 
 }
