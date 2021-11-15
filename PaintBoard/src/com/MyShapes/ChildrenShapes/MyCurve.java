@@ -8,10 +8,11 @@ import java.util.ArrayList;
 
 public class MyCurve extends MyShape {
 
-    private ArrayList<Line2D> lineGroup = new ArrayList<>();
+    private final ArrayList<Line2D> lineGroup = new ArrayList<>();
 
     public MyCurve(double coordinateX, double coordinateY, Color color, float lineWidth) {
         super(coordinateX, coordinateY, color, lineWidth);
+        ZERO_DIRECT = 1.0;
     }
 
     public void add(Line2D line){
@@ -25,6 +26,9 @@ public class MyCurve extends MyShape {
 
     @Override
     public boolean contains(double x, double y) {
+        for(Line2D line : lineGroup){
+            if(pointInLine(line, x, y)){return true;}
+        }
         return false;
     }
 

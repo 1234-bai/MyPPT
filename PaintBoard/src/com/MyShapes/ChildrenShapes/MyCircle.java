@@ -3,28 +3,27 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.io.Serializable;
 
-public class MyRectangle extends MyShape{
-
-    private final Rectangle2D rectangle;
+public class MyCircle extends MyShape {
+    private final Ellipse2D ellipse;
     private final boolean isFilled;     //封闭图形独有属性，是否填充
 
-    public MyRectangle(Rectangle2D rectangle, double coordinateX, double coordinateY, Color color, float lineWidth, boolean isFilled) {
+    public MyCircle(Ellipse2D ellipse, double coordinateX, double coordinateY, Color color, float lineWidth, boolean isFilled) {
         super(coordinateX, coordinateY, color, lineWidth);
-        this.rectangle = rectangle;
+        this.ellipse = ellipse;
         this.isFilled = isFilled;
     }
 
     @Override
     public Object getDrawContent() {
-        return rectangle;
+        return ellipse;
     }
 
     @Override
     public boolean contains(double x, double y) {
-        return rectangle.contains(x, y);
+        return ellipse.contains(x, y);
     }
 
     public boolean isFilled() {
