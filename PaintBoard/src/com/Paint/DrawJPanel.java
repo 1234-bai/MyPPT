@@ -211,6 +211,7 @@ public class DrawJPanel extends JPanel {
 
     /**
      * 撤销
+     * 存在问题：目前撤销与重做功能仅对画图功能有效，后续解决图像删除、平移等操作的撤销需要重写
      */
     public void revoke(){
         redoContentsGroup.add(contentsGroup.get(contentsGroup.size()-1));   //撤销图形移入重做图形栈
@@ -231,5 +232,11 @@ public class DrawJPanel extends JPanel {
         }
     }
 
+    /**
+     * 清空重做栈
+     */
+    public void clearRedoContentsGroup(){
+        redoContentsGroup.clear();
+    }
 
 }
