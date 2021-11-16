@@ -34,9 +34,9 @@ public class MyRectangle extends MyShape{
     @Override
     public void drawInBoard(Graphics2D g) {
         if(isFilled){
-            g.draw(rectangle);
-        } else{
             g.fill(rectangle);
+        } else{
+            g.draw(rectangle);
         }
     }
 }

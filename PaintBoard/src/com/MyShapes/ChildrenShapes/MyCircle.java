@@ -28,9 +28,9 @@ public class MyCircle extends MyShape {
     @Override
     public void drawInBoard(Graphics2D g) {
         if(isFilled){
-            g.draw(ellipse);
-        } else{
             g.fill(ellipse);
+        } else{
+            g.draw(ellipse);
         }
     }
 
