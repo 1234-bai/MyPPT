@@ -3,6 +3,7 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 
 public class MyLine extends MyShape {
@@ -30,11 +31,13 @@ public class MyLine extends MyShape {
      */
     @Override
     public boolean contains(double x, double y){
-        return pointInLine(line, x, y);
+        return pointInLine(line, x-translateX, y-translateY);
     }
 
     @Override
     public void drawInBoard(Graphics2D g) {
+        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
         g.draw(line);
+        g.setTransform(new AffineTransform());
     }
 }

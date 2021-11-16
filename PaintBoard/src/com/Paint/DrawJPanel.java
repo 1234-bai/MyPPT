@@ -1,12 +1,9 @@
 package com.Paint;
 
 import com.Listeners.BaseListener.DrawListener;
+import com.Listeners.ChoseListener;
 import com.MyShapes.BaseShape.MyShape;
-import com.MyShapes.ChildrenShapes.MyCircle;
-import com.MyShapes.ChildrenShapes.MyRectangle;
 import com.MyShapes.ChildrenShapes.MyText;
-import com.MyShapes.ChildrenShapes.MyCurve;
-import javafx.scene.shape.Circle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -89,8 +86,8 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
         for(MyShape myShape : contentsGroup){    //因为重画后需要刷新，所以只在副本上画就可以了
             setPenStyle(myShape.getColor()); setPenStyle(myShape.getLineWidth());   //将储存的样式赋给副本
-            if(myShape.getDrawContent() instanceof String){   //是String
-                    setTextFont(((MyText)myShape).getFont());   //获得画时的字体
+            if(myShape instanceof MyText){   //是String
+                setTextFont(((MyText)myShape).getFont());   //获得画文字时的字体
             }
             myShape.drawInBoard(drawBoardPen_copy);
         }

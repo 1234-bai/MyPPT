@@ -3,8 +3,8 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
-import java.io.Serializable;
 
 public class MyRectangle extends MyShape{
 
@@ -24,19 +24,17 @@ public class MyRectangle extends MyShape{
 
     @Override
     public boolean contains(double x, double y) {
-        return rectangle.contains(x, y);
-    }
-
-    public boolean isFilled() {
-        return isFilled;
+        return rectangle.contains(x-translateX, y-translateY);
     }
 
     @Override
     public void drawInBoard(Graphics2D g) {
+        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
         if(isFilled){
             g.fill(rectangle);
         } else{
             g.draw(rectangle);
         }
+        g.setTransform(new AffineTransform());
     }
 }

@@ -3,6 +3,7 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class MyText extends MyShape {
 
@@ -26,6 +27,7 @@ public class MyText extends MyShape {
 
     @Override
     public boolean contains(double x, double y) {
+        x-=translateX; y-=translateY;
         return (x - coordinateX <= width) && (coordinateY - y <= height);
     }
 
@@ -35,6 +37,8 @@ public class MyText extends MyShape {
 
     @Override
     public void drawInBoard(Graphics2D g) {
+        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
         g.drawString(text, (int)coordinateX, (int)coordinateY);
+        g.setTransform(new AffineTransform());
     }
 }
