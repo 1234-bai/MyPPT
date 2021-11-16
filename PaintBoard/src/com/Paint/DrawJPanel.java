@@ -7,8 +7,6 @@ import com.MyShapes.ChildrenShapes.MyText;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
