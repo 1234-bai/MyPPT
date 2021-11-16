@@ -30,4 +30,13 @@ public class MyRectangle extends MyShape{
     public boolean isFilled() {
         return isFilled;
     }
+
+    @Override
+    public void drawInBoard(Graphics2D g) {
+        if(isFilled){
+            g.draw(rectangle);
+        } else{
+            g.fill(rectangle);
+        }
+    }
 }

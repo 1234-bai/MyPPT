@@ -21,7 +21,6 @@ public class MyLine extends MyShape {
     }
 
 
-
     /**
      * 由于line不为封闭图形，所以Line2D的contains()始终返回假，随意需要自己写contains。
      * 通过斜率的方法判断
@@ -34,4 +33,8 @@ public class MyLine extends MyShape {
         return pointInLine(line, x, y);
     }
 
+    @Override
+    public void drawInBoard(Graphics2D g) {
+        g.draw(line);
+    }
 }

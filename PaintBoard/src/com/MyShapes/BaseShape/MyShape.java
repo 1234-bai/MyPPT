@@ -28,7 +28,11 @@ public abstract class MyShape implements Serializable {
 
     public abstract boolean contains(double x, double y);
 
-//    public abstract void drawInBoard(Graphics2D g);
+    /**
+     * 定义每个图形自己的绘画函数，这样重画的时候就不用判断具体类型。直接调用自己的drawInBoard就可以了。
+     * @param g
+     */
+    public abstract void drawInBoard(Graphics2D g);
 
     public double getCoordinateX() {
         return coordinateX;

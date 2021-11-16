@@ -4,7 +4,6 @@ import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 
 public class MyCircle extends MyShape {
     private final Ellipse2D ellipse;
@@ -24,6 +23,15 @@ public class MyCircle extends MyShape {
     @Override
     public boolean contains(double x, double y) {
         return ellipse.contains(x, y);
+    }
+
+    @Override
+    public void drawInBoard(Graphics2D g) {
+        if(isFilled){
+            g.draw(ellipse);
+        } else{
+            g.fill(ellipse);
+        }
     }
 
     public boolean isFilled() {

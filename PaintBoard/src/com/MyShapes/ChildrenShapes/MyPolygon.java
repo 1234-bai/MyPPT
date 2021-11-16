@@ -32,4 +32,9 @@ public class MyPolygon extends MyShape {
     public boolean contains(double x, double y) {
         return polygon.contains(x, y);
     }
+
+    @Override
+    public void drawInBoard(Graphics2D g) {
+        g.draw(polygon);
+    }
 }

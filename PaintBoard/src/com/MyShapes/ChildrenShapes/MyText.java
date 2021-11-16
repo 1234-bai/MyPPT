@@ -33,5 +33,8 @@ public class MyText extends MyShape {
         return font;
     }
 
-
+    @Override
+    public void drawInBoard(Graphics2D g) {
+        g.drawString(text, (int)coordinateX, (int)coordinateY);
+    }
 }

@@ -24,4 +24,9 @@ public class MyImage extends MyShape {
         int height = image.getHeight(null);
         return (x - coordinateX <= width) && (y - coordinateY <= height);
     }
+
+    @Override
+    public void drawInBoard(Graphics2D g) {
+        g.drawImage(image, (int)coordinateX, (int)coordinateY, null);
+    }
 }
