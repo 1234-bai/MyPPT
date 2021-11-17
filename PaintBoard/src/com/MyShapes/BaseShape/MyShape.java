@@ -62,6 +62,13 @@ public abstract class MyShape implements Serializable {
         return lineWidth;
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public void setLineWidth(float lineWidth) {
+        this.lineWidth = lineWidth;
+    }
 
     public void translate(double tx, double ty){
         translateX += tx;

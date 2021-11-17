@@ -21,6 +21,9 @@ public class TextListener extends DrawListener{
     Font textFont = new Font(null, Font.PLAIN, 20);  //字体样式。默认不加粗不倾斜字号4
     Color textColor = Color.BLACK;    //字体颜色，默认黑色
 
+    /**
+     * 改变文本颜色（正在写的和以后要写的）
+     */
     private void textRefresh(){
         if(textField == null) return;
         textField.setFont(textFont);
@@ -51,9 +54,10 @@ public class TextListener extends DrawListener{
                 str
         ));
 
+        drawBoard.setPenStyle(oldColor);    //恢复原来的颜色
+
         drawBoard.remove(textField);   //移除组件
         textField = null;   //文本框清空
-        drawBoard.setPenStyle(textColor);    //恢复原来的颜色
         drawBoard.refresh();   //刷新，将添加的组件在画板上移除
     }
 
@@ -80,7 +84,6 @@ public class TextListener extends DrawListener{
                 int width = textField.getWidth();
                 String text = textField.getText();
                 getDrawBoard().remove(textField);   //移除组件
-                getDrawBoard().refresh();
                 putTextField(clickX, clickY, width+40, 30, text);
             }
         }

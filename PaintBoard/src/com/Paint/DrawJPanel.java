@@ -1,7 +1,6 @@
 package com.Paint;
 
 import com.Listeners.BaseListener.DrawListener;
-import com.Listeners.ChoseListener;
 import com.MyShapes.BaseShape.MyShape;
 import com.MyShapes.ChildrenShapes.MyText;
 
@@ -72,24 +71,30 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         drawBoardPenInitial();
     }
 
+
+    private void setPenLineWidth(Graphics2D pen, float lineWidth){
+        BasicStroke stroke = new BasicStroke(lineWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+        pen.setStroke(stroke);
+    }
     /**
      * 重画，画笔更新，副本更新。
      * 选取时调用。
      */
     public void redraw(){
-        //清空所画的一切
-        super.paint(drawBoardPen);  //不明白这个参数的含义
+//        super.paint(drawBoardPen);  //只需要清空副本就可以了，不需要清空原本。
         drawBoardPen_copy = null; drawBoard_copy = null;    //清空副本，但是监听器不清空
-        drawBoardPenInitial();  //初始化画笔，重新开始画
+        createCopy();   //重新获得全新的副本
+        penStyleRecover(drawBoardPen, drawBoardPen_copy);
 
         for(MyShape myShape : contentsGroup){    //因为重画后需要刷新，所以只在副本上画就可以了
-            setPenStyle(myShape.getColor()); setPenStyle(myShape.getLineWidth());   //将储存的样式赋给副本
+            drawBoardPen_copy.setColor(myShape.getColor());
+            setPenLineWidth(drawBoardPen_copy, myShape.getLineWidth());   //将储存的样式赋给副本
             if(myShape instanceof MyText){   //是String
-                setTextFont(((MyText)myShape).getFont());   //获得画文字时的字体
+                drawBoardPen_copy.setFont(((MyText)myShape).getFont());   //获得画文字时的字体
             }
             myShape.drawInBoard(drawBoardPen_copy);
         }
-        refresh();  //载入副本
+//        refresh();  //载入副本。不需要载入副本，因为做着一切的时候，原本没有发生任何变化
     }
 
     /**
@@ -105,15 +110,18 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         setPenStyle(1.5f);
     }
 
+
     /**
      * 画笔样式还原。
      * 目前画笔样式只有：颜色，线宽。
+     * @param oldPen 要继承的原来的画笔
+     * @param newPen 新生画笔
      */
-    private void penStyleRecover(){
-        drawBoardPen.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        drawBoardPen.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);    //还原圆润度
-        drawBoardPen.setColor(drawBoardPen_copy.getColor());    //还原颜色
-        drawBoardPen.setStroke(drawBoardPen_copy.getStroke());  //还原线宽
+    private void penStyleRecover(Graphics2D oldPen, Graphics2D newPen){
+        newPen.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        newPen.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);    //还原圆润度
+        newPen.setColor(oldPen.getColor());    //还原颜色
+        newPen.setStroke(oldPen.getStroke());  //还原线宽
     }
 
     /**
@@ -135,7 +143,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
             createCopy();   //创造副本
             penStyleInitial();  //样式初始化
        } else{  //说明副本不为空，说明是画板重绘了。则将画笔样式全部复制给现在的画笔
-            penStyleRecover();  //样式还原。
+            penStyleRecover(drawBoardPen_copy, drawBoardPen);  //样式还原。
         }
     }
 
@@ -169,7 +177,9 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
 
 
-
+    public Color getPenColor(){
+        return drawBoardPen.getColor();
+    }
     /**
      * 设置画笔样式，多个函数重载，通过参数类型调用的不同的函数
      * @param c 颜色变量：能够改变颜色和透明度，能够实现类荧光笔的效果
@@ -181,8 +191,10 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     }
 
 
-
-
+    @Override
+    public float getPenLineWidth(){
+        return ((BasicStroke)drawBoardPen.getStroke()).getLineWidth();
+    }
     /**
      * 调整画笔样式线宽
      * @param lineWidth 调整后的线宽
