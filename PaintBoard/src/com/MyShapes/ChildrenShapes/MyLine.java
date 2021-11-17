@@ -3,6 +3,7 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 
 public class MyLine extends MyShape {
@@ -21,7 +22,6 @@ public class MyLine extends MyShape {
     }
 
 
-
     /**
      * 由于line不为封闭图形，所以Line2D的contains()始终返回假，随意需要自己写contains。
      * 通过斜率的方法判断
@@ -31,9 +31,15 @@ public class MyLine extends MyShape {
      */
     @Override
     public boolean contains(double x, double y){
-        return pointInLine(line, x, y);
+        return pointInLine(line, x-translateX, y-translateY);
     }
 
+    @Override
+    public void drawInBoard(Graphics2D g) {
+        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+        g.draw(line);
+        g.setTransform(new AffineTransform());
+    }
     /**
      * String开头的"MyLine"用于标识图形类型
      * Line2D的恢复采用new Line2D.Double(double x1, double y1, double x2, double y2)方法

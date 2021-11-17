@@ -54,7 +54,7 @@ public class Home extends JFrame {
         yellowButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                drawBoard.setPenStyle(new Color(127, 157, 31, 71));
+                drawBoard.setPenStyle(Color.yellow);
             }
         });
         JButton lineWidthButton = new JButton("增大线宽");
