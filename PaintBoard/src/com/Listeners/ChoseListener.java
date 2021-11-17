@@ -5,12 +5,13 @@ import com.MyShapes.BaseShape.MyShape;
 import com.MyShapes.ChildrenShapes.MyText;
 import com.Paint.DrawJPanel;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class ChoseListener extends DrawListener implements KeyListener {
+public class ChoseListener extends DrawListener implements KeyListener, ChoseListenerIml{
 
     private MyShape chosenContent = null;   //鼠标点击选中的对象
     private int startX = 0, startY = 0;  //最开始点击的坐标
@@ -25,6 +26,7 @@ public class ChoseListener extends DrawListener implements KeyListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        System.out.println("按下了鼠标");
         clearChoseContent();
         int x = e.getX(), y = e.getY();
         System.out.println(x + "," + y);
@@ -34,21 +36,11 @@ public class ChoseListener extends DrawListener implements KeyListener {
             MyShape myShape = contentsGroup.get(i);  //获得的是MyShape类
             if(myShape.contains(x, y)){
                 startX = x; startY = y; preX = startX; preY = startY;
-                chosenContent = myShape;
+                chosenContent = myShape;    //提取出选中的图形
                 contentsGroup.remove(i);
-                getDrawBoard().redraw();  //画板重画
+                getDrawBoard().redraw();  //画板重画。重画后除了选中的图形，其余图形全部出现在副本上，但是原本还没有刷新，仍然能看到选中的图形
                 break;
             }
-        }
-        if(chosenContent != null){     //在原本上重画此图形，但还没有加入图形栈
-            //设置画笔样式
-            DrawJPanel drawBoard = getDrawBoard();
-            drawBoard.setPenStyle(chosenContent.getColor()); // 设置画笔颜色
-            drawBoard.setPenStyle(chosenContent.getLineWidth());    //设置画笔线宽
-            if(chosenContent instanceof MyText){    //如果是文本则设置字体
-                drawBoard.setTextFont(((MyText) chosenContent).getFont());
-            }
-            chosenContent.drawInBoard(getListenerPen());    //重画
         }
     }
 
@@ -56,9 +48,7 @@ public class ChoseListener extends DrawListener implements KeyListener {
     public void mouseDragged(MouseEvent e) {
         if(chosenContent != null){
             int x = e.getX(), y = e.getY();
-            getDrawBoard().refresh();
-            chosenContent.translate(x - preX,y - preY);
-            chosenContent.drawInBoard(getListenerPen());
+            translateChoseContent(x - preX, y - preY);
             preX = x; preY = y;
         }
     }
@@ -66,9 +56,7 @@ public class ChoseListener extends DrawListener implements KeyListener {
     @Override
     public void mouseReleased(MouseEvent e) {
        if(chosenContent != null){
-           mouseDragged(e);
-           chosenContent.drawInBoard(getListenerPen_copy());
-           getContentsGroup().add(chosenContent);
+             saveChoseContent();
        }
     }
 
@@ -76,6 +64,8 @@ public class ChoseListener extends DrawListener implements KeyListener {
     public void keyTyped(KeyEvent e) {
 
     }
+
+
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -99,5 +89,45 @@ public class ChoseListener extends DrawListener implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    @Override
+    public void translateChoseContent(int tx, int ty) {
+        chosenContent.translate(tx,ty);
+        getDrawBoard().refresh();
+        chosenContent.drawInBoard(getListenerPen());
+    }
+
+    @Override
+    public void deleteChoseContent() {  //因为没有保存在副本中，所以刷新副本让图形不再呈现在眼前就可以了。
+        getDrawBoard().refresh();
+    }
+
+    @Override
+    public void setChoseContentColor(Color newColor) {
+        DrawJPanel drawBoard = getDrawBoard();
+        Color oldColor = drawBoard.getPenColor();    //原来的颜色样式
+        drawBoard.setPenStyle(newColor);
+        chosenContent.drawInBoard(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。
+        chosenContent.setColor(newColor);   //改变图形内容
+        saveChoseContent();     //储存画的内容
+        drawBoard.setPenStyle(oldColor);    //修改会原来的画笔样式
+    }
+
+    @Override
+    public void setChoseContentLineWidth(float newLineWidth) {
+        DrawJPanel drawBoard = getDrawBoard();
+        float oldLW = drawBoard.getPenLineWidth();    //原来的画笔线宽
+        drawBoard.setPenStyle(newLineWidth);
+        chosenContent.drawInBoard(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。不用载入副本的
+        chosenContent.setLineWidth(newLineWidth);   //改变图形内容
+        saveChoseContent();     //储存画的内容
+        drawBoard.setPenStyle(oldLW);    //修改会原来的画笔样式
+    }
+
+    @Override
+    public void saveChoseContent() {
+        chosenContent.drawInBoard(getListenerPen_copy());
+        getContentsGroup().add(chosenContent);
     }
 }
