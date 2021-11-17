@@ -30,4 +30,18 @@ public class MyRectangle extends MyShape{
     public boolean isFilled() {
         return isFilled;
     }
+
+    /**
+     * String开头的"MyRectangle"用于标识图形类型
+     * Rectangle2D的恢复采用new Rectangle2D.Double(double x, double y, double w, double h)方法
+     */
+    @Override
+    public String toString() {
+        return "MyRectangle" + " " +
+                rectangle.getX() + " " +
+                rectangle.getY() + " " +
+                rectangle.getWidth() + " " +
+                rectangle.getHeight() + " " +
+                super.toString();
+    }
 }

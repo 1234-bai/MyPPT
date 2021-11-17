@@ -2,17 +2,18 @@ package com.Paint;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
-import com.MyShapes.ChildrenShapes.MyCircle;
-import com.MyShapes.ChildrenShapes.MyRectangle;
-import com.MyShapes.ChildrenShapes.MyText;
-import com.MyShapes.ChildrenShapes.MyCurve;
-import javafx.scene.shape.Circle;
+import com.MyShapes.ChildrenShapes.*;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class DrawJPanel extends JPanel implements DrawJPanelIml{
@@ -222,6 +223,65 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         drawBoardPen.setFont(font);
         drawBoardPen_copy.setFont(font);
     }
+
+    /**
+     * 画板转换成String，本质只保存contentsGroup
+     * @return 返回contentsGroup的String值
+     */
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (MyShape myShape : contentsGroup) {
+            if (myShape instanceof MyCircle ||
+                    myShape instanceof MyLine ||
+                    myShape instanceof MyPolygon ||
+                    myShape instanceof MyRectangle) {
+                stringBuilder.append(myShape);
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    /**
+     * 保存画板内容
+     * 由于当前只有一个画板，故先写该类中，等后续相关功能完善后再做修改
+     */
+    public void saveDrawJPanel(){
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("另存为...");
+        fileChooser.setApproveButtonText("确定");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("*.txt","txt"));
+        fileChooser.setMultiSelectionEnabled(false);
+
+        int result = fileChooser.showSaveDialog(null);
+        if(result==JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            if(!file.getPath().endsWith(".txt")){
+                file = new File(file.getPath()+".txt");
+            }
+            System.out.println("file path = "+file.getPath());
+            try{
+                if(!file.exists()){
+                    file.createNewFile();   //文件不存在则新建文件
+                }
+                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+                bufferedWriter.write(this.toString());
+                bufferedWriter.flush(); //把缓冲区内容压入文件
+                bufferedWriter.close(); //关闭文件
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 载入画板内容
+     * 由于当前只有一个画板，故先写该类中，等后续相关功能完善后再做修改
+     */
+    public void loadDrawJPanel(){
+
+    }
+
 
     /**
      * 撤销

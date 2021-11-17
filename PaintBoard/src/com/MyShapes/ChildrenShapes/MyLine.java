@@ -34,4 +34,19 @@ public class MyLine extends MyShape {
         return pointInLine(line, x, y);
     }
 
+    /**
+     * String开头的"MyLine"用于标识图形类型
+     * Line2D的恢复采用new Line2D.Double(double x1, double y1, double x2, double y2)方法
+     */
+    @Override
+    public String toString() {
+        return "MyLine" + " " +
+                line.getX1() + " " +
+                line.getY1() + " " +
+                line.getX2() + " " +
+                line.getY2() + " " +
+                super.toString();
+    }
+
+
 }
