@@ -7,6 +7,8 @@ import java.awt.*;
  */
 public interface ChoseListenerIml {
 
+    boolean choseContent(double x, double y);
+
     /**
      *
      * @param tx 横坐标平移量
