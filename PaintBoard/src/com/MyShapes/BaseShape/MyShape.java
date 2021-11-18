@@ -118,4 +118,18 @@ public abstract class MyShape implements Serializable {
             }
         }
     }
+
+    /**
+     * 将所有属性转成String，用于保存画板
+     * 末尾加入换行是为了方便按行读取文件，保证每行一个图形
+     *
+     * @return 包含所有属性的String
+     */
+    @Override
+    public String toString() {
+        return coordinateX + " | " +
+                coordinateY + " | " +
+                color.getRGB() + " | " +
+                lineWidth + "\r\n";
+    }
 }

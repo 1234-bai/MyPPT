@@ -4,6 +4,7 @@ import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class MyPolygon extends MyShape {
@@ -32,5 +33,18 @@ public class MyPolygon extends MyShape {
     @Override
     protected void drawInBoard(Graphics2D g) {
         g.draw(polygon);
+    }
+
+    /**
+     * String开头的"MyPolygon"用于标识图形类型
+     * Polygon的恢复采用new Polygon(int[] xpoints, int[] ypoints, int npoints)方法
+     */
+    @Override
+    public String toString() {
+        return "MyPolygon" + " | " +
+                Arrays.toString(polygon.xpoints) + " | " +
+                Arrays.toString(polygon.ypoints) + " | " +
+                polygon.npoints + " | " +
+                super.toString();
     }
 }
