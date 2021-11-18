@@ -46,12 +46,14 @@ public interface DrawJPanelIml {
     void setBoardListener(DrawListener newListener);
 
 
+     Color getPenColor();
     /**
      * 设置画笔样式，多个函数重载，通过参数类型调用的不同的函数
      * @param c 颜色变量：能够改变颜色和透明度，能够实现类荧光笔的效果
      */
     void setPenStyle(Color c);
 
+    float getPenLineWidth();
     /**
      * 调整画笔样式线宽
      * @param lineWidth 调整后的线宽
