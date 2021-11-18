@@ -17,23 +17,31 @@ public class MyCircle extends MyShape {
     }
 
     @Override
-    public Object getDrawContent() {
-        return ellipse;
-    }
-
-    @Override
     public boolean contains(double x, double y) {
         return ellipse.contains(x-translateX, y-translateY);
     }
 
     @Override
-    public void drawInBoard(Graphics2D g) {
-        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+    protected void drawInBoard(Graphics2D g) {
         if(isFilled){
             g.fill(ellipse);
         } else{
             g.draw(ellipse);
         }
-        g.setTransform(new AffineTransform());
+    }
+
+    /**
+     * String开头的"MyCircle"用于标识图形类型
+     * Ellipse2D的恢复采用new Ellipse2D.Double(double x, double y, double w, double h)方法
+     */
+    @Override
+    public String toString() {
+        return "MyCircle" + " | " +
+                ellipse.getX() + " | " +
+                ellipse.getY() + " | " +
+                ellipse.getWidth() + " | " +
+                ellipse.getHeight() + " | " +
+                isFilled + " | " +
+                super.toString();
     }
 }

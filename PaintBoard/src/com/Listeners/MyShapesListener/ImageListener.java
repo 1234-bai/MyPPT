@@ -38,8 +38,6 @@ public class ImageListener extends DrawListener {
             System.out.println("path: " + path);
 
             Image image = null;
-            //image = Toolkit.getDefaultToolkit().getImage(path);
-            //image = new ImageIcon(ClassLoader.getSystemResource(path)).getImage();
             try {
                 image = ImageIO.read(new File(path));
             } catch (IOException ex) {

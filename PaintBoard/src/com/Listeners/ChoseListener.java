@@ -11,6 +11,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+/**
+ * 能够实现的功能：选择图形，选中后改变样式。但是改变样式的菜单没有写。只有在
+ */
 public class ChoseListener extends DrawListener implements ChoseListenerIml{
 
     private MyShape chosenContent = null;   //鼠标点击选中的对象
@@ -93,24 +96,23 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
     public void translateChoseContent(int tx, int ty) {
         chosenContent.translate(tx,ty);
         getDrawBoard().refresh();
-        chosenContent.drawInBoard(getListenerPen());
+        chosenContent.draw(getListenerPen());
     }
 
     @Override
-    public void deleteChoseContent() {  //因为没有保存在副本中，所以刷新副本让图形不再呈现在眼前就可以了。
+    public void deleteChosenContent() {  //因为没有保存在副本中，所以刷新副本让图形不再呈现在眼前就可以了。
         getDrawBoard().refresh();
     }
 
     /**
      * 选择状态：值选到的图形将改变成蓝色
-     * 测试用！
+     * 测试用！！！
      */
     private void choseStatus(){
-        DrawJPanel drawBoard = getDrawBoard();
-        Color oldColor = drawBoard.getPenColor();    //原来的颜色样式
-        drawBoard.setPenStyle(Color.BLUE);
-        chosenContent.drawInBoard(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。
-        drawBoard.setPenStyle(oldColor);    //修改会原来的画笔样式
+        Color oldColor = chosenContent.getColor();    //原来的颜色样式
+        chosenContent.setColor(Color.BLUE);
+        chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。
+        chosenContent.setColor(oldColor);
     }
 
     /**
@@ -118,30 +120,22 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
      * @param newColor
      */
     @Override
-    public void setChoseContentColor(Color newColor) {
-        DrawJPanel drawBoard = getDrawBoard();
-        Color oldColor = drawBoard.getPenColor();    //原来的颜色样式
-        drawBoard.setPenStyle(newColor);
-        chosenContent.drawInBoard(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。
+    public void setChosenContentColor(Color newColor) {
         chosenContent.setColor(newColor);   //改变图形内容
-        saveChoseContent();
-        drawBoard.setPenStyle(oldColor);    //修改会原来的画笔样式
+        chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。
     }
 
     @Override
-    public void setChoseContentLineWidth(float newLineWidth) {
-        DrawJPanel drawBoard = getDrawBoard();
-        float oldLW = drawBoard.getPenLineWidth();    //原来的画笔线宽
-        drawBoard.setPenStyle(newLineWidth);
-        chosenContent.drawInBoard(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。不用载入副本的
+    public void setChosenContentLineWidth(float newLineWidth) {
         chosenContent.setLineWidth(newLineWidth);   //改变图形内容
-        saveChoseContent();
-        drawBoard.setPenStyle(oldLW);    //修改会原来的画笔样式
+        chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。不用载入副本的
     }
+
+
 
     @Override
     public void saveChoseContent() {
-        chosenContent.drawInBoard(getListenerPen_copy());
+        chosenContent.draw(getListenerPen_copy());
         getContentsGroup().add(chosenContent);
     }
 }
