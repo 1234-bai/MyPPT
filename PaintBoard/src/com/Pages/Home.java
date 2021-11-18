@@ -120,14 +120,21 @@ public class Home extends JFrame {
 
         //定义载入按钮
         JButton loadButton = new JButton("载入");
+        loadButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                drawBoard.loadDrawJPanel();
+            }
+        });
 
         //创建操作按钮框
         JPanel operateButtons = new JPanel();
-        operateButtons.setLayout(new GridLayout(1,4));
+        operateButtons.setLayout(new GridLayout(1,5));
         operateButtons.add(revokeButton);
         operateButtons.add(redoButton);
         operateButtons.add(choseButton);
         operateButtons.add(saveButton);
+        operateButtons.add(loadButton);
 
         //画出界面的大小
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

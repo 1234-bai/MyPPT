@@ -48,10 +48,10 @@ public class MyPolygon extends MyShape {
      */
     @Override
     public String toString() {
-        return "MyPolygon" + " " +
-                Arrays.toString(polygon.xpoints) + " " +
-                Arrays.toString(polygon.ypoints) + " " +
-                polygon.npoints + " " +
+        return "MyPolygon" + " | " +
+                Arrays.toString(polygon.xpoints) + " | " +
+                Arrays.toString(polygon.ypoints) + " | " +
+                polygon.npoints + " | " +
                 super.toString();
     }
 }

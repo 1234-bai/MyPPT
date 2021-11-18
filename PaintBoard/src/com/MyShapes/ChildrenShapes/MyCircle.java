@@ -43,12 +43,12 @@ public class MyCircle extends MyShape {
      */
     @Override
     public String toString() {
-        return "MyCircle" + " " +
-                ellipse.getX() + " " +
-                ellipse.getY() + " " +
-                ellipse.getWidth() + " " +
-                ellipse.getHeight() + " " +
-                isFilled + " " +
+        return "MyCircle" + " | " +
+                ellipse.getX() + " | " +
+                ellipse.getY() + " | " +
+                ellipse.getWidth() + " | " +
+                ellipse.getHeight() + " | " +
+                isFilled + " | " +
                 super.toString();
     }
 }

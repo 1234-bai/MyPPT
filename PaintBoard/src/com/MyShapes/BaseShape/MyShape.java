@@ -115,9 +115,9 @@ public abstract class MyShape implements Serializable {
      */
     @Override
     public String toString() {
-        return coordinateX + " " +
-                coordinateY + " " +
-                color.getRGB() + " " +
+        return coordinateX + " | " +
+                coordinateY + " | " +
+                color.getRGB() + " | " +
                 lineWidth + "\r\n";
     }
 }

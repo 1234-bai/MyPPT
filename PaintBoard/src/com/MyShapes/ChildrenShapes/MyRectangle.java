@@ -44,11 +44,12 @@ public class MyRectangle extends MyShape{
      */
     @Override
     public String toString() {
-        return "MyRectangle" + " " +
-                rectangle.getX() + " " +
-                rectangle.getY() + " " +
-                rectangle.getWidth() + " " +
-                rectangle.getHeight() + " " +
+        return "MyRectangle" + " | " +
+                rectangle.getX() + " | " +
+                rectangle.getY() + " | " +
+                rectangle.getWidth() + " | " +
+                rectangle.getHeight() + " | " +
+                isFilled + " | " +
                 super.toString();
     }
 }
