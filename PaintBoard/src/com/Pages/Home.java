@@ -127,7 +127,8 @@ public class Home extends JFrame {
         });
 
         //定义撤销按钮
-        JButton revokeButton = new JButton("撤销");
+        JButton revokeButton = new JButton("");
+        revokeButton.setIcon(new ImageIcon("PaintBoard/images/revoke.png"));
         revokeButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -146,7 +147,8 @@ public class Home extends JFrame {
         });
 
         //定义保存按钮
-        JButton saveButton = new JButton("保存");
+        JButton saveButton = new JButton("");
+        saveButton.setIcon(new ImageIcon("PaintBoard/images/savefile.png"));
         saveButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -155,7 +157,8 @@ public class Home extends JFrame {
         });
 
         //定义载入按钮
-        JButton loadButton = new JButton("载入");
+        JButton loadButton = new JButton("");
+        loadButton.setIcon(new ImageIcon("PaintBoard/images/openfile.png"));
         loadButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

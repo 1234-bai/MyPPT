@@ -5,34 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="。">
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/brush.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/circle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/clear.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/color-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/color.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/curve.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/ellipse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/eraser.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/fill.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/filledcircle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/filledellipse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/filledrectangle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/filledroundrectangle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/insert.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/line.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/move.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/newfile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/openfile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/pen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/polygon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/rectangle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/roundrectangle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/savefile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/stroke.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/images/txt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/revoke.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -246,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636896351461</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="。">
+      <created>1637223876587</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1637223876587</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
