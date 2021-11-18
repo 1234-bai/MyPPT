@@ -5,12 +5,11 @@ import com.Listeners.ChoseListener;
 import com.Listeners.MyShapesListener.*;
 import com.Paint.DrawJPanel;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Home extends JFrame {
+public class testHome extends JFrame {
 
     private final DrawJPanel drawBoard = new DrawJPanel();
 
@@ -25,7 +24,7 @@ public class Home extends JFrame {
         return jButton;
     }
 
-    public Home() throws HeadlessException {
+    public testHome() throws HeadlessException {
 
 //------------------------------------------------------------------------------------------------------------------
         //直线
@@ -232,7 +231,7 @@ public class Home extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Home().Run();
+        new testHome().Run();
     }
 
 }
