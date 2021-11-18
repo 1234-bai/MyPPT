@@ -237,14 +237,14 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("另存为...");
         fileChooser.setApproveButtonText("确定");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("*.txt","txt"));
+        fileChooser.setFileFilter(new FileNameExtensionFilter("*.myppt","myppt"));
         fileChooser.setMultiSelectionEnabled(false);
 
         int result = fileChooser.showSaveDialog(null);
         if(result==JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
             if(!file.getPath().endsWith(".txt")){
-                file = new File(file.getPath()+".txt");
+                file = new File(file.getPath()+".myppt");
             }
             System.out.println("file path = "+file.getPath());
             try{
@@ -271,7 +271,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("载入...");
         fileChooser.setApproveButtonText("确定");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("*.txt","txt"));
+        fileChooser.setFileFilter(new FileNameExtensionFilter("*.myppt","myppt"));
         fileChooser.setMultiSelectionEnabled(false);
 
         int result = fileChooser.showOpenDialog(null);
@@ -382,7 +382,8 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
                 e.printStackTrace();
             }
         }
-        redraw();   //将载入图像显示出来
+        redraw();
+        refresh();   //将载入图像显示出来
     }
 
 
@@ -394,6 +395,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         redoContentsGroup.add(contentsGroup.get(contentsGroup.size()-1));   //撤销图形移入重做图形栈
         contentsGroup.remove(contentsGroup.size()-1);   //移除栈顶图形
         redraw();
+        refresh();
     }
 
     /**
@@ -406,6 +408,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
             contentsGroup.add(redoContentsGroup.get(redoContentsGroup.size()-1));
             redoContentsGroup.remove(redoContentsGroup.size()-1);
             redraw();
+            refresh();
         }
     }
 
