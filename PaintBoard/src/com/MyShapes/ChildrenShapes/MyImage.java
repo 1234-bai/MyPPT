@@ -15,11 +15,6 @@ public class MyImage extends MyShape {
     }
 
     @Override
-    public Object getDrawContent() {
-        return image;
-    }
-
-    @Override
     public boolean contains(double x, double y) {
         x-=translateX; y-=translateY;
         int width = image.getWidth(null);
@@ -29,9 +24,7 @@ public class MyImage extends MyShape {
     }
 
     @Override
-    public void drawInBoard(Graphics2D g) {
-        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+    protected void drawInBoard(Graphics2D g) {
         g.drawImage(image, (int)coordinateX, (int)coordinateY, null);
-        g.setTransform(new AffineTransform());
     }
 }

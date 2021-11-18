@@ -17,23 +17,16 @@ public class MyCircle extends MyShape {
     }
 
     @Override
-    public Object getDrawContent() {
-        return ellipse;
-    }
-
-    @Override
     public boolean contains(double x, double y) {
         return ellipse.contains(x-translateX, y-translateY);
     }
 
     @Override
-    public void drawInBoard(Graphics2D g) {
-        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+    protected void drawInBoard(Graphics2D g) {
         if(isFilled){
             g.fill(ellipse);
         } else{
             g.draw(ellipse);
         }
-        g.setTransform(new AffineTransform());
     }
 }

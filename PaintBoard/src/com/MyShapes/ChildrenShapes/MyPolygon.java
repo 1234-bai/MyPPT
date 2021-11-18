@@ -25,19 +25,12 @@ public class MyPolygon extends MyShape {
 
 
     @Override
-    public Object getDrawContent() {
-        return polygon;
-    }
-
-    @Override
     public boolean contains(double x, double y) {
         return polygon.contains(x-translateX, y-translateY);
     }
 
     @Override
-    public void drawInBoard(Graphics2D g) {
-        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+    protected void drawInBoard(Graphics2D g) {
         g.draw(polygon);
-        g.setTransform(new AffineTransform());
     }
 }

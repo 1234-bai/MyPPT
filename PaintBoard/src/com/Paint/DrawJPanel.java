@@ -72,10 +72,6 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     }
 
 
-    private void setPenLineWidth(Graphics2D pen, float lineWidth){
-        BasicStroke stroke = new BasicStroke(lineWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
-        pen.setStroke(stroke);
-    }
     /**
      * 重画，画笔更新，副本更新。
      * 选取时调用。
@@ -87,12 +83,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         penStyleRecover(drawBoardPen, drawBoardPen_copy);
 
         for(MyShape myShape : contentsGroup){    //因为重画后需要刷新，所以只在副本上画就可以了
-            drawBoardPen_copy.setColor(myShape.getColor());
-            setPenLineWidth(drawBoardPen_copy, myShape.getLineWidth());   //将储存的样式赋给副本
-            if(myShape instanceof MyText){   //是String
-                drawBoardPen_copy.setFont(((MyText)myShape).getFont());   //获得画文字时的字体
-            }
-            myShape.drawInBoard(drawBoardPen_copy);
+            myShape.draw(drawBoardPen_copy);
         }
 //        refresh();  //载入副本。不需要载入副本，因为做着一切的时候，原本没有发生任何变化
     }
