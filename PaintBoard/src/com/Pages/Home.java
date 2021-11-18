@@ -27,18 +27,41 @@ public class Home extends JFrame {
     public Home() throws HeadlessException {
 
         //定义图形按钮
-        JButton lineButton = createShapeButton("直线", new LineListener());
-        JButton polyButton = createShapeButton("多边形", new PolygonListener());
-        JButton curveButton = createShapeButton("曲线", new CurveListener());
-        JButton circButton = createShapeButton("圆形", new CircleListener(false));
-        JButton fillCircButton = createShapeButton("实心圆形", new CircleListener(true));
-        JButton rectButton = createShapeButton("矩形", new RectangleListener(false));
-        JButton fillRectButton = createShapeButton("实心矩形", new RectangleListener(true));
-        JButton imageButton = createShapeButton("插入图片", new ImageListener());
+        //直线
+        JButton lineButton = createShapeButton("", new LineListener());
+        lineButton.setIcon(new ImageIcon("PaintBoard/images/line.png"));
+
+        //多边形
+        JButton polyButton = createShapeButton("", new PolygonListener());
+        polyButton.setIcon(new ImageIcon("PaintBoard/images/polygon.jpg"));
+
+        //曲线
+        JButton curveButton = createShapeButton("", new CurveListener());
+        curveButton.setIcon(new ImageIcon("PaintBoard/images/curve.png"));
+
+        //圆形
+        JButton circButton = createShapeButton("", new CircleListener(false));
+        circButton.setIcon(new ImageIcon("PaintBoard/images/ellipse.png"));
+
+        //实心圆形
+        JButton fillCircButton = createShapeButton("", new CircleListener(true));
+        fillCircButton.setIcon(new ImageIcon("PaintBoard/images/filledellipse.png"));
+
+        //矩形
+        JButton rectButton = createShapeButton("", new RectangleListener(false));
+        rectButton.setIcon(new ImageIcon("PaintBoard/images/rectangle.png"));
+
+        //实心矩形
+        JButton fillRectButton = createShapeButton("", new RectangleListener(true));
+        fillRectButton.setIcon(new ImageIcon("PaintBoard/images/filledrectangle.png"));
+
+        //插入图片
+        JButton imageButton = createShapeButton("", new ImageListener());
+        imageButton.setIcon(new ImageIcon("PaintBoard/images/insert.png"));
 
         //创建按钮框
         JPanel shapesButtons = new JPanel();
-        shapesButtons.setLayout(new GridLayout(8, 1));
+        shapesButtons.setLayout(new GridLayout(4, 2));
         shapesButtons.add(lineButton);
         shapesButtons.add(curveButton);
         shapesButtons.add(polyButton);
@@ -50,14 +73,24 @@ public class Home extends JFrame {
 
 
         //定义样式按钮
-        JButton yellowButton = new JButton("黄色");
-        yellowButton.addMouseListener(new MouseAdapter() {
+
+        //颜色
+        JButton colorButton = new JButton("");
+        colorButton.setIcon(new ImageIcon("PaintBoard/images/color.png"));
+
+        //颜色选择器
+        colorButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                drawBoard.setPenStyle(Color.yellow);
+                //drawBoard.setPenStyle(Color.yellow);
+                Color color = JColorChooser.showDialog(colorButton,"颜色选择",Color.BLACK);
+                drawBoard.setPenStyle(color);
             }
         });
-        JButton lineWidthButton = new JButton("增大线宽");
+
+        //增大线宽
+        JButton lineWidthButton = new JButton("");
+        lineWidthButton.setIcon(new ImageIcon("PaintBoard/images/stroke.png"));
         lineWidthButton.addMouseListener(new MouseAdapter() {
             float lineWidth = 1.0f;
 
@@ -70,11 +103,12 @@ public class Home extends JFrame {
 
         //创建样式按钮框
         JPanel styleButtons = new JPanel();
-        styleButtons.add(yellowButton);
+        styleButtons.add(colorButton);
         styleButtons.add(lineWidthButton);
 
         //定义文字按钮
-        JButton textButton = new JButton("输入文字");
+        JButton textButton = new JButton("");
+        textButton.setIcon(new ImageIcon("PaintBoard/images/txt.png"));
         textButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -83,7 +117,8 @@ public class Home extends JFrame {
         });
 
         //定义选择按钮
-        JButton choseButton = new JButton("chose");
+        JButton choseButton = new JButton("");
+        choseButton.setIcon(new ImageIcon("PaintBoard/images/move.png"));
         choseButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -101,7 +136,8 @@ public class Home extends JFrame {
         });
 
         //定义重做按钮
-        JButton redoButton = new JButton("重做");
+        JButton redoButton = new JButton("");
+        redoButton.setIcon(new ImageIcon("PaintBoard/images/clear.png"));
         redoButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

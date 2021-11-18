@@ -4,13 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="选取器的大部分。对代码框架微调。为了完成选取器，增加自定义图形（原图形加属性）。" />
-    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="修复了矩形向左上拉拽问题">
-      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/FillCircleListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/FillRectangleListener.java" afterDir="false" />
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="。">
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/brush.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/circle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/clear.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/color-white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/color.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/curve.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/delete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/ellipse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/eraser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/fill.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/filledcircle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/filledellipse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/filledrectangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/filledroundrectangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/insert.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/line.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/move.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/newfile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/openfile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/pen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/polygon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/rectangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/roundrectangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/savefile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/stroke.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/images/txt.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CircleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CircleListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CurveListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Listeners/ChildrenListener/CurveListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +61,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -47,9 +77,10 @@
     <property name="ChangesTree.GroupingKeys" value="module" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaFinalWork-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PaintBoard/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -60,6 +91,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="com.gitee.ui.GiteeSettingsConfigurable" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/PaintBoard/src/com/Listeners/DrawListener.java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java_code\MyPPT\PaintBoard\images" />
+      <recent name="D:\java_code\MyPPT\PaintBoard" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Home" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -250,6 +287,7 @@
     <MESSAGE value="项目的其余部分" />
     <MESSAGE value="test" />
     <MESSAGE value="修复了矩形向左上拉拽问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复了矩形向左上拉拽问题" />
+    <MESSAGE value="。" />
+    <option name="LAST_COMMIT_MESSAGE" value="。" />
   </component>
 </project>
