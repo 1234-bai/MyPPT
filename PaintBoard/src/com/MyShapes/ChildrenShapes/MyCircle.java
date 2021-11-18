@@ -36,4 +36,19 @@ public class MyCircle extends MyShape {
         }
         g.setTransform(new AffineTransform());
     }
+
+    /**
+     * String开头的"MyCircle"用于标识图形类型
+     * Ellipse2D的恢复采用new Ellipse2D.Double(double x, double y, double w, double h)方法
+     */
+    @Override
+    public String toString() {
+        return "MyCircle" + " | " +
+                ellipse.getX() + " | " +
+                ellipse.getY() + " | " +
+                ellipse.getWidth() + " | " +
+                ellipse.getHeight() + " | " +
+                isFilled + " | " +
+                super.toString();
+    }
 }
