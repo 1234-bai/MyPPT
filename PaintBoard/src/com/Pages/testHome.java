@@ -9,9 +9,11 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Home extends JFrame {
+public class testHome extends JWindow {
 
     private final DrawJPanel drawBoard = new DrawJPanel();
+
+    private final JPanel operateButtons;
 
     private JButton createShapeButton(String name, DrawListener listener) {
         JButton jButton = new JButton(name);
@@ -24,7 +26,7 @@ public class Home extends JFrame {
         return jButton;
     }
 
-    public Home() throws HeadlessException {
+    public testHome() throws HeadlessException {
 
         //定义图形按钮
         JButton lineButton = createShapeButton("直线", new LineListener());
@@ -54,7 +56,8 @@ public class Home extends JFrame {
         yellowButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                drawBoard.setPenStyle(Color.yellow);
+                remove(operateButtons);
+                refresh();
             }
         });
         JButton lineWidthButton = new JButton("增大线宽");
@@ -128,7 +131,7 @@ public class Home extends JFrame {
         });
 
         //创建操作按钮框
-        JPanel operateButtons = new JPanel();
+        operateButtons = new JPanel();
         operateButtons.setLayout(new GridLayout(1,5));
         operateButtons.add(revokeButton);
         operateButtons.add(redoButton);
@@ -140,8 +143,8 @@ public class Home extends JFrame {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((int) screenSize.getWidth() / 4, (int) screenSize.getHeight() / 4);
         setSize((int) screenSize.getWidth() / 2, (int) screenSize.getHeight() / 2);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setTitle("测试画板");
+//        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//        setTitle("测试画板");
         setLayout(new BorderLayout());  //定义界面布局样式
 
 
@@ -153,13 +156,17 @@ public class Home extends JFrame {
         //bbb
     }
 
+    private void refresh() {
+        validate();
+    }
+
     public void Run() {
         setVisible(true);
         drawBoard.drawBoardPenInitial();
     }
 
     public static void main(String[] args) {
-        new Home().Run();
+        new testHome().Run();
     }
 
 }
