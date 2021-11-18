@@ -9,7 +9,9 @@ import java.io.Serializable;
  */
 public abstract class MyShape implements Serializable {
 
-    protected double coordinateX, coordinateY;   //坐标
+    protected double coordinateX, coordinateY;   //原始坐标
+    protected double translateX, translateY;    //平移时产生的偏移量
+
     protected Color color;    //颜色
     protected float lineWidth;    //线宽
 
@@ -18,6 +20,7 @@ public abstract class MyShape implements Serializable {
         this.coordinateY = coordinateY;
         this.color = color;
         this.lineWidth = lineWidth;
+        translateX = translateY = 0;
     }
 
     /***
@@ -26,9 +29,20 @@ public abstract class MyShape implements Serializable {
      */
     public abstract Object getDrawContent();
 
+    /**
+     * 判断鼠标点击的点是否在图形内。
+     * 因为肉眼看到的图形实际上原图形经过偏移得到的。所以在判断点是否在里面的时候，要将点偏移回去。
+     * @param x 鼠标点击的点的横坐标
+     * @param y 鼠标点击的点的总坐标
+     * @return 是否在图形内或附近
+     */
     public abstract boolean contains(double x, double y);
 
-//    public abstract void drawInBoard(Graphics2D g);
+    /**
+     * 定义每个图形自己的绘画函数，这样重画的时候就不用判断具体类型。直接调用自己的drawInBoard就可以了。
+     * @param g
+     */
+    public abstract void drawInBoard(Graphics2D g);
 
     public double getCoordinateX() {
         return coordinateX;
@@ -46,6 +60,19 @@ public abstract class MyShape implements Serializable {
 
     public float getLineWidth() {
         return lineWidth;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public void setLineWidth(float lineWidth) {
+        this.lineWidth = lineWidth;
+    }
+
+    public void translate(double tx, double ty){
+        translateX += tx;
+        translateY += ty;
     }
 
     protected static double ZERO_DIRECT = 10.0;

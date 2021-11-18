@@ -3,6 +3,7 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.util.Vector;
 
 public class MyPolygon extends MyShape {
@@ -30,6 +31,13 @@ public class MyPolygon extends MyShape {
 
     @Override
     public boolean contains(double x, double y) {
-        return polygon.contains(x, y);
+        return polygon.contains(x-translateX, y-translateY);
+    }
+
+    @Override
+    public void drawInBoard(Graphics2D g) {
+        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+        g.draw(polygon);
+        g.setTransform(new AffineTransform());
     }
 }

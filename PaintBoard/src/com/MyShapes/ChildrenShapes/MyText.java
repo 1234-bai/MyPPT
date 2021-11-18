@@ -3,6 +3,7 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class MyText extends MyShape {
 
@@ -26,12 +27,20 @@ public class MyText extends MyShape {
 
     @Override
     public boolean contains(double x, double y) {
-        return (x - coordinateX <= width) && (coordinateY - y <= height);
+        x-=translateX; y-=translateY;
+        int deltaX = (int) (x - coordinateX), deltaY = (int) (coordinateY - y);
+        //因为画板画string和画其他图形是不一样的画法。其他图形是在点击点的右下角画，而String是点击点的右上角，所以算deltaY的时候需要反一下
+        return (deltaX >= 0 && deltaX <= width) && (deltaY >= 0 && deltaY <= height);
     }
 
     public Font getFont(){
         return font;
     }
 
-
+    @Override
+    public void drawInBoard(Graphics2D g) {
+        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+        g.drawString(text, (int)coordinateX, (int)coordinateY);
+        g.setTransform(new AffineTransform());
+    }
 }
