@@ -18,23 +18,31 @@ public class MyRectangle extends MyShape{
     }
 
     @Override
-    public Object getDrawContent() {
-        return rectangle;
-    }
-
-    @Override
     public boolean contains(double x, double y) {
         return rectangle.contains(x-translateX, y-translateY);
     }
 
     @Override
-    public void drawInBoard(Graphics2D g) {
-        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+    protected void drawInBoard(Graphics2D g) {
         if(isFilled){
             g.fill(rectangle);
         } else{
             g.draw(rectangle);
         }
-        g.setTransform(new AffineTransform());
+    }
+
+    /**
+     * String开头的"MyRectangle"用于标识图形类型
+     * Rectangle2D的恢复采用new Rectangle2D.Double(double x, double y, double w, double h)方法
+     */
+    @Override
+    public String toString() {
+        return "MyRectangle" + " | " +
+                rectangle.getX() + " | " +
+                rectangle.getY() + " | " +
+                rectangle.getWidth() + " | " +
+                rectangle.getHeight() + " | " +
+                isFilled + " | " +
+                super.toString();
     }
 }

@@ -19,18 +19,23 @@ public interface ChoseListenerIml {
     /**
      * 删除选中的图形
      */
-    void deleteChoseContent();
+    void deleteChosenContent();
 
     /**
      * 更新选中的图形颜色。
      *
      */
-    void setChoseContentColor(Color newColor);
+    void setChosenContentColor(Color newColor);
 
     /**
-     * 道理同设置颜色
+     * 更新选中的图形线宽
      */
-    void setChoseContentLineWidth(float newLineWidth);
+    void setChosenContentLineWidth(float newLineWidth);
+
+//    /**
+//     * 改变选中的文本内容
+//     */
+//    void setChosenText(String newText);
 
     /**
      * 将选中后的图形加入到图形栈中

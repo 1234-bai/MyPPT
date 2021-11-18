@@ -18,7 +18,7 @@ public class PolygonListener extends DrawListener {
 
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         //记录点击的点坐标
         int nowX = e.getX(), nowY = e.getY();
         x.add(nowX); y.add(nowY);

@@ -1,6 +1,7 @@
 package com.MyShapes.BaseShape;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.io.Serializable;
 
@@ -23,12 +24,6 @@ public abstract class MyShape implements Serializable {
         translateX = translateY = 0;
     }
 
-    /***
-     *
-     * @return 真正画下的内容物
-     */
-    public abstract Object getDrawContent();
-
     /**
      * 判断鼠标点击的点是否在图形内。
      * 因为肉眼看到的图形实际上原图形经过偏移得到的。所以在判断点是否在里面的时候，要将点偏移回去。
@@ -42,14 +37,31 @@ public abstract class MyShape implements Serializable {
      * 定义每个图形自己的绘画函数，这样重画的时候就不用判断具体类型。直接调用自己的drawInBoard就可以了。
      * @param g
      */
-    public abstract void drawInBoard(Graphics2D g);
+    protected abstract void drawInBoard(Graphics2D g);
 
-    public double getCoordinateX() {
-        return coordinateX;
+
+    /**
+     * 改变画笔的线宽，就是在画板上画此图形的时候，笔的线宽样式
+     * @param pen
+     * @param lineWidth
+     */
+    protected void changePenLineWidth(Graphics2D pen, float lineWidth){
+        BasicStroke stroke = new BasicStroke(lineWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+        pen.setStroke(stroke);
     }
 
-    public double getCoordinateY() {
-        return coordinateY;
+    public void draw(Graphics2D g){
+        Color oldColor = g.getColor();    //原来的颜色样式
+        g.setColor(color);  //将储存的颜色赋给画笔
+        float oldLW = ((BasicStroke)g.getStroke()).getLineWidth();    //原来的画笔线宽
+        changePenLineWidth(g, lineWidth);   //将储存的样式赋给画笔
+        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));   //平移量赋给画笔
+
+        drawInBoard(g);
+
+        g.setTransform(new AffineTransform());  //还原画笔的偏移量
+        g.setStroke(new BasicStroke(oldLW, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND)); //还原原来的线宽
+        g.setColor(oldColor);   //还原原来的颜色
     }
 
 
@@ -105,5 +117,19 @@ public abstract class MyShape implements Serializable {
                 return doubleEqual(k, k1) && ((x - startX)*(x - endX) <= ZERO_DIRECT && (y - endY)*(y - startY) <= ZERO_DIRECT);
             }
         }
+    }
+
+    /**
+     * 将所有属性转成String，用于保存画板
+     * 末尾加入换行是为了方便按行读取文件，保证每行一个图形
+     *
+     * @return 包含所有属性的String
+     */
+    @Override
+    public String toString() {
+        return coordinateX + " | " +
+                coordinateY + " | " +
+                color.getRGB() + " | " +
+                lineWidth + "\r\n";
     }
 }

@@ -20,11 +20,6 @@ public class MyCurve extends MyShape {
         lineGroup.add(line);
     }
 
-    @Override
-    public Object getDrawContent() {
-        return lineGroup;
-    }
-
     private final static int NUM_POINTS = 10;
     @Override
     public boolean contains(double x, double y) {   //构造一个蕴含算法。每取10个点，收尾相连成的矩形中蕴含点
@@ -47,9 +42,8 @@ public class MyCurve extends MyShape {
      *
      * @param g 要画的画板的画笔
      */
-    public void drawInBoard(Graphics2D g){
-        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+    @Override
+    protected void drawInBoard(Graphics2D g){
         lineGroup.forEach(g::draw);
-        g.setTransform(new AffineTransform());
     }
 }
