@@ -7,10 +7,10 @@ import java.awt.geom.AffineTransform;
 
 public class MyText extends MyShape {
 
-    private final Font font;  //字体独有的属性：字体样式
+    private Font font;  //字体独有的属性：字体样式
     //主要是为了判断鼠标是否点击了此文字
-    private final int width, height;    //字体独有的属性：宽度，高度。其他图形都自带。实际上是输入时候的文本框的高和宽。
-    private final String text;
+    private int width, height;    //字体独有的属性：宽度，高度。其他图形都自带。实际上是输入时候的文本框的高和宽。
+    private String text;
 
     public MyText(double coordinateX, double coordinateY, int width, int height, Color color, float lineWidth, Font font, String text) {
         super(coordinateX, coordinateY, color, lineWidth);
@@ -21,11 +21,6 @@ public class MyText extends MyShape {
     }
 
     @Override
-    public Object getDrawContent() {
-        return text;
-    }
-
-    @Override
     public boolean contains(double x, double y) {
         x-=translateX; y-=translateY;
         int deltaX = (int) (x - coordinateX), deltaY = (int) (coordinateY - y);
@@ -33,14 +28,33 @@ public class MyText extends MyShape {
         return (deltaX >= 0 && deltaX <= width) && (deltaY >= 0 && deltaY <= height);
     }
 
-    public Font getFont(){
-        return font;
+    //为了以后选取器能够修改选中的文本内容
+    public void setFont(Font font){
+        this.font = font;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override
-    public void drawInBoard(Graphics2D g) {
-        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+    protected void drawInBoard(Graphics2D g) {
         g.drawString(text, (int)coordinateX, (int)coordinateY);
-        g.setTransform(new AffineTransform());
+    }
+
+    @Override
+    public void draw(Graphics2D g) {
+        Font oldFont = g.getFont();
+        g.setFont(font);     //将储存的字体赋给画笔
+        super.draw(g);
+        g.setFont(oldFont); //还原画笔的字体
     }
 }

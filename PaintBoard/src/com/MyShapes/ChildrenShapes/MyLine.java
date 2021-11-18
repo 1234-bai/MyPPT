@@ -16,11 +16,6 @@ public class MyLine extends MyShape {
     }
 
 
-    @Override
-    public Object getDrawContent() {
-        return line;
-    }
-
 
     /**
      * 由于line不为封闭图形，所以Line2D的contains()始终返回假，随意需要自己写contains。
@@ -35,10 +30,8 @@ public class MyLine extends MyShape {
     }
 
     @Override
-    public void drawInBoard(Graphics2D g) {
-        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+    protected void drawInBoard(Graphics2D g) {
         g.draw(line);
-        g.setTransform(new AffineTransform());
     }
 
     /**

@@ -18,24 +18,17 @@ public class MyRectangle extends MyShape{
     }
 
     @Override
-    public Object getDrawContent() {
-        return rectangle;
-    }
-
-    @Override
     public boolean contains(double x, double y) {
         return rectangle.contains(x-translateX, y-translateY);
     }
 
     @Override
-    public void drawInBoard(Graphics2D g) {
-        g.setTransform(AffineTransform.getTranslateInstance(translateX, translateY));
+    protected void drawInBoard(Graphics2D g) {
         if(isFilled){
             g.fill(rectangle);
         } else{
             g.draw(rectangle);
         }
-        g.setTransform(new AffineTransform());
     }
 
     /**
