@@ -75,6 +75,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         super.paint(g);
         g.drawImage(drawBoard_copy, 0, 0, null); //重绘
         drawBoardPenInitial();
+        //this.setBorder(BorderFactory.createLineBorder(Color.red,3));
     }
 
 
