@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class testHome extends JWindow {
+public class testHome extends JFrame {
 
     private final DrawJPanel drawBoard = new DrawJPanel();
 
@@ -27,7 +27,6 @@ public class testHome extends JWindow {
     }
 
     public testHome() throws HeadlessException {
-
         //定义图形按钮
         JButton lineButton = createShapeButton("直线", new LineListener());
         JButton polyButton = createShapeButton("多边形", new PolygonListener());
@@ -147,7 +146,7 @@ public class testHome extends JWindow {
 //        setTitle("测试画板");
         setLayout(new BorderLayout());  //定义界面布局样式
 
-
+        drawBoard.setBackground(Color.ORANGE);
         add(BorderLayout.WEST, shapesButtons);
         add(BorderLayout.NORTH, styleButtons);
         add(BorderLayout.EAST, textButton);

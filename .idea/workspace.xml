@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="增加了最近发现的两个小问题的记录">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/testHome.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/testHome.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaFinalWork-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PaintBoard" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -66,7 +64,12 @@
     <property name="settings.editor.selected.configurable" value="com.gitee.ui.GiteeSettingsConfigurable" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/PaintBoard/src/com/Listeners/DrawListener.java" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MyFrame">
     <configuration name="Home" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.Pages.Home" />
       <module name="MyPPT" />
@@ -80,8 +83,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.Pages.MyFrame" />
+      <module name="MyPPT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.Pages.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testHome" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.Pages.testHome" />
+      <module name="MyPPT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.Pages.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyFrame" />
+        <item itemvalue="Application.testHome" />
         <item itemvalue="Application.Home" />
         <item itemvalue="Application.Home" />
       </list>
@@ -121,6 +152,8 @@
       <workItem from="1636977089708" duration="5488000" />
       <workItem from="1637049526306" duration="8498000" />
       <workItem from="1637076105337" duration="4082000" />
+      <workItem from="1637289392994" duration="2944000" />
+      <workItem from="1637292369381" duration="1686000" />
     </task>
     <task id="LOCAL-00001" summary="初始化提交">
       <created>1636189148998</created>
