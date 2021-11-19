@@ -38,55 +38,82 @@ public class Home extends JFrame {
         JButton lineButton = createShapeButton("", new LineListener());
         lineButton.setIcon(new ImageIcon("PaintBoard/images/line.png"));
         lineButton.setSize(200,200);
-        lineButton.setBackground(Color.WHITE);
+        lineButton.setBackground(new Color(230,230,230));
+        lineButton.setToolTipText("直线");
+        lineButton.setBorderPainted(false);
+        lineButton.setFocusPainted(false);
 
         //多边形
         JButton polyButton = createShapeButton("", new PolygonListener());
         polyButton.setIcon(new ImageIcon("PaintBoard/images/polygon.jpg"));
         polyButton.setSize(200,200);
-        polyButton.setBackground(Color.WHITE);
+        polyButton.setBackground(new Color(230,230,230));
+        polyButton.setToolTipText("多边形");
+        polyButton.setBorderPainted(false);
+        polyButton.setFocusPainted(false);
 
         //曲线
         JButton curveButton = createShapeButton("", new CurveListener());
         curveButton.setIcon(new ImageIcon("PaintBoard/images/curve.png"));
         curveButton.setSize(200,200);
-        curveButton.setBackground(Color.WHITE);
+        curveButton.setBackground(new Color(230,230,230));
+        curveButton.setToolTipText("曲线");
+        curveButton.setBorderPainted(false);
+        curveButton.setFocusPainted(false);
 
         //圆形
         JButton circButton = createShapeButton("", new CircleListener(false));
         circButton.setIcon(new ImageIcon("PaintBoard/images/ellipse.png"));
         circButton.setSize(200,200);
-        circButton.setBackground(Color.WHITE);
+        circButton.setBackground(new Color(230,230,230));
+        circButton.setToolTipText("椭圆");
+        circButton.setBorderPainted(false);
+        circButton.setFocusPainted(false);
 
         //实心圆形
         JButton fillCircButton = createShapeButton("", new CircleListener(true));
         fillCircButton.setIcon(new ImageIcon("PaintBoard/images/filledellipse.png"));
         fillCircButton.setSize(200,200);
-        fillCircButton.setBackground(Color.WHITE);
+        fillCircButton.setBackground(new Color(230,230,230));
+        fillCircButton.setToolTipText("实心椭圆");
+        fillCircButton.setBorderPainted(false);
+        fillCircButton.setFocusPainted(false);
 
         //矩形
         JButton rectButton = createShapeButton("", new RectangleListener(false));
         rectButton.setIcon(new ImageIcon("PaintBoard/images/rectangle.png"));
         rectButton.setSize(200,200);
-        rectButton.setBackground(Color.WHITE);
+        rectButton.setBackground(new Color(230,230,230));
+        rectButton.setToolTipText("矩形");
+        rectButton.setBorderPainted(false);
+        rectButton.setFocusPainted(false);
 
         //实心矩形
         JButton fillRectButton = createShapeButton("", new RectangleListener(true));
         fillRectButton.setIcon(new ImageIcon("PaintBoard/images/filledrectangle.png"));
         fillRectButton.setSize(200,200);
-        fillRectButton.setBackground(Color.WHITE);
+        fillRectButton.setBackground(new Color(230,230,230));
+        fillRectButton.setToolTipText("实心矩形");
+        fillRectButton.setBorderPainted(false);
+        fillRectButton.setFocusPainted(false);
 
         //插入图片
         JButton imageButton = createShapeButton("", new ImageListener());
         imageButton.setIcon(new ImageIcon("PaintBoard/images/insert.png"));
         imageButton.setSize(200,200);
-        imageButton.setBackground(Color.WHITE);
+        imageButton.setBackground(new Color(230,230,230));
+        imageButton.setToolTipText("插入图片");
+        imageButton.setBorderPainted(false);
+        imageButton.setFocusPainted(false);
 
         //颜色
         JButton colorButton = new JButton("");
         colorButton.setIcon(new ImageIcon("PaintBoard/images/color.png"));
         colorButton.setSize(200,200);
-        colorButton.setBackground(Color.white);
+        colorButton.setBackground(new Color(230,230,230));
+        colorButton.setToolTipText("颜色选择");
+        colorButton.setBorderPainted(false);
+        colorButton.setFocusPainted(false);
 
         //颜色选择器
         colorButton.addMouseListener(new MouseAdapter() {
@@ -102,13 +129,16 @@ public class Home extends JFrame {
         JButton lineWidthButton = new JButton("");
         lineWidthButton.setIcon(new ImageIcon("PaintBoard/images/stroke.png"));
         lineWidthButton.setSize(200,200);
-        lineWidthButton.setBackground(Color.WHITE);
+        lineWidthButton.setBackground(new Color(230,230,230));
+        lineWidthButton.setToolTipText("增大线宽");
+        lineWidthButton.setBorderPainted(false);
+        lineWidthButton.setFocusPainted(false);
         lineWidthButton.addMouseListener(new MouseAdapter() {
             float lineWidth = 1.0f;
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                lineWidth += 0.5f;
+                lineWidth += 1.0f;
                 drawBoard.setPenStyle(lineWidth);
             }
         });
@@ -122,7 +152,10 @@ public class Home extends JFrame {
                 drawBoard.setBoardListener(new TextListener());
             }
         });
-        textButton.setBackground(Color.WHITE);
+        textButton.setBackground(new Color(230,230,230));
+        textButton.setToolTipText("添加文字");
+        textButton.setBorderPainted(false);
+        textButton.setFocusPainted(false);
 
         //定义选择按钮
         JButton choseButton = new JButton("");
@@ -133,7 +166,10 @@ public class Home extends JFrame {
                 drawBoard.setBoardListener(new ChoseListener());
             }
         });
-        choseButton.setBackground(Color.WHITE);
+        choseButton.setBackground(new Color(230,230,230));
+        choseButton.setToolTipText("选择");
+        choseButton.setBorderPainted(false);
+        choseButton.setFocusPainted(false);
 
         //定义撤销按钮
         JButton revokeButton = new JButton("");
@@ -144,7 +180,10 @@ public class Home extends JFrame {
                 drawBoard.revoke();
             }
         });
-        revokeButton.setBackground(Color.WHITE);
+        revokeButton.setBackground(new Color(230,230,230));
+        revokeButton.setToolTipText("撤销");
+        revokeButton.setBorderPainted(false);
+        revokeButton.setFocusPainted(false);
 
         //定义重做按钮
         JButton redoButton = new JButton("");
@@ -155,7 +194,10 @@ public class Home extends JFrame {
                 drawBoard.redo();
             }
         });
-        redoButton.setBackground(Color.WHITE);
+        redoButton.setBackground(new Color(230,230,230));
+        redoButton.setToolTipText("重做");
+        redoButton.setBorderPainted(false);
+        redoButton.setFocusPainted(false);
 
         //创建工具按钮框
         //JPanel toolButtons = new JPanel();
@@ -177,9 +219,6 @@ public class Home extends JFrame {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         toolButtons.setBounds((int) screenSize.getWidth()/2-500, 0, 1000, 130);
         //toolButtons.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-
-
-
 
 //------------------------------------------------------------------------------------------------------------------
         JPanel slidesList = new JPanel();
@@ -239,6 +278,8 @@ public class Home extends JFrame {
         //bar.setFont(new Font("楷体",Font.BOLD,80));
 
         this.setJMenuBar(bar);
+//        bar.setBounds(0,0,(int) screenSize.getWidth(),60);
+//        add(bar);
 
         Open.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
