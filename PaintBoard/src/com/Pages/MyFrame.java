@@ -48,7 +48,7 @@ public class MyFrame extends JFrame {
         setUndecorated(true);//设置窗体的标题栏不可见
         setLocation(0, 0);//设置窗体在屏幕中的位置
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);// 设置窗体默认大小,使其适应屏幕大小
+        setSize(SCREEN_WIDTH, SCREEN_HEIGHT);// 设置窗体默认大小,使其适应屏幕大小
         setLayout(null);
 
         //设置窗体可拖动
@@ -79,7 +79,7 @@ public class MyFrame extends JFrame {
 
         miniButton.addActionListener(e -> setExtendedState(JFrame.ICONIFIED));
         maxNormalButton.addActionListener(new ActionListener() {
-            boolean normal = true;
+            boolean normal = false;
             ImageIcon normalImg = new ImageIcon("PaintBoard/images/TitleBar/normal-size.png");
             ImageIcon maxImg = new ImageIcon("PaintBoard/images/TitleBar/maximize.png");
 
@@ -102,7 +102,7 @@ public class MyFrame extends JFrame {
 
 
 
-        contentPane.setBounds(0,0, DEFAULT_WIDTH, 30);
+        contentPane.setBounds(0,0, SCREEN_WIDTH, 30);
         contentPane.setBackground(CONSTANTS.MY_COLOR.TITLE_BAR_COLOR);
         contentPane.setLayout(new BorderLayout());
 
