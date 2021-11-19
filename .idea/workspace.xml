@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="现有按钮添加了图标，添加了颜色选择器。">
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="界面2.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/brush.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/color-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/fill.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/filledroundrectangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/roundrectangle.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/testHome.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +39,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -43,8 +49,13 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="ProjectId" id="217Rr1ErEXE579pbdaYtUFcceJb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
@@ -54,7 +65,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/PaintBoard/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaFinalWork-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -92,6 +103,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="" />
@@ -121,6 +133,7 @@
       <workItem from="1636715076825" duration="1145000" />
       <workItem from="1636726117273" duration="5298000" />
       <workItem from="1636894950540" duration="5310000" />
+      <workItem from="1637290349277" duration="7260000" />
     </task>
     <task id="LOCAL-00001" summary="初始化提交">
       <created>1636189148998</created>
@@ -234,8 +247,18 @@
       <option name="project" value="LOCAL" />
       <updated>1637224266398</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="新界面">
+      <created>1637241434846</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1637241434846</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -277,6 +300,7 @@
     <MESSAGE value="修复了矩形向左上拉拽问题" />
     <MESSAGE value="。" />
     <MESSAGE value="现有按钮添加了图标，添加了颜色选择器。" />
-    <option name="LAST_COMMIT_MESSAGE" value="现有按钮添加了图标，添加了颜色选择器。" />
+    <MESSAGE value="新界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="新界面" />
   </component>
 </project>
