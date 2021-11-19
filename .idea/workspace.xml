@@ -4,26 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="增加了最近发现的两个小问题的记录">
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="现有按钮添加了图标，添加了颜色选择器。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/testHome.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/testHome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/Zihao" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="BaiQianYi" />
+        <entry key="$PROJECT_DIR$" value="Zihao" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,13 +43,8 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="20wB2nMCL9L8uY1NGVESoNtLpiI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
@@ -52,7 +54,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/PaintBoard" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PaintBoard/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -66,10 +68,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard" />
+      <recent name="D:\java_code\MyPPT\PaintBoard\images" />
+      <recent name="D:\java_code\MyPPT\PaintBoard" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MyFrame">
+  <component name="RunManager">
     <configuration name="Home" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.Pages.Home" />
       <module name="MyPPT" />
@@ -83,42 +86,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.Pages.MyFrame" />
-      <module name="MyPPT" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.Pages.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="testHome" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.Pages.testHome" />
-      <module name="MyPPT" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.Pages.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MyFrame" />
-        <item itemvalue="Application.testHome" />
-        <item itemvalue="Application.Home" />
         <item itemvalue="Application.Home" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="" />
@@ -148,12 +121,6 @@
       <workItem from="1636715076825" duration="1145000" />
       <workItem from="1636726117273" duration="5298000" />
       <workItem from="1636894950540" duration="5310000" />
-      <workItem from="1636945574782" duration="11096000" />
-      <workItem from="1636977089708" duration="5488000" />
-      <workItem from="1637049526306" duration="8498000" />
-      <workItem from="1637076105337" duration="4082000" />
-      <workItem from="1637289392994" duration="2944000" />
-      <workItem from="1637292369381" duration="1686000" />
     </task>
     <task id="LOCAL-00001" summary="初始化提交">
       <created>1636189148998</created>
@@ -253,95 +220,22 @@
       <option name="project" value="LOCAL" />
       <updated>1636896351461</updated>
     </task>
-    <task id="LOCAL-00015" summary="其余部分">
-      <created>1636902515801</created>
+    <task id="LOCAL-00015" summary="。">
+      <created>1637223876587</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1636902515801</updated>
+      <updated>1637223876587</updated>
     </task>
-    <task id="LOCAL-00016" summary="将填充图形同原图形合并">
-      <created>1636982996907</created>
+    <task id="LOCAL-00016" summary="现有按钮添加了图标，添加了颜色选择器。">
+      <created>1637224266398</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1636982996907</updated>
+      <updated>1637224266398</updated>
     </task>
-    <task id="LOCAL-00017" summary="完成了自定义图形的设计。">
-      <created>1636983058406</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1636983058406</updated>
-    </task>
-    <task id="LOCAL-00018" summary="多边形监听器里直接使用向量，而不使用多边形。但在图形栈里使用多边形。">
-      <created>1636983133442</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1636983133442</updated>
-    </task>
-    <task id="LOCAL-00019" summary="添加了“加入图形栈”的代码">
-      <created>1636983208464</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1636983208464</updated>
-    </task>
-    <task id="LOCAL-00020" summary="完善“重画”代码。">
-      <created>1636983271509</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1636983271509</updated>
-    </task>
-    <task id="LOCAL-00021" summary="画板的接口，便于查找画板的各个函数（但不是全部函数，部分函数没有写在接口里）。">
-      <created>1636983334633</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1636983334633</updated>
-    </task>
-    <task id="LOCAL-00022" summary="填充图形的调用代码修改">
-      <created>1636983361283</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1636983361283</updated>
-    </task>
-    <task id="LOCAL-00023" summary="简化了画板的重画方法写法：给自定义图形加了drawInBoard()方法">
-      <created>1637050855521</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1637050855521</updated>
-    </task>
-    <task id="LOCAL-00024" summary="简化了画板的重画方法写法：给自定义图形加了drawInBoard()方法">
-      <created>1637055386123</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1637055386123</updated>
-    </task>
-    <task id="LOCAL-00025" summary="选取监听器的完成。但是还存在一点小问题：曲线的选取算法不好，直线的凑合。">
-      <created>1637079857469</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1637079857469</updated>
-    </task>
-    <task id="LOCAL-00026" summary="增加了最近发现的两个小问题的记录">
-      <created>1637079902879</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1637079902879</updated>
-    </task>
-    <option name="localTasksCounter" value="27" />
+    <option name="localTasksCounter" value="17" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -381,17 +275,8 @@
     <MESSAGE value="项目的其余部分" />
     <MESSAGE value="test" />
     <MESSAGE value="修复了矩形向左上拉拽问题" />
-    <MESSAGE value="其余部分" />
-    <MESSAGE value="将填充图形同原图形合并" />
-    <MESSAGE value="完成了自定义图形的设计。" />
-    <MESSAGE value="多边形监听器里直接使用向量，而不使用多边形。但在图形栈里使用多边形。" />
-    <MESSAGE value="添加了“加入图形栈”的代码" />
-    <MESSAGE value="完善“重画”代码。" />
-    <MESSAGE value="画板的接口，便于查找画板的各个函数（但不是全部函数，部分函数没有写在接口里）。" />
-    <MESSAGE value="填充图形的调用代码修改" />
-    <MESSAGE value="简化了画板的重画方法写法：给自定义图形加了drawInBoard()方法" />
-    <MESSAGE value="选取监听器的完成。但是还存在一点小问题：曲线的选取算法不好，直线的凑合。" />
-    <MESSAGE value="增加了最近发现的两个小问题的记录" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了最近发现的两个小问题的记录" />
+    <MESSAGE value="。" />
+    <MESSAGE value="现有按钮添加了图标，添加了颜色选择器。" />
+    <option name="LAST_COMMIT_MESSAGE" value="现有按钮添加了图标，添加了颜色选择器。" />
   </component>
 </project>
