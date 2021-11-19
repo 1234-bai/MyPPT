@@ -1,10 +1,8 @@
 package com.Paint;
 
-import com.MyShapes.ChildrenShapes.MyCircle;
-import com.MyShapes.ChildrenShapes.MyLine;
-import com.MyShapes.ChildrenShapes.MyPolygon;
-import com.MyShapes.ChildrenShapes.MyRectangle;
+import com.MyShapes.ChildrenShapes.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -12,6 +10,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class DrawJPanelFileUtil {
@@ -21,15 +20,21 @@ public class DrawJPanelFileUtil {
      * @param fileType 文件后缀名，不带点
      * @param dialogTitle 对话框的标题
      * @param approveButtonText 确认按钮的文字
+     * @param dialogType 对话框类型（open/save）
      * @return
      */
-    public static File choseFile(String fileType, String dialogTitle, String approveButtonText){
+    public static File choseFile(String fileType, String dialogTitle, String approveButtonText,String dialogType){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle(dialogTitle);
         fileChooser.setApproveButtonText(approveButtonText);
         fileChooser.setFileFilter(new FileNameExtensionFilter("*."+fileType,fileType));
         fileChooser.setMultiSelectionEnabled(false);
-        int result = fileChooser.showOpenDialog(null);
+        int result = -1;
+        if (dialogType.equals("save")) {
+            result = fileChooser.showSaveDialog(null);
+        } else {
+            result = fileChooser.showOpenDialog(null);
+        }
         if(result == JFileChooser.APPROVE_OPTION){
             return fileChooser.getSelectedFile();
         }
@@ -40,7 +45,7 @@ public class DrawJPanelFileUtil {
     /**
      *
      * @param file 要加载的文件形成的对象
-     * @return
+     * @return 加载好的画板
      */
     public static DrawJPanel loadDrawBoard(File file){
         if(file == null){return null;}
@@ -137,6 +142,79 @@ public class DrawJPanelFileUtil {
 
                         //添加进图形栈
                         drawBoard.getContentsGroup().add(new MyPolygon(x, y, color, lineWidth));
+
+                        break;
+                    }
+                    case "MyCurve": {
+
+                        //读取Curve的直线集合
+                        ArrayList<Line2D> lineGroup = new ArrayList<>();
+                        int size = Integer.parseInt(dataSplit[1]);
+                        for (int i = 0; i < size; i++) {
+                            double x1 = Double.parseDouble(dataSplit[i * 4 + 2]);
+                            double y1 = Double.parseDouble(dataSplit[i * 4 + 3]);
+                            double x2 = Double.parseDouble(dataSplit[i * 4 + 4]);
+                            double y2 = Double.parseDouble(dataSplit[i * 4 + 5]);
+                            Line2D line = new Line2D.Double(x1, y1, x2, y2);
+                            lineGroup.add(line);
+                        }
+
+                        //恢复其他参数
+                        double coordinateX = Double.parseDouble(dataSplit[size * 4 + 2]);
+                        double coordinateY = Double.parseDouble(dataSplit[size * 4 + 3]);
+                        Color color = new Color(Integer.parseInt(dataSplit[size * 4 + 4]));
+                        float lineWidth = Float.parseFloat(dataSplit[size * 4 + 5]);
+
+                        //添加进图形栈
+                        MyCurve myCurve = new MyCurve(coordinateX, coordinateY, color, lineWidth);
+                        myCurve.setLineGroup(lineGroup);
+                        drawBoard.getContentsGroup().add(myCurve);
+
+                        break;
+                    }
+                    case "MyText": {
+
+                        //恢复Font
+                        String name = dataSplit[1];
+                        int style = Integer.parseInt(dataSplit[2]);
+                        int size = Integer.parseInt(dataSplit[3]);
+                        Font font = new Font(name, style, size);
+
+                        //恢复其他属性
+                        int width = Integer.parseInt(dataSplit[4]);
+                        int height = Integer.parseInt(dataSplit[5]);
+                        String text = dataSplit[6];
+                        double coordinateX = Double.parseDouble(dataSplit[7]);
+                        double coordinateY = Double.parseDouble(dataSplit[8]);
+                        Color color = new Color(Integer.parseInt(dataSplit[9]));
+                        float lineWidth = Float.parseFloat(dataSplit[10]);
+
+                        //添加进图形栈
+                        drawBoard.getContentsGroup().add(new MyText(coordinateX, coordinateY, width, height, color, lineWidth, font, text));
+
+                        break;
+                    }
+                    case "MyImage": {
+
+                        //恢复Image
+                        String path = dataSplit[1];
+                        System.out.println(path);
+                        Image image = null;
+                        try {
+                            image = ImageIO.read(new File(path));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        //恢复其他属性
+                        double coordinateX = Double.parseDouble(dataSplit[2]);
+                        double coordinateY = Double.parseDouble(dataSplit[3]);
+                        Color color = new Color(Integer.parseInt(dataSplit[4]));
+                        float lineWidth = Float.parseFloat(dataSplit[5]);
+
+                        //添加进图形栈
+                        drawBoard.getContentsGroup().add(new MyImage(image, coordinateX, coordinateY, color, lineWidth, path));
+
                         break;
                     }
                 }
@@ -151,7 +229,7 @@ public class DrawJPanelFileUtil {
      *
      * @param file  要保存的文件路径形成的对象
      * @param drawBoard 要保存的画板
-     * @return
+     * @return 保存是否成功
      */
     public static boolean saveDrawBoard(File file, DrawJPanel drawBoard){
         if(file == null) return false;

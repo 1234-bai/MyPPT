@@ -4,6 +4,8 @@ import com.Listeners.BaseListener.DrawListener;
 import com.Listeners.ChoseListener;
 import com.Listeners.MyShapesListener.*;
 import com.Paint.DrawJPanel;
+import com.Paint.DrawJPanelFileUtil;
+
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
@@ -12,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 public class Home extends JFrame {
 
@@ -284,7 +287,16 @@ public class Home extends JFrame {
         Open.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if(e.getSource()==Open){
-                    drawBoard.loadDrawJPanel();
+                    File file = DrawJPanelFileUtil.choseFile("myppt", "载入...", "确定", "open");
+                    DrawJPanel DP1 = DrawJPanelFileUtil.loadDrawBoard(file);
+                    if (DP1 != null) {
+                        DP1.setBounds((int) screenSize.getWidth() / 2 - 750, 130, screenSize.width - 40, screenSize.width / 2 + 80);
+                        add(DP1);
+                        validate();
+                        DP1.drawBoardPenInitial();
+                        DP1.redraw();
+                        DP1.refresh();
+                    }
                 }
             }
         });
@@ -292,7 +304,11 @@ public class Home extends JFrame {
         Save.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
                if(e.getSource()==Save){
-                   drawBoard.saveDrawJPanel();
+                   File file = DrawJPanelFileUtil.choseFile("myppt","另存为...","确定","save");
+                   boolean b = DrawJPanelFileUtil.saveDrawBoard(file,drawBoard);
+                   if(b){
+                       System.out.println("保存成功");
+                   }
                }
            }
         });
