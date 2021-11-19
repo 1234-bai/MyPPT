@@ -51,7 +51,8 @@ public class ImageListener extends DrawListener {
                     x,
                     y,
                     getListenerPen().getColor(),
-                    ((BasicStroke)getListenerPen().getStroke()).getLineWidth()
+                    ((BasicStroke)getListenerPen().getStroke()).getLineWidth(),
+                    path
             ));
         }
     }

@@ -8,10 +8,12 @@ import java.awt.geom.AffineTransform;
 public class MyImage extends MyShape {
 
     private final Image image;
+    private final String path;  //图片的路径，用于载入画板时重建图像
 
-    public MyImage(Image image, double coordinateX, double coordinateY, Color color, float lineWidth) {
+    public MyImage(Image image, double coordinateX, double coordinateY, Color color, float lineWidth, String path) {
         super(coordinateX, coordinateY, color, lineWidth);
         this.image = image;
+        this.path = path;
     }
 
     @Override
@@ -27,4 +29,16 @@ public class MyImage extends MyShape {
     protected void drawInBoard(Graphics2D g) {
         g.drawImage(image, (int)coordinateX, (int)coordinateY, null);
     }
+
+    /**
+     * String开头的"MyImage"用于标识图形类型
+     * 图像保存实质是保存文件路径，载入时通过路径重建图像
+     */
+    @Override
+    public String toString() {
+        return "MyImage" + " | " +
+                path + " | " +
+                super.toString();
+    }
+
 }
