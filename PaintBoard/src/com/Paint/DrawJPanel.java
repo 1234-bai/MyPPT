@@ -244,7 +244,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         int result = fileChooser.showSaveDialog(null);
         if(result==JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
-            if(!file.getPath().endsWith(".txt")){
+            if(!file.getPath().endsWith(".myppt")){
                 file = new File(file.getPath()+".myppt");
             }
             System.out.println("file path = "+file.getPath());
