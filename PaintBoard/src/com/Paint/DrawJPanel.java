@@ -24,7 +24,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
     private DrawListener drawListener;  //画正在运行板的监听器，当按下不同的功能按钮的时候，将此监听器设置为按钮所对应的监听器
 
-    private final ArrayList<MyShape> contentsGroup = new ArrayList<>();    //内容数组，存放画过的图形
+    private ArrayList<MyShape> contentsGroup = new ArrayList<>();    //内容数组，存放画过的图形
 
     private final ArrayList<MyShape> redoContentsGroup = new ArrayList<>();   //重做内容数组，存放撤销操作删除的图形
 
@@ -35,6 +35,11 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
      */
     public Graphics2D getDrawBoardPen() {
         return drawBoardPen;
+    }
+
+    @Override
+    public Image getDrawBoard_copy() {
+        return drawBoard_copy;
     }
 
     /**
@@ -118,8 +123,10 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     private void penStyleRecover(Graphics2D oldPen, Graphics2D newPen){
         newPen.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         newPen.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);    //还原圆润度
-        newPen.setColor(oldPen.getColor());    //还原颜色
-        newPen.setStroke(oldPen.getStroke());  //还原线宽
+        if(oldPen != null){
+            newPen.setColor(oldPen.getColor());    //还原颜色
+            newPen.setStroke(oldPen.getStroke());  //还原线宽
+        }
     }
 
     /**
@@ -128,6 +135,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     private void createCopy(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         drawBoard_copy = (BufferedImage) this.createImage((int)screenSize.getWidth(), (int)screenSize.getHeight());  //创建画板副本
+//        drawBoard_copy = new BufferedImage((int)screenSize.getWidth(), (int)screenSize.getHeight(),BufferedImage.TYPE_INT_RGB);
         drawBoardPen_copy = drawBoard_copy.createGraphics();  //创建副本画笔。
     }
 
@@ -420,4 +428,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         redoContentsGroup.clear();
     }
 
+    public void setContentsGroup(ArrayList<MyShape> contentsGroup) {
+        this.contentsGroup = contentsGroup;
+    }
 }
