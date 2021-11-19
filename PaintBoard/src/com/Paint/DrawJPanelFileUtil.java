@@ -16,7 +16,14 @@ import java.util.Vector;
 
 public class DrawJPanelFileUtil {
 
-    private static File choseFile(String fileType, String dialogTitle, String approveButtonText){
+    /**
+     * 调用系统的文件选择类。选择文件，形成文件对象
+     * @param fileType 文件后缀名，不带点
+     * @param dialogTitle 对话框的标题
+     * @param approveButtonText 确认按钮的文字
+     * @return
+     */
+    public static File choseFile(String fileType, String dialogTitle, String approveButtonText){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle(dialogTitle);
         fileChooser.setApproveButtonText(approveButtonText);
@@ -29,8 +36,13 @@ public class DrawJPanelFileUtil {
         return null;
     }
 
-    public static DrawJPanel loadDrawBoard(){
-        File file = choseFile("myppt", "载入...","确定");
+
+    /**
+     *
+     * @param file 要加载的文件形成的对象
+     * @return
+     */
+    public static DrawJPanel loadDrawBoard(File file){
         if(file == null){return null;}
         DrawJPanel drawBoard = new DrawJPanel();
         try {
@@ -129,16 +141,19 @@ public class DrawJPanelFileUtil {
                     }
                 }
             }
-            drawBoard.redraw();
-            drawBoard.refresh();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return drawBoard;
     }
 
-    public static boolean saveDrawBoard(DrawJPanel drawBoard){
-        File file = choseFile("myppt", "另存为...","确定");
+    /**
+     *
+     * @param file  要保存的文件路径形成的对象
+     * @param drawBoard 要保存的画板
+     * @return
+     */
+    public static boolean saveDrawBoard(File file, DrawJPanel drawBoard){
         if(file == null) return false;
         if(!file.getPath().endsWith(".myppt")){
             file = new File(file.getPath()+".myppt");
