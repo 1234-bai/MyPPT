@@ -57,4 +57,20 @@ public class MyText extends MyShape {
         super.draw(g);
         g.setFont(oldFont); //还原画笔的字体
     }
+
+    /**
+     * String开头的"MyText"用于标识图形类型
+     * Font的恢复采用new Font(String name, int style, int size)方法
+     */
+    @Override
+    public String toString() {
+        return "MyText" + " | " +
+                font.getFontName() + " | " +
+                font.getStyle() + " | " +
+                font.getSize() + " | " +
+                width + " | " +
+                height + " | " +
+                text + " | " +
+                super.toString();
+    }
 }
