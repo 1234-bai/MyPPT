@@ -62,4 +62,5 @@ public interface DrawJPanelIml {
 
     void setTextFont(Font font);
 
+    Image getDrawBoard_copy();
 }
