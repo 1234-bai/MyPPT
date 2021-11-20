@@ -135,8 +135,14 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
      */
     private void createCopy(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        drawBoard_copy = (BufferedImage) this.createImage((int)screenSize.getWidth(), (int)screenSize.getHeight());  //创建画板副本
-//        drawBoard_copy = new BufferedImage((int)screenSize.getWidth(), (int)screenSize.getHeight(),BufferedImage.TYPE_INT_RGB);
+        int width = (int)screenSize.getWidth(), height = (int)screenSize.getHeight();
+//        drawBoard_copy = (BufferedImage) this.createImage((int)screenSize.getWidth(), (int)screenSize.getHeight());  //创建画板副本
+        drawBoard_copy = new BufferedImage(width, height,BufferedImage.TYPE_INT_ARGB);  //创建独立副本，脱离父容器的约束
+        for(int i = 0; i < width;++i){  //将副本渲染成白色
+            for(int j = 0; j < height;++j){
+                drawBoard_copy.setRGB(i ,j,Color.WHITE.getRGB());
+            }
+        }
         drawBoardPen_copy = drawBoard_copy.createGraphics();  //创建副本画笔。
     }
 

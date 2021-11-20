@@ -16,10 +16,10 @@ public class MenuBar extends JPanel {
         }
     }
 
-    private MenuBarButton fileMenu = new MenuBarButton("文件");
-    private MenuBarButton insertMenu = new MenuBarButton("插入");
-    private MenuBarButton drawMenu = new MenuBarButton("绘图");
-    private MenuBarButton penStyleMenu = new MenuBarButton("画笔");
+    private final MenuBarButton fileMenu = new MenuBarButton("文件");
+    private final MenuBarButton insertMenu = new MenuBarButton("插入");
+    private final MenuBarButton drawMenu = new MenuBarButton("绘图");
+    private final MenuBarButton penStyleMenu = new MenuBarButton("画笔");
 
     public MenuBar() {
         setBackground(CONSTANTS.MY_COLOR.TITLE_BAR_COLOR);

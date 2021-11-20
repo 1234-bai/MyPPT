@@ -4,20 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="界面2.0">
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="修改名称">
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/SlideBar/DrawBoardSlideBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/SlideBar/ImageCellRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/testPPT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/images/brush.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/images/color-white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/images/fill.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/images/filledroundrectangle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/images/roundrectangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/MyHome.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/MyHome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/BasePages/ClearPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/BasePages/ClearPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/CONSTANTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/CONSTANTS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/testHome.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/DrawButtonsBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/DrawButtonsBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/FileButtonsBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/FileButtonsBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/InsertButtonsBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/InsertButtonsBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/MenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/MenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/PenStyleBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/PenStyleBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Paint/MyDrawPPTIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/MyDrawPPTIml.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <favorite-branches>
@@ -35,7 +50,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Zihao" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,7 +64,7 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="217Rr1ErEXE579pbdaYtUFcceJb" />
+  <component name="ProjectId" id="219xiktznqNHmzIwiQ2NqIo0hlH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -65,7 +80,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaFinalWork-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PaintBoard/images/MenuBar/PenStyle" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -79,17 +94,24 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\java_code\MyPPT\PaintBoard\images" />
-      <recent name="D:\java_code\MyPPT\PaintBoard" />
+      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\images\MenuBar\PenStyle" />
+      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\src\com\Pages\MenuBar" />
+      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\images\MenuBar\Draw" />
+      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\images\MenuBar\Insert" />
+      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\images\MenuBar\File" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.Pages.MenuBar" />
+      <recent name="com.Pages.BasePage" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MyHome ">
     <configuration name="Home" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.Pages.Home" />
       <module name="MyPPT" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.Pages.*" />
+          <option name="PATTERN" value="com.Pages.BasePages.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -97,8 +119,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyHome " type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.MyHome" />
+      <module name="MyPPT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Home" />
+      <item itemvalue="Application.MyHome " />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyHome " />
         <item itemvalue="Application.Home" />
       </list>
     </recent_temporary>
@@ -133,7 +173,7 @@
       <workItem from="1636715076825" duration="1145000" />
       <workItem from="1636726117273" duration="5298000" />
       <workItem from="1636894950540" duration="5310000" />
-      <workItem from="1637290349277" duration="7260000" />
+      <workItem from="1637367243971" duration="22062000" />
     </task>
     <task id="LOCAL-00001" summary="初始化提交">
       <created>1636189148998</created>
@@ -247,14 +287,70 @@
       <option name="project" value="LOCAL" />
       <updated>1637224266398</updated>
     </task>
-    <task id="LOCAL-00017" summary="新界面">
-      <created>1637241434846</created>
+    <task id="LOCAL-00017" summary="菜单测试">
+      <created>1637301828130</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1637241434846</updated>
+      <updated>1637301828130</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="画板的文件读写类">
+      <created>1637319552900</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1637319552900</updated>
+    </task>
+    <task id="LOCAL-00019" summary="画板的文件读写类">
+      <created>1637323734735</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1637323734735</updated>
+    </task>
+    <task id="LOCAL-00020" summary="界面小改">
+      <created>1637344919580</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1637344919580</updated>
+    </task>
+    <task id="LOCAL-00021" summary="界面小改">
+      <created>1637345351656</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1637345351656</updated>
+    </task>
+    <task id="LOCAL-00022" summary="界面小改">
+      <created>1637368451376</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1637368451376</updated>
+    </task>
+    <task id="LOCAL-00023" summary="界面菜单栏部分">
+      <created>1637372996786</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1637372996786</updated>
+    </task>
+    <task id="LOCAL-00024" summary="界面菜单栏切换动画部分">
+      <created>1637375374996</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1637375374996</updated>
+    </task>
+    <task id="LOCAL-00025" summary="修改名称">
+      <created>1637375881787</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1637375881787</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +367,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/Zihao" />
+                        <option value="origin/BaiQianYi" />
                       </list>
                     </value>
                   </entry>
@@ -300,7 +396,12 @@
     <MESSAGE value="修复了矩形向左上拉拽问题" />
     <MESSAGE value="。" />
     <MESSAGE value="现有按钮添加了图标，添加了颜色选择器。" />
-    <MESSAGE value="新界面" />
-    <option name="LAST_COMMIT_MESSAGE" value="新界面" />
+    <MESSAGE value="菜单测试" />
+    <MESSAGE value="画板的文件读写类" />
+    <MESSAGE value="界面小改" />
+    <MESSAGE value="界面菜单栏部分" />
+    <MESSAGE value="界面菜单栏切换动画部分" />
+    <MESSAGE value="修改名称" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改名称" />
   </component>
 </project>
