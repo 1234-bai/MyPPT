@@ -1,4 +1,6 @@
-package com.Pages;
+package com.Pages.BasePages;
+
+import com.Pages.CONSTANTS;
 
 import javax.swing.*;
 import java.awt.*;
