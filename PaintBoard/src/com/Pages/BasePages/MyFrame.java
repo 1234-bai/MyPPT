@@ -43,6 +43,7 @@ public class MyFrame extends JFrame {
     protected JPanel titleBar = new JPanel();  //标题框
     protected JPanel titleCloseButtons = new JPanel();  //标题框的按钮框
 
+    private boolean draggedEnable;  //拖动使能，只有为TRUE时才能移动
     private int mouseStartX = 0;
     private int mouseStartY = 0;
 
@@ -52,6 +53,7 @@ public class MyFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //设置窗口关闭按钮类型
         setBounds(LOCATION_X, LOCATION_Y,DEFAULT_WIDTH, DEFAULT_HEIGHT);    // 设置窗体默认大小和位置,使其适应屏幕大小
         setLayout(null);    //设置布局为绝对布局
+        draggedEnable = true;   //开始为正常大小，可拖动
 
         /*
          * 实例化简单组件
@@ -80,6 +82,7 @@ public class MyFrame extends JFrame {
                     maxNormalButton.setIcon(normalImg);
                     normal = true;
                 }
+                draggedEnable = normal;
                 titleBar.setBounds(0,0, getWidth(), TITLE_BAR_HEIGHT);
             }
         });
@@ -103,6 +106,7 @@ public class MyFrame extends JFrame {
         titleBar.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                if(!draggedEnable){return;}
                 mouseStartX = e.getX();
                 mouseStartY = e.getY();
             }
@@ -110,6 +114,7 @@ public class MyFrame extends JFrame {
         titleBar.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
+                if(!draggedEnable){return;}
                 setLocation((e.getXOnScreen()- mouseStartX),(e.getYOnScreen()- mouseStartY));//设置拖拽后，窗口的位置
             }
         });
