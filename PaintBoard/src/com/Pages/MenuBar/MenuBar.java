@@ -1,13 +1,13 @@
 package com.Pages.MenuBar;
 
-import com.Pages.BasePages.MyButton;
+import com.Pages.BasePages.ClearButton;
 import com.Pages.CONSTANTS;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MenuBar extends JPanel {
-    private static class MenuBarButton extends MyButton{
+    private static class MenuBarButton extends ClearButton {
         public MenuBarButton(String text){
             setForeground(Color.WHITE);
             setFont(new Font("微软雅黑", Font.BOLD, 20));

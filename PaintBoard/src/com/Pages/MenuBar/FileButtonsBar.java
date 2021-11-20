@@ -1,11 +1,11 @@
 package com.Pages.MenuBar;
 
 import com.Pages.BasePages.ImageButton;
-import com.Pages.BasePages.MyPanel;
+import com.Pages.BasePages.ClearPanel;
 
 import java.awt.*;
 
-public class FileButtonsBar extends MyPanel {
+public class FileButtonsBar extends ClearPanel {
 
     private ImageButton saveButton = new ImageButton("打开文件","PaintBoard/images/MenuBar/File/open.png");
     private ImageButton openButton = new ImageButton("保存文件","PaintBoard/images/MenuBar/File/save.png");
