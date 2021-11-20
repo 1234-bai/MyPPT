@@ -130,12 +130,14 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         }
     }
 
+    public static final double WIDTH_RATE = 0.7;    //画板副本宽度占屏幕宽度的系数
+    public static final double HEIGHT_RATE = 0.7;   //副本高度占副本高度的系数
     /**
      * 创造本画板以及本画板画笔的副本
      */
     private void createCopy(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = (int)screenSize.getWidth(), height = (int)screenSize.getHeight();
+        int width = (int)(screenSize.getWidth()*WIDTH_RATE), height = (int)(screenSize.getHeight()*HEIGHT_RATE);
 //        drawBoard_copy = (BufferedImage) this.createImage((int)screenSize.getWidth(), (int)screenSize.getHeight());  //创建画板副本
         drawBoard_copy = new BufferedImage(width, height,BufferedImage.TYPE_INT_ARGB);  //创建独立副本，脱离父容器的约束
         for(int i = 0; i < width;++i){  //将副本渲染成白色
