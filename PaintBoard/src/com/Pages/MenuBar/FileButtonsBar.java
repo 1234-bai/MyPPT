@@ -1,4 +1,4 @@
-package com.Pages;
+package com.Pages.MenuBar;
 
 import com.Pages.BasePages.ImageButton;
 import com.Pages.BasePages.MyPanel;
