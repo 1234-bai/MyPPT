@@ -2,6 +2,7 @@ package com.Pages.BasePages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseListener;
 
 public class ImageButton extends ClearPanel {
 
@@ -18,6 +19,7 @@ public class ImageButton extends ClearPanel {
     public ImageButton(String text, String imgPath) {
         setLayout(new BorderLayout());
 
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));   //设置鼠标进入的是变为手型
         button.setIcon(new ImageIcon(imgPath));
         add(BorderLayout.CENTER,button);
 
@@ -27,5 +29,11 @@ public class ImageButton extends ClearPanel {
 
     public ClearButton getButton() {
         return button;
+    }
+
+    @Override
+    public synchronized void addMouseListener(MouseListener l) {
+        super.addMouseListener(l);
+        button.addMouseListener(l);
     }
 }

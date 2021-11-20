@@ -5,6 +5,7 @@ import com.Pages.BasePages.ClearPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseListener;
 
 public class FileButtonsBar extends ClearPanel {
 
@@ -20,8 +21,8 @@ public class FileButtonsBar extends ClearPanel {
         add(openButton);
     }
 
-    public ImageButton getCreateButton() {
-        return createButton;
+    public JButton getCreateButton() {
+        return createButton.getButton();
     }
 
     public JButton getSaveButton() {
@@ -30,5 +31,15 @@ public class FileButtonsBar extends ClearPanel {
 
     public JButton getOpenButton() {
         return openButton.getButton();
+    }
+
+    public void setButtonsListener(
+            MouseListener createButtonListener,
+            MouseListener saveButtonListener,
+            MouseListener openButtonListener
+    ){
+        createButton.addMouseListener(createButtonListener);
+        saveButton.addMouseListener(saveButtonListener);
+        openButton.addMouseListener(openButtonListener);
     }
 }

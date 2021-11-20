@@ -52,13 +52,6 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     }
 
     /**
-     * 刷新本画板，将副本内容载入画板。
-     */
-    public void refresh(){
-        drawBoardPen.drawImage(drawBoard_copy, 0 ,0, null);
-    }
-
-    /**
      *
      * @return 获得现在同画板绑定的监听器
      */
@@ -83,6 +76,14 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         drawBoardPenInitial();
         //this.setBorder(BorderFactory.createLineBorder(Color.red,3));
     }
+
+    /**
+     * 刷新本画板，将副本内容载入画板。
+     */
+    public void refresh(){
+        drawBoardPen.drawImage(drawBoard_copy, 0 ,0, null);
+    }
+
 
 
     /**
@@ -149,7 +150,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
     /**
      * 重画，画笔更新，副本更新。
-     * 选取时调用。
+     * 选取时调用。没有父容器，重新载入副本时调用。
      */
     public void redraw(){
 //        super.paint(drawBoardPen);  //只需要清空副本就可以了，不需要清空原本。

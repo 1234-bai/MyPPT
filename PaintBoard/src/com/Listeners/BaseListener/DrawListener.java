@@ -3,6 +3,7 @@ package com.Listeners.BaseListener;
 import com.MyShapes.BaseShape.MyShape;
 import com.Paint.DrawJPanel;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -46,4 +47,8 @@ public class DrawListener extends MouseAdapter {
         return drawBoard.getContentsGroup();
     }
 
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        drawBoard.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+    }
 }
