@@ -5,6 +5,7 @@ import com.Listeners.ChoseListener;
 import com.Listeners.MyShapesListener.*;
 import com.Paint.DrawJPanel;
 import com.Paint.DrawJPanelFileUtil;
+import com.Paint.MyDrawPPT;
 
 import javax.swing.*;
 import java.awt.*;
@@ -285,16 +286,23 @@ public class Home extends JFrame {
         Open.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if(e.getSource()==Open){
-                    File file = DrawJPanelFileUtil.choseFile("myppt", "载入...", "确定", "open");
-                    DrawJPanel DP1 = DrawJPanelFileUtil.loadDrawBoard(file);
-                    if (DP1 != null) {
-                        DP1.setBounds((int) screenSize.getWidth() / 2 - 750, 130, screenSize.width - 40, screenSize.width / 2 + 80);
-                        add(DP1);
-                        validate();
-                        DP1.drawBoardPenInitial();
-                        DP1.redraw();
-                        DP1.refresh();
-                    }
+
+                    //测试
+                    MyDrawPPT myDrawPPT = new MyDrawPPT();
+                    myDrawPPT.loadPPT();
+                    System.out.println(myDrawPPT.getMyPPT().size());    //输出ppt页数
+
+                    //过期测试
+//                    File file = DrawJPanelFileUtil.choseFile("myppt", "载入...", "确定", "open");
+//                    DrawJPanel DP1 = DrawJPanelFileUtil.loadDrawBoard(file);
+//                    if (DP1 != null) {
+//                        DP1.setBounds((int) screenSize.getWidth() / 2 - 750, 130, screenSize.width - 40, screenSize.width / 2 + 80);
+//                        add(DP1);
+//                        validate();
+//                        DP1.drawBoardPenInitial();
+//                        DP1.redraw();
+//                        DP1.refresh();
+//                    }
                 }
             }
         });
