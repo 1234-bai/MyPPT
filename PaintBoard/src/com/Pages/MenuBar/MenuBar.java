@@ -31,15 +31,19 @@ public class MenuBar extends JPanel {
         add(penStyleMenu);
     }
 
-    public MenuBarButton getFileMenu() {
+    public JButton getFileMenu() {
         return fileMenu;
     }
 
-    public MenuBarButton getInsertMenu() {
+    public JButton getInsertMenu() {
         return insertMenu;
     }
 
-    public MenuBarButton getDrawMenu() {
+    public JButton getDrawMenu() {
         return drawMenu;
+    }
+
+    public JButton getPenStyleMenu() {
+        return penStyleMenu;
     }
 }
