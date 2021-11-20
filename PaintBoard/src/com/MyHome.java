@@ -2,7 +2,7 @@ package com;
 
 import com.Pages.*;
 import com.Pages.BasePages.MyFrame;
-import com.Pages.BasePages.MyPanel;
+import com.Pages.BasePages.ClearPanel;
 import com.Pages.MenuBar.*;
 import com.Pages.MenuBar.MenuBar;
 
@@ -26,7 +26,7 @@ public class MyHome extends MyFrame {
     private static final int TOP_BAR_HEIGHT = 130;
 
     private final MenuBar menuBar = new MenuBar();
-    private MyPanel topButtons; //当前topBar里含有的buttons
+    private ClearPanel topButtons; //当前topBar里含有的buttons
     private final FileButtonsBar fileButtons = new FileButtonsBar();
     private final InsertButtonsBar insertButtons = new InsertButtonsBar();
     private final DrawButtonsBar drawButtons = new DrawButtonsBar();
@@ -54,7 +54,7 @@ public class MyHome extends MyFrame {
     }
 
     //改变菜单栏的按钮群
-    private void changeTopBarButtons(MyPanel nextButtons){
+    private void changeTopBarButtons(ClearPanel nextButtons){
         topBar.remove(topButtons);
         topBar.add(nextButtons);
         topButtons = nextButtons;

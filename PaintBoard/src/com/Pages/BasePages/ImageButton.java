@@ -3,9 +3,9 @@ package com.Pages.BasePages;
 import javax.swing.*;
 import java.awt.*;
 
-public class ImageButton extends MyPanel {
+public class ImageButton extends ClearPanel {
 
-    MyButton button = new MyButton();
+    ClearButton button = new ClearButton();
 
     private static class ImageTextLabel extends JLabel{
         public ImageTextLabel(String text) {
@@ -21,11 +21,11 @@ public class ImageButton extends MyPanel {
         button.setIcon(new ImageIcon(imgPath));
         add(BorderLayout.CENTER,button);
 
-        MyPanel label = new MyPanel(); label.add(new ImageTextLabel(text));
+        ClearPanel label = new ClearPanel(); label.add(new ImageTextLabel(text));
         add(BorderLayout.SOUTH, label);
     }
 
-    public MyButton getButton() {
+    public ClearButton getButton() {
         return button;
     }
 }

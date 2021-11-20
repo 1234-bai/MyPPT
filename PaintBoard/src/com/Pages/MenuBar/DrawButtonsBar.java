@@ -1,11 +1,11 @@
 package com.Pages.MenuBar;
 
 import com.Pages.BasePages.ImageButton;
-import com.Pages.BasePages.MyPanel;
+import com.Pages.BasePages.ClearPanel;
 
 import java.awt.*;
 
-public class DrawButtonsBar extends MyPanel {
+public class DrawButtonsBar extends ClearPanel {
 
     private ImageButton lineButton = new ImageButton("直线","PaintBoard/images/MenuBar/Draw/line.png");
     private ImageButton curveButton = new ImageButton("曲线","PaintBoard/images/MenuBar/Draw/curve.png");
