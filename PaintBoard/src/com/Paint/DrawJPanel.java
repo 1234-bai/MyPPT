@@ -86,22 +86,6 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
 
     /**
-     * 重画，画笔更新，副本更新。
-     * 选取时调用。
-     */
-    public void redraw(){
-//        super.paint(drawBoardPen);  //只需要清空副本就可以了，不需要清空原本。
-        drawBoardPen_copy = null; drawBoard_copy = null;    //清空副本，但是监听器不清空
-        createCopy();   //重新获得全新的副本
-        penStyleRecover(drawBoardPen, drawBoardPen_copy);
-
-        for(MyShape myShape : contentsGroup){    //因为重画后需要刷新，所以只在副本上画就可以了
-            myShape.draw(drawBoardPen_copy);
-        }
-//        refresh();  //载入副本。不需要载入副本，因为做着一切的时候，原本没有发生任何变化
-    }
-
-    /**
      * 初始化画笔，是线条更加圆滑，减小锯齿。看起来更美观。
      */
     private void penStyleInitial(){
@@ -142,10 +126,11 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         drawBoard_copy = new BufferedImage(width, height,BufferedImage.TYPE_INT_ARGB);  //创建独立副本，脱离父容器的约束
         for(int i = 0; i < width;++i){  //将副本渲染成白色
             for(int j = 0; j < height;++j){
-                drawBoard_copy.setRGB(i ,j,Color.WHITE.getRGB());
+                drawBoard_copy.setRGB(i,j,Color.WHITE.getRGB());
             }
         }
         drawBoardPen_copy = drawBoard_copy.createGraphics();  //创建副本画笔。
+        penStyleRecover(drawBoardPen, drawBoardPen_copy);
     }
 
     /**
@@ -162,7 +147,21 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         }
     }
 
+    /**
+     * 重画，画笔更新，副本更新。
+     * 选取时调用。
+     */
+    public void redraw(){
+//        super.paint(drawBoardPen);  //只需要清空副本就可以了，不需要清空原本。
+        drawBoardPen_copy = null; drawBoard_copy = null;    //清空副本，但是监听器不清空
+        createCopy();   //重新获得全新的副本
+        penStyleRecover(drawBoardPen, drawBoardPen_copy);
 
+        for(MyShape myShape : contentsGroup){    //因为重画后需要刷新，所以只在副本上画就可以了
+            myShape.draw(drawBoardPen_copy);
+        }
+//        refresh();  //载入副本。不需要载入副本，因为做着一切的时候，原本没有发生任何变化
+    }
 
 
     /**
