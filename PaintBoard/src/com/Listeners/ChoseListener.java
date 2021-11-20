@@ -109,10 +109,7 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
      * 测试用！！！
      */
     private void choseStatus(){
-        Color oldColor = chosenContent.getColor();    //原来的颜色样式
-        chosenContent.setColor(Color.BLUE);
-        chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。
-        chosenContent.setColor(oldColor);
+        getDrawBoard().setCursor(new Cursor(Cursor.MOVE_CURSOR));
     }
 
     /**

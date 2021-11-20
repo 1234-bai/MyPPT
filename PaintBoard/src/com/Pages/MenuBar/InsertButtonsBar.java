@@ -5,6 +5,7 @@ import com.Pages.BasePages.ClearPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseListener;
 
 public class InsertButtonsBar extends ClearPanel {
     private final ImageButton pictureButton = new ImageButton("插入图片","PaintBoard/images/MenuBar/Insert/picture.png");
@@ -23,5 +24,10 @@ public class InsertButtonsBar extends ClearPanel {
 
     public JButton getTextButton() {
         return textButton.getButton();
+    }
+
+    public void setButtonsListener(MouseListener pictureButtonListener, MouseListener textButtonListener){
+        pictureButton.addMouseListener(pictureButtonListener);
+        textButton.addMouseListener(textButtonListener);
     }
 }
