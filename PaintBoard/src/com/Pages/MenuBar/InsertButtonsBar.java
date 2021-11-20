@@ -3,11 +3,12 @@ package com.Pages.MenuBar;
 import com.Pages.BasePages.ImageButton;
 import com.Pages.BasePages.ClearPanel;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class InsertButtonsBar extends ClearPanel {
-    private ImageButton pictureButton = new ImageButton("插入图片","PaintBoard/images/MenuBar/Insert/picture.png");
-    private ImageButton textButton = new ImageButton("插入文字","PaintBoard/images/MenuBar/Insert/text.png");
+    private final ImageButton pictureButton = new ImageButton("插入图片","PaintBoard/images/MenuBar/Insert/picture.png");
+    private final ImageButton textButton = new ImageButton("插入文字","PaintBoard/images/MenuBar/Insert/text.png");
 
     public InsertButtonsBar() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -16,11 +17,11 @@ public class InsertButtonsBar extends ClearPanel {
         add(textButton);
     }
 
-    public ImageButton getPictureButton() {
-        return pictureButton;
+    public JButton getPictureButton() {
+        return pictureButton.getButton();
     }
 
-    public ImageButton getTextButton() {
-        return textButton;
+    public JButton getTextButton() {
+        return textButton.getButton();
     }
 }

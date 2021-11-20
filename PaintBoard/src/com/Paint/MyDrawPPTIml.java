@@ -23,4 +23,8 @@ public abstract class MyDrawPPTIml {
      * @return
      */
     public abstract boolean savePPT();
+
+    public ArrayList<DrawJPanel> getMyPPT() {
+        return myPPT;
+    }
 }

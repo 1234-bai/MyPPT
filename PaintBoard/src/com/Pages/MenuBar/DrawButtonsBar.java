@@ -3,17 +3,18 @@ package com.Pages.MenuBar;
 import com.Pages.BasePages.ImageButton;
 import com.Pages.BasePages.ClearPanel;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class DrawButtonsBar extends ClearPanel {
 
-    private ImageButton lineButton = new ImageButton("直线","PaintBoard/images/MenuBar/Draw/line.png");
-    private ImageButton curveButton = new ImageButton("曲线","PaintBoard/images/MenuBar/Draw/curve.png");
-    private ImageButton polyButton = new ImageButton("多边形","PaintBoard/images/MenuBar/Draw/poly.png");
-    private ImageButton circleButton = new ImageButton("圆形","PaintBoard/images/MenuBar/Draw/circle.png");
-    private ImageButton filledCircleButton = new ImageButton("实心圆形","PaintBoard/images/MenuBar/Draw/filledCircle.png");
-    private ImageButton rectButton = new ImageButton("矩形","PaintBoard/images/MenuBar/Draw/rect.png");
-    private ImageButton filledRectButton = new ImageButton("实心矩形","PaintBoard/images/MenuBar/Draw/filledRect.png");
+    private final ImageButton lineButton = new ImageButton("直线","PaintBoard/images/MenuBar/Draw/line.png");
+    private final ImageButton curveButton = new ImageButton("曲线","PaintBoard/images/MenuBar/Draw/curve.png");
+    private final ImageButton polyButton = new ImageButton("多边形","PaintBoard/images/MenuBar/Draw/poly.png");
+    private final ImageButton circleButton = new ImageButton("圆形","PaintBoard/images/MenuBar/Draw/circle.png");
+    private final ImageButton filledCircleButton = new ImageButton("实心圆形","PaintBoard/images/MenuBar/Draw/filledCircle.png");
+    private final ImageButton rectButton = new ImageButton("矩形","PaintBoard/images/MenuBar/Draw/rect.png");
+    private final ImageButton filledRectButton = new ImageButton("实心矩形","PaintBoard/images/MenuBar/Draw/filledRect.png");
 
     public DrawButtonsBar() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -27,31 +28,31 @@ public class DrawButtonsBar extends ClearPanel {
         add(filledRectButton);
     }
 
-    public ImageButton getLineButton() {
-        return lineButton;
+    public JButton getLineButton() {
+        return lineButton.getButton();
     }
 
-    public ImageButton getCurveButton() {
-        return curveButton;
+    public JButton getCurveButton() {
+        return curveButton.getButton();
     }
 
-    public ImageButton getPolyButton() {
-        return polyButton;
+    public JButton getPolyButton() {
+        return polyButton.getButton();
     }
 
-    public ImageButton getCircleButton() {
-        return circleButton;
+    public JButton getCircleButton() {
+        return circleButton.getButton();
     }
 
-    public ImageButton getFilledCircleButton() {
-        return filledCircleButton;
+    public JButton getFilledCircleButton() {
+        return filledCircleButton.getButton();
     }
 
-    public ImageButton getRectButton() {
-        return rectButton;
+    public JButton getRectButton() {
+        return rectButton.getButton();
     }
 
-    public ImageButton getFilledRectButton() {
-        return filledRectButton;
+    public JButton getFilledRectButton() {
+        return filledRectButton.getButton();
     }
 }
