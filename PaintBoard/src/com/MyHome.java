@@ -1,4 +1,12 @@
 package com;
 
-public class MyHome {
+import com.Pages.BasePages.MyFrame;
+
+public class MyHome extends MyFrame {
+
+
+
+    public MyHome() {
+
+    }
 }
