@@ -1,5 +1,6 @@
 package com;
 
+import com.Listeners.BaseListener.DrawListener;
 import com.Listeners.ChoseListener;
 import com.Listeners.MyShapesListener.*;
 
@@ -50,6 +51,7 @@ public class MyHome extends MyFrame {
     private InsertButtonsBar insertButtons;
     private DrawButtonsBar drawButtons;
     private PenStyleBar penStyleButtons;
+    private OperationBar operationBar;
     //菜单的按键栏（topBar）
     private static final int TOP_BAR_HEIGHT = 130;
     private EmptyFillPanel topBar;
@@ -111,6 +113,8 @@ public class MyHome extends MyFrame {
             @Override
             public void componentResized(ComponentEvent e) {
                 int width = getWidth(), height = getHeight();
+                topBar.setBounds(0, TITLE_BAR_HEIGHT + MENU_BAR_HEIGHT, width, TOP_BAR_HEIGHT);
+                menuBar.setBounds(0, TITLE_BAR_HEIGHT, width, MENU_BAR_HEIGHT);
                 imgSlideBar.setBounds(
                         0,
                         ALL_TOP_BAR_HEIGHT,
@@ -144,13 +148,14 @@ public class MyHome extends MyFrame {
         insertButtons = new InsertButtonsBar();
         drawButtons = new DrawButtonsBar();
         penStyleButtons = new PenStyleBar();
+        operationBar = new OperationBar();
         //菜单的按键栏（topBar）定义
         topBar = new EmptyFillPanel(0, TITLE_BAR_HEIGHT + MENU_BAR_HEIGHT, SCREEN_WIDTH, TOP_BAR_HEIGHT);
         menuBar.setBounds(0, TITLE_BAR_HEIGHT, SCREEN_WIDTH, MENU_BAR_HEIGHT);
         add(menuBar);
         //设置菜单栏的初始情况
         topBar.setLayout(new FlowLayout(FlowLayout.LEFT));
-        topBar.add(fileButtons);
+        topBar.add(fileButtons);    //最开始加入文件菜单项
         topButtons = fileButtons;
         add(topBar);
         //设置菜单切换栏监听器
@@ -190,7 +195,13 @@ public class MyHome extends MyFrame {
                         changeTopBarButtons(drawButtons);
                     }
                 },
-                new MouseAdapter() {    //点击“画笔”按钮时发生的动作
+                new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        changeTopBarButtons(operationBar);
+                    }
+                },
+        new MouseAdapter() {    //点击“画笔”按钮时发生的动作
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         changeTopBarButtons(penStyleButtons);
@@ -253,17 +264,6 @@ public class MyHome extends MyFrame {
         );
         //设置绘画按钮们的监听器
         drawButtons.setButtonsListener(
-                new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        drawBoard.setBoardListener(new ChoseListener());
-
-                        //清空操作
-                        //意思是一旦进行了点击了选取按钮，之前的所有操作均不能撤销与重做
-                        MoveShape moveShape = new MoveShape();
-                        moveShape.clearOperation(drawBoard);
-                    }
-                },
                 new MouseAdapter() {    //“直线”的监听器
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -305,17 +305,39 @@ public class MyHome extends MyFrame {
                     public void mouseClicked(MouseEvent e) {
                         drawBoard.setBoardListener(new RectangleListener(true));
                     }
+                }
+        );
+        operationBar.setButtonsListener(
+                new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        drawBoard.setBoardListener(new ChoseListener());
+                        
+                        //清空操作
+                        //意思是一旦进行了点击了选取按钮，之前的所有操作均不能撤销与重做
+                        MoveShape moveShape = new MoveShape();
+                        moveShape.clearOperation(drawBoard);
+                    }
                 },
                 new MouseAdapter() {    //撤销监听器
                     @Override
-                    public void mouseClicked(MouseEvent e){
+                    public void mouseClicked(MouseEvent e) {
                         drawBoard.revoke();
                     }
                 },
                 new MouseAdapter() {    //重做监听器
                     @Override
-                    public void mouseClicked(MouseEvent e){
+                    public void mouseClicked(MouseEvent e) {
                         drawBoard.redo();
+                    }
+                },
+                new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        DrawListener drawListener = drawBoard.getDrawListener();
+                        if(drawListener instanceof ChoseListener){
+                            ((ChoseListener) drawListener).deleteChosenContent();
+                        }
                     }
                 }
         );
@@ -325,20 +347,27 @@ public class MyHome extends MyFrame {
         for(int i = 1; i <= 30; ++i){
             lineWidthGroup.add((float)i);
         }
+        String[] fontFamily = {"微软雅黑","仿宋","宋体","黑体","楷体"};
+        ArrayList<Integer> fontsizeGroup = new ArrayList<>();
+        int minFontsize = 20;
+        for(int i = 1; i <= 36; ++i){
+            fontsizeGroup.add(minFontsize + 5*i);
+        }
         penStyleButtons.setButtonsListener(
                 new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        Color color = JColorChooser.showDialog(null,"选取颜色",Color.BLACK);
-                        if(color == null){return;}
+                        Color color = JColorChooser.showDialog(null, "选取颜色", Color.BLACK);
+                        if (color == null) {
+                            return;
+                        }
                         drawBoard.setPenStyle(color);
                     }
                 },
                 new MouseAdapter() {
-
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        Float lineWidth = (Float)JOptionPane.showInputDialog(
+                        Float lineWidth = (Float) JOptionPane.showInputDialog(
                                 null,
                                 "请选择线宽",
                                 "选取线宽...",
@@ -347,8 +376,46 @@ public class MyHome extends MyFrame {
                                 lineWidthGroup.toArray(),
                                 minLineWidth
                         );
-                        if(lineWidth == null){return;}
+                        if (lineWidth == null) {
+                            return;
+                        }
                         drawBoard.setPenStyle(lineWidth);
+                    }
+                },
+                new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        String family = (String) JOptionPane.showInputDialog(
+                                null,
+                                "请选择字体",
+                                "选取字体...",
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,
+                                fontFamily,
+                                fontFamily[0]
+                        );
+                        if (family == null) {
+                            return;
+                        }
+                        drawBoard.setTextFamily(family);
+                    }
+                },
+                new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        Integer size = (Integer) JOptionPane.showInputDialog(
+                                null,
+                                "请选择字号",
+                                "选取字号...",
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,
+                                fontsizeGroup.toArray(),
+                                fontsizeGroup.get(0)
+                        );
+                        if (size == null) {
+                            return;
+                        }
+                        drawBoard.setTextSize(size);
                     }
                 }
         );

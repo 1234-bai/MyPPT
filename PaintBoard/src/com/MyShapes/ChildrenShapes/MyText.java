@@ -42,6 +42,10 @@ public class MyText extends MyShape {
         this.font = font;
     }
 
+    public Font getFont() {
+        return font;
+    }
+
     public void setWidth(int width) {
         this.width = width;
     }
