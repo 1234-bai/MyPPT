@@ -54,7 +54,7 @@ public class MyHome extends MyFrame {
     //幻灯片下拉列表
     private static final int SLIDE_BAR_WIDTH = 400;
     private EmptyFillPanel imgSlideBar;
-    ImageShowBoard imageShowGroup;    //图像列表
+    ImageShowBoard imgSlideGroup;    //图像列表
     JScrollPane imgScrollPane;    //下拉列表框，用来放置生成的图像列表，形成滚动条
 
     //PPT展示板
@@ -67,8 +67,8 @@ public class MyHome extends MyFrame {
     private static final int PPT_SHOW_BOARD_Y = ALL_TOP_BAR_HEIGHT + PPT_SLID_Y_OFFSET;     //展示板的纵坐标
     private static final int DRAW_BOARD_COPY_WIDTH = (int)(SCREEN_WIDTH * DrawJPanel.WIDTH_RATE);    //副本真实宽度
     private static final int DRAW_BOARD_COPY_HEIGHT = (int)(SCREEN_HEIGHT * DrawJPanel.HEIGHT_RATE);     //副本真实高度
-    private JPanel pptShowBoard = new JPanel(new GridLayout(1,1));
-    private DrawJPanel drawBoard = new DrawJPanel();
+    private JPanel pptShowBoard;
+    private DrawJPanel drawBoard;
 
     public MyHome() {
 
@@ -77,19 +77,11 @@ public class MyHome extends MyFrame {
         //菜单栏初始化
         initMenu();
 
+        //展示板
+        initShowBoard();
+
         //下拉列表初始化
         initSlideBar();
-
-
-        //画板
-        pptShowBoard.add(drawBoard);
-        pptShowBoard.setBounds(
-                PPT_SHOW_BOARD_X,
-                PPT_SHOW_BOARD_Y,
-                getWidth() - PPT_SHOW_BOARD_X - PPT_RIGHT_OFFSET,
-                getHeight() - PPT_SHOW_BOARD_Y - BOTTOM_BAR_HEIGHT - PPT_BOTTOM_OFFSET
-        );
-        add(pptShowBoard);
     }
 
     //刷新组件
@@ -217,7 +209,7 @@ public class MyHome extends MyFrame {
                         //填充加载代码。如下。
                         MyDrawPPT myDrawPPT = new MyDrawPPT();
                         myDrawPPT.loadPPT();
-                        imageShowGroup.setDrawPPT(myDrawPPT);
+                        imgSlideGroup.setDrawPPT(myDrawPPT);
                         imgSlideBar.validate();
                     }
                 },
@@ -225,7 +217,7 @@ public class MyHome extends MyFrame {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         //填充保存代码。如下。根据实际情况调整
-                        imageShowGroup.getDrawPPT().savePPT();
+                        imgSlideGroup.getDrawPPT().savePPT();
                     }
                 }
         );
@@ -234,8 +226,7 @@ public class MyHome extends MyFrame {
                 new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        //填充新建代码，以下代码有bug:不知道JList更新元素后咋更新
-                        imageShowGroup.addNewPicture(new DrawJPanel());
+                        imgSlideGroup.addNewPicture(new DrawJPanel());
                         imgScrollPane.validate();
                     }
                 },
@@ -305,21 +296,71 @@ public class MyHome extends MyFrame {
         );
     }
 
+
     /**
      * 初始化下拉列表
+     * 一定要在初始化展示画板后执行，因为画板为空的话是无法加入监听器的。
      */
-    public void initSlideBar(){
+    private void initSlideBar(){
         imgSlideBar = new EmptyFillPanel(
                 0,
                 ALL_TOP_BAR_HEIGHT,
                 SLIDE_BAR_WIDTH,
                 getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT
                 ));
-        imageShowGroup = new ImageShowBoard();    //图像列表
-        imgScrollPane = new JScrollPane(imageShowGroup);    //下拉列表框，用来放置生成的图像列表，形成滚动条
+        imgSlideGroup = new ImageShowBoard();    //图像列表
+        imgScrollPane = new JScrollPane(imgSlideGroup);    //下拉列表框，用来放置生成的图像列表，形成滚动条
         imgScrollPane.setPreferredSize(new Dimension(350,getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)));    //设置下拉框大小
         imgSlideBar.add(imgScrollPane);     //将滑动板加入到界面内
         add(imgSlideBar);
+
+        //设置监听器
+        setSlideBarListener();
+    }
+
+    /**
+     * 给滑动框设上监听器。
+     * 使得当点击滑动框的时候，能够在画板上显示。
+     * 当画板上画画时，滑动框对应的滑板也会生成相同的图像
+     */
+    private void setSlideBarListener(){
+        //设置滑动框的监听器
+        imgSlideGroup.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(e.getButton() == MouseEvent.BUTTON1){
+                    final DrawJPanel selectedPicture = imgSlideGroup.getSelectedPicture();
+                    drawBoard.setContentsGroup(selectedPicture.getContentsGroup());
+                    drawBoard.redraw();
+                    drawBoard.refresh();
+                }
+            }
+        });
+        //开启一个线程不断更新之前选中的那一页
+        new Thread(() -> {
+            while (true){
+                imgSlideGroup.updateSelectedPicture();
+                imgSlideGroup.validate();
+            }
+        }).start();
+    }
+
+
+
+    /**
+     * 初始化展示面板
+     */
+    private void initShowBoard(){
+        pptShowBoard = new JPanel(new GridLayout(1,1));
+        drawBoard = new DrawJPanel();
+        pptShowBoard.add(drawBoard);
+        pptShowBoard.setBounds(
+                PPT_SHOW_BOARD_X,
+                PPT_SHOW_BOARD_Y,
+                getWidth() - PPT_SHOW_BOARD_X - PPT_RIGHT_OFFSET,
+                getHeight() - PPT_SHOW_BOARD_Y - BOTTOM_BAR_HEIGHT - PPT_BOTTOM_OFFSET
+        );
+        add(pptShowBoard);
     }
 
     public void run(){

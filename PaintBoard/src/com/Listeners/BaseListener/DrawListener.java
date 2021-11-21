@@ -3,10 +3,10 @@ package com.Listeners.BaseListener;
 import com.MyShapes.BaseShape.MyShape;
 import com.Paint.DrawJPanel;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 
 /**
  * 同画板绑定的鼠标监听器。
@@ -43,7 +43,7 @@ public class DrawListener extends MouseAdapter {
         return drawBoard.getDrawBoardPen_copy();
     }
 
-    protected ArrayList<MyShape> getContentsGroup() {
+    protected CopyOnWriteArrayList<MyShape> getContentsGroup() {
         return drawBoard.getContentsGroup();
     }
 

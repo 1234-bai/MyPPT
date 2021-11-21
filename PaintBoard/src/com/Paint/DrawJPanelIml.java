@@ -4,7 +4,7 @@ import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * 画板接口，方便查看DrawJpanel类的函数
@@ -24,7 +24,7 @@ public interface DrawJPanelIml {
     DrawListener getDrawListener();
 
 
-    ArrayList<MyShape> getContentsGroup();
+    CopyOnWriteArrayList<MyShape> getContentsGroup();
 
 
     /**
