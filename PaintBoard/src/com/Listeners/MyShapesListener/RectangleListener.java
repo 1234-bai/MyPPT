@@ -2,6 +2,7 @@ package com.Listeners.MyShapesListener;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.ChildrenShapes.MyRectangle;
+import com.Operations.ChildOperation.DrawShape;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -79,6 +80,10 @@ public class RectangleListener extends DrawListener {
                 ((BasicStroke)getListenerPen().getStroke()).getLineWidth(),
                 isFilled
         ));
+
+        //记录操作
+        DrawShape drawShape = new DrawShape();
+        drawShape.addOperation(getDrawBoard());
     }
 
     @Override

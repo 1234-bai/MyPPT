@@ -2,6 +2,7 @@ package com.Listeners.MyShapesListener;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.ChildrenShapes.MyLine;
+import com.Operations.ChildOperation.DrawShape;
 
 
 import java.awt.*;
@@ -29,6 +30,7 @@ public class LineListener extends DrawListener {
         endX = e.getX();
         endY = e.getY();
 
+        //画出图形
         Line2D line = new Line2D.Double(startX, startY, endX, endY);
         getListenerPen().draw(line);
         getListenerPen_copy().draw(line);
@@ -37,6 +39,10 @@ public class LineListener extends DrawListener {
                 getListenerPen().getColor(),
                 ((BasicStroke) getListenerPen().getStroke()).getLineWidth()
         ));
+
+        //记录操作
+        DrawShape drawShape = new DrawShape();
+        drawShape.addOperation(getDrawBoard());
     }
 
     @Override
