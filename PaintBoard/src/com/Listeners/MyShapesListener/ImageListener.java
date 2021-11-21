@@ -2,6 +2,7 @@ package com.Listeners.MyShapesListener;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.ChildrenShapes.MyImage;
+import com.Operations.ChildOperation.DrawShape;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -54,6 +55,10 @@ public class ImageListener extends DrawListener {
                     ((BasicStroke)getListenerPen().getStroke()).getLineWidth(),
                     path
             ));
+
+            //记录操作
+            DrawShape drawShape = new DrawShape();
+            drawShape.addOperation(getDrawBoard());
         }
     }
 }

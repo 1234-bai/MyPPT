@@ -3,6 +3,7 @@ package com.Listeners.MyShapesListener;
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.ChildrenShapes.MyLine;
 import com.MyShapes.ChildrenShapes.MyText;
+import com.Operations.ChildOperation.DrawShape;
 import com.Paint.DrawJPanel;
 
 import javax.swing.*;
@@ -53,6 +54,10 @@ public class TextListener extends DrawListener{
                 textFont,
                 str
         ));
+
+        //记录操作
+        DrawShape drawShape = new DrawShape();
+        drawShape.addOperation(getDrawBoard());
 
         drawBoard.setPenStyle(oldColor);    //恢复原来的颜色
 
