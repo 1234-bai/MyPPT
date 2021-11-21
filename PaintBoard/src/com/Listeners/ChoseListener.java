@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 
 /**
@@ -18,14 +19,7 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
 
     private MyShape chosenContent = null;   //鼠标点击选中的对象
 
-    private int preX = 0, preY = 0 ;
-
-    private void clearContent(){
-        if(chosenContent != null){  //保存之前选中的图形
-            saveChoseContent();
-            chosenContent = null;
-        }
-    }
+    private int preX = 0, preY = 0 ;    //拖动过程中，前一个点的坐标
 
     /**
      * 完成右击显示菜单栏的任务
@@ -60,12 +54,46 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
     @Override
     public void mouseDragged(MouseEvent e) {
         if(chosenContent != null){
+            getDrawBoard().setCursor(new Cursor(Cursor.MOVE_CURSOR));
             int x = e.getX(), y = e.getY();
             translateChoseContent(x - preX, y - preY);
             preX = x; preY = y;
         }
     }
 
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        getDrawBoard().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }
+
+
+    @Override
+    //纯粹为了好看，就是鼠标形状的变化。其实因为会频繁遍历数组，当图形很多的时候，会十分影响效率
+    public void mouseMoved(MouseEvent e) {
+        //此处代码复用做的不好，有时间再改
+        int x = e.getX(), y = e.getY();
+        ArrayList<MyShape> contentsGroup = getContentsGroup();
+        int length = contentsGroup.size();
+        for (int i = length - 1; i >= 0; i--) { //从栈顶开始查询
+            MyShape myShape = contentsGroup.get(i);  //获得的是MyShape类
+            if(myShape.contains(x, y)){
+                getDrawBoard().setCursor(new Cursor(Cursor.HAND_CURSOR));   //如果位置上有图形
+                return;
+            }
+        }
+        if(chosenContent != null){  //刚刚选中了图形，导致图形不在图形组里。所以也要加一个判断
+            if(chosenContent.contains(x, y)){
+                getDrawBoard().setCursor(new Cursor(Cursor.HAND_CURSOR));   //如果位置上有图形
+                return;
+            }
+        }
+        getDrawBoard().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));   //如果位置上没有图形
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        getDrawBoard().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));   //如果位置上有图形
+    }
 
     /**
      * 用来做一些收尾工作。会导致无法在外界改变颜色
@@ -74,6 +102,14 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
     @Override
     public void mouseExited(MouseEvent e) {
         clearContent();
+    }
+
+
+    private void clearContent(){
+        if(chosenContent != null){  //保存之前选中的图形
+            saveChoseContent();
+            chosenContent = null;
+        }
     }
 
     @Override
@@ -109,7 +145,6 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
      * 测试用！！！
      */
     private void choseStatus(){
-        getDrawBoard().setCursor(new Cursor(Cursor.MOVE_CURSOR));
     }
 
     /**

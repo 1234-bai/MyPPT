@@ -5,9 +5,11 @@ import com.Pages.BasePages.ClearPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseListener;
 
 public class DrawButtonsBar extends ClearPanel {
 
+    private final ImageButton choseButton = new ImageButton("选取","PaintBoard/images/MenuBar/Draw/chose.png");
     private final ImageButton lineButton = new ImageButton("直线","PaintBoard/images/MenuBar/Draw/line.png");
     private final ImageButton curveButton = new ImageButton("曲线","PaintBoard/images/MenuBar/Draw/curve.png");
     private final ImageButton polyButton = new ImageButton("多边形","PaintBoard/images/MenuBar/Draw/poly.png");
@@ -19,6 +21,7 @@ public class DrawButtonsBar extends ClearPanel {
     public DrawButtonsBar() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
+        add(choseButton);
         add(lineButton);
         add(curveButton);
         add(polyButton);
@@ -26,6 +29,10 @@ public class DrawButtonsBar extends ClearPanel {
         add(filledCircleButton);
         add(rectButton);
         add(filledRectButton);
+    }
+
+    public ImageButton getChoseButton() {
+        return choseButton;
     }
 
     public JButton getLineButton() {
@@ -54,5 +61,25 @@ public class DrawButtonsBar extends ClearPanel {
 
     public JButton getFilledRectButton() {
         return filledRectButton.getButton();
+    }
+
+    public void setButtonsListener(
+            MouseListener choseListener,
+            MouseListener lineListener,
+            MouseListener curveListener,
+            MouseListener polyListener,
+            MouseListener circleListener,
+            MouseListener filledCircleListener,
+            MouseListener rectangleListener,
+            MouseListener filledRectListener
+    ){
+        choseButton.addMouseListener(choseListener);
+        lineButton.addMouseListener(lineListener);
+        curveButton.addMouseListener(curveListener);
+        polyButton.addMouseListener(polyListener);
+        circleButton.addMouseListener(circleListener);
+        filledCircleButton.addMouseListener(filledCircleListener);
+        rectButton.addMouseListener(rectangleListener);
+        filledRectButton.addMouseListener(filledRectListener);
     }
 }
