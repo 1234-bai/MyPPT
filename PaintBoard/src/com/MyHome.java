@@ -1,18 +1,15 @@
 package com;
 
-import com.Listeners.MyShapesListener.ImageListener;
-import com.Listeners.MyShapesListener.LineListener;
-import com.Listeners.MyShapesListener.TextListener;
+import com.Listeners.ChoseListener;
+import com.Listeners.MyShapesListener.*;
+
 import com.Pages.*;
 import com.Pages.BasePages.MyFrame;
 import com.Pages.BasePages.ClearPanel;
 import com.Pages.MenuBar.*;
 import com.Pages.MenuBar.MenuBar;
 import com.Pages.SlideBar.ImageShowBoard;
-import com.Paint.DrawJPanel;
-import com.Paint.DrawJPanelFileUtil;
-import com.Paint.MyDrawPPTIml;
-//import com.Paint.testPPT;
+import com.Paint.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,7 +60,7 @@ public class MyHome extends MyFrame {
                 SLIDE_BAR_WIDTH,
                 getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT
             ));
-    JScrollPane imgSrollPane;    //下拉列表框，用来放置生成的图像列表，形成滚动条
+    JScrollPane imgScrollPane;    //下拉列表框，用来放置生成的图像列表，形成滚动条
     ImageShowBoard slide = new ImageShowBoard();    //图像列表
 
     //PPT展示板
@@ -86,23 +83,13 @@ public class MyHome extends MyFrame {
         //菜单栏初始化
         initMenu();
 
-        //下拉列表
-        //测试用
-//        File file = DrawJPanelFileUtil.choseFile("myppt", "载入...", "确定", "open");
-//        DrawJPanel DP1 = DrawJPanelFileUtil.loadDrawBoard(file);
-//        DrawJPanel DP2 = DrawJPanelFileUtil.loadDrawBoard(file);
-//        DrawJPanel DP3 = DrawJPanelFileUtil.loadDrawBoard(file);
-//        DrawJPanel DP4 = DrawJPanelFileUtil.loadDrawBoard(file);
-//        DrawJPanel DP5 = DrawJPanelFileUtil.loadDrawBoard(file);
-//        DrawJPanel DP6 = DrawJPanelFileUtil.loadDrawBoard(file);
-//        testPPT testPPT = new testPPT();
-//        testPPT.getMyPPT().add(DP1);testPPT.getMyPPT().add(DP2);testPPT.getMyPPT().add(DP3);testPPT.getMyPPT().add(DP4);testPPT.getMyPPT().add(DP5);testPPT.getMyPPT().add(DP6);
-//
-//        slide.setDrawPPT(testPPT);
-//        imgSrollPane = new JScrollPane(slide.getCopyShowBoard());
-//        imgSrollPane.setPreferredSize(new Dimension(350,getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)));
-//        imgSlideBar.add(imgSrollPane);
-//        add(imgSlideBar);
+        MyDrawPPT myDrawPPT = new MyDrawPPT();
+        myDrawPPT.loadPPT();
+        slide.setDrawPPT(myDrawPPT);
+        imgScrollPane = new JScrollPane(slide.getCopyShowBoard());
+        imgScrollPane.setPreferredSize(new Dimension(350,getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)));
+        imgSlideBar.add(imgScrollPane);
+        add(imgSlideBar);
 
         //画板
         pptShowBoard.add(drawBoard);
@@ -140,7 +127,7 @@ public class MyHome extends MyFrame {
                         SLIDE_BAR_WIDTH,
                         height -(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)
                 );
-                imgSrollPane.setPreferredSize(new Dimension(
+                imgScrollPane.setPreferredSize(new Dimension(
                         350,
                         height -(ALL_TOP_BAR_HEIGHT+ BOTTOM_BAR_HEIGHT)
                 ));
@@ -216,9 +203,34 @@ public class MyHome extends MyFrame {
      * 设置菜单栏各个按钮的监听器
      */
     private void setMenuButtonsListener(){
-        //设置文件按钮门的监听器
+        //设置文件按钮们的监听器
         fileButtons.setButtonsListener(
                 new MouseAdapter() {    //点击“新建”按钮的监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        //填充创建一个新PPT的代码。
+                        //slide.setDrawPPT(new MyDrawPPT().getMyPPT());
+                    }
+                },
+                new MouseAdapter() {    //点击“打开文件”按钮的监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        //填充加载代码。如下。
+                        MyDrawPPT myDrawPPT = new MyDrawPPT();
+                        slide.setDrawPPT(myDrawPPT);
+                    }
+                },
+                new MouseAdapter() {    //点击“保存文件”按钮的监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        //填充保存代码。如下。根据实际情况调整
+                        slide.getDrawPPT().savePPT();
+                    }
+                }
+        );
+        //设置插入按钮们的监听器
+        insertButtons.setButtonsListener(
+                new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         //填充新建代码，以下代码有bug:不知道JList更新元素后咋更新
@@ -226,22 +238,6 @@ public class MyHome extends MyFrame {
                         refresh(imgSlideBar);
                     }
                 },
-                new MouseAdapter() {    //点击“打开文件”按钮的监听器
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        //填充加载代码。如下。根据实际情况调整
-                        //slide.setDrawPPT(new MyDrawPPT().getMyPPT());
-                    }
-                },
-                new MouseAdapter() {    //点击“保存文件”按钮的监听器
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        //填充保存代码。如下。根据实际情况调整
-                        //slide.getDrawPPT().savePPT();
-                    }
-                }
-        );
-        insertButtons.setButtonsListener(
                 new MouseAdapter() {    //“插入图片”的监听器
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -255,7 +251,57 @@ public class MyHome extends MyFrame {
                     }
                 }
         );
-
+        //设置绘画按钮们的监听器
+        drawButtons.setButtonsListener(
+                new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        drawBoard.setBoardListener(new ChoseListener());
+                    }
+                },
+                new MouseAdapter() {    //“直线”的监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        drawBoard.setBoardListener(new LineListener());
+                    }
+                },
+                new MouseAdapter() {    //“曲线”的监听器
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        drawBoard.setBoardListener(new CurveListener());
+                    }
+                },
+                new MouseAdapter() {    //多边形监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        drawBoard.setBoardListener(new PolygonListener());
+                    }
+                },
+                new MouseAdapter() {    //圆形监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        drawBoard.setBoardListener(new CircleListener(false));
+                    }
+                },
+                new MouseAdapter() {    //实心圆形监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        drawBoard.setBoardListener(new CircleListener(true));
+                    }
+                },
+                new MouseAdapter() {    //矩形监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        drawBoard.setBoardListener(new RectangleListener(false));
+                    }
+                },
+                new MouseAdapter() {    //实心矩形监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        drawBoard.setBoardListener(new RectangleListener(true));
+                    }
+                }
+        );
     }
 
 
