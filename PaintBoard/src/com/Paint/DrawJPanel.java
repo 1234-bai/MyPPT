@@ -91,6 +91,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     /**
      * 初始化画笔，是线条更加圆滑，减小锯齿。看起来更美观。
      */
+    public static final float BASE_LINE_WIDTH = 2F;
     private void penStyleInitial(){
         drawBoardPen.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         drawBoardPen.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);
@@ -98,7 +99,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         drawBoardPen_copy.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         drawBoardPen_copy.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);
 
-        setPenStyle(1.5f);
+        setPenStyle(BASE_LINE_WIDTH);
     }
 
 

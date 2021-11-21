@@ -57,6 +57,7 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
     }
 
     @Override
+    //并不鼠标释放的时候保存图形的原因：因为点击过程中也存在释放的情况，所以如果点击后保存的话。则无法选取图形
     public void mouseReleased(MouseEvent e) {
         getDrawBoard().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
@@ -117,6 +118,7 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
                 chosenContent = myShape;    //提取出选中的图形
                 contentsGroup.remove(i);
                 getDrawBoard().redraw();  //画板重画。重画后除了选中的图形，其余图形全部出现在副本上，但是原本还没有刷新，仍然能看到选中的图形
+
                 return true;
             }
         }

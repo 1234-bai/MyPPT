@@ -15,6 +15,7 @@ import com.Paint.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class MyHome extends MyFrame {
 
@@ -313,6 +314,11 @@ public class MyHome extends MyFrame {
                 }
         );
         //设置样式改变按钮的监听器
+        ArrayList<Float> lineWidthGroup = new ArrayList<>();
+        double minLineWidth = 1f;
+        for(int i = 1; i <= 30; ++i){
+            lineWidthGroup.add((float)i);
+        }
         penStyleButtons.setButtonsListener(
                 new MouseAdapter() {
                     @Override
@@ -323,9 +329,20 @@ public class MyHome extends MyFrame {
                     }
                 },
                 new MouseAdapter() {
+
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        super.mouseClicked(e);
+                        Float lineWidth = (Float)JOptionPane.showInputDialog(
+                                null,
+                                "请选择线宽",
+                                "选取线宽...",
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,
+                                lineWidthGroup.toArray(),
+                                minLineWidth
+                        );
+                        if(lineWidth == null){return;}
+                        drawBoard.setPenStyle(lineWidth);
                     }
                 }
         );
