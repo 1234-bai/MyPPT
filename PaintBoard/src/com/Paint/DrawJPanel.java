@@ -1,6 +1,7 @@
 package com.Paint;
 
 import com.Listeners.BaseListener.DrawListener;
+import com.Listeners.ChoseListener;
 import com.MyShapes.BaseShape.MyShape;
 import com.Operations.ChildOperation.DrawShape;
 
@@ -206,6 +207,9 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         if(drawBoardPen == null){return;}
         drawBoardPen.setColor(c);
         drawBoardPen_copy.setColor(c);
+        if(drawListener instanceof ChoseListener){
+            ((ChoseListener) drawListener).setChosenContentColor(c);
+        }
     }
 
 
@@ -222,14 +226,20 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         BasicStroke stroke = new BasicStroke(lineWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
         drawBoardPen.setStroke(stroke);
         drawBoardPen_copy.setStroke(stroke);
+        if(drawListener instanceof ChoseListener){
+            ((ChoseListener) drawListener).setChosenContentLineWidth(lineWidth);
+        }
     }
 
 
-
+    private static final Color DEFAULT_BACKGROUND_COLOR = Color.WHITE;
     public void setTextFont(Font font){
         if(drawBoardPen == null){return;}
         drawBoardPen.setFont(font);
         drawBoardPen_copy.setFont(font);
+        if(drawListener instanceof ChoseListener){
+            ((ChoseListener) drawListener).setChosenContentFont(font, DEFAULT_BACKGROUND_COLOR);
+        }
     }
 
     /**
