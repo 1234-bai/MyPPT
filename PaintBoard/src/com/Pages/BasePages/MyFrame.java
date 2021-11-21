@@ -86,7 +86,7 @@ public class MyFrame extends JFrame {
                 titleBar.setBounds(0,0, getWidth(), TITLE_BAR_HEIGHT);
             }
         });
-        closeButton.addActionListener(e -> System.exit(0));
+        closeButton.addActionListener(e -> dispose());
 
         titleCloseButtons.setBackground(CONSTANTS.MY_COLOR.TITLE_BAR_COLOR);
         titleCloseButtons.setLayout(new GridLayout(1, 3));
