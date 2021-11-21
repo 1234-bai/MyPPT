@@ -114,6 +114,12 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
 
     @Override
     public void deleteChosenContent() {  //因为没有保存在副本中，所以刷新副本让图形不再呈现在眼前就可以了。
+        if(chosenContent == null){
+            return;
+        }
+        getContentsGroup().remove(chosenContent);
+        chosenContent = null;   //其实删掉后还存在，这里设置成null。后续改成撤销操作
+        getDrawBoard().redraw();
         getDrawBoard().refresh();
     }
 
@@ -144,18 +150,6 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
         chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。不用载入副本的
     }
 
-    @Override
-    public void setChosenContentFont(Font newFont, Color backgroundColor) {
-        if(chosenContent == null){return;}
-        if(!(chosenContent instanceof MyText)){return;}
-        Color oldColor = chosenContent.getColor();  //保存原来的颜色
-        chosenContent.setColor(backgroundColor);    //设置为背景色，将之前写过的部分覆盖掉，以免难看
-        chosenContent.draw(getListenerPen());
-        chosenContent.setColor(oldColor);
-        ((MyText) chosenContent).setFont(newFont);
-        chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。不用载入副本的
-    }
-
 
     @Override
     public void saveChoseContent() {
@@ -169,5 +163,48 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
         }
 
 //        getContentsGroup().add(chosenContent);
+    }
+
+
+
+    private boolean choseContentIsNotText(){
+        if(chosenContent == null){
+            return true;
+        }
+        return !(chosenContent instanceof MyText);
+    }
+    private void fillPreText(Color backgroundColor){
+        Color oldColor = chosenContent.getColor();  //保存原来的颜色
+        chosenContent.setColor(backgroundColor);    //设置为背景色，将之前写过的部分覆盖掉，以免难看
+        chosenContent.draw(getListenerPen());
+        chosenContent.setColor(oldColor);
+    }
+    @Override
+    public void setChosenContentFont(Font newFont, Color backgroundColor) {
+        if(choseContentIsNotText()){return;}
+        fillPreText(backgroundColor);
+        ((MyText) chosenContent).setFont(newFont);
+        chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。不用载入副本的
+    }
+    public void setChosenContentFontFamily(String newFamily, Color backgroundColor) {
+        if(choseContentIsNotText()){return;}
+        fillPreText(backgroundColor);
+        Font oldFont = ((MyText) chosenContent).getFont();
+        ((MyText) chosenContent).setFont(new Font(newFamily, oldFont.getStyle(), oldFont.getSize()));
+        chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。不用载入副本的
+    }
+    public void setChosenContentFontStyle(int newStyle, Color backgroundColor) {
+        if(choseContentIsNotText()){return;}
+        fillPreText(backgroundColor);
+        Font oldFont = ((MyText) chosenContent).getFont();
+        ((MyText) chosenContent).setFont(new Font(oldFont.getFontName(), newStyle, oldFont.getSize()));
+        chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。不用载入副本的
+    }
+    public void setChosenContentFontSize(int newSize, Color backgroundColor) {
+        if(choseContentIsNotText()){return;}
+        fillPreText(backgroundColor);
+        Font oldFont = ((MyText) chosenContent).getFont();
+        ((MyText) chosenContent).setFont(new Font(oldFont.getFontName(), oldFont.getStyle(), newSize));
+        chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。不用载入副本的
     }
 }

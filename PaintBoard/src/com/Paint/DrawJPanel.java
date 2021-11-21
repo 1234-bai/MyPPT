@@ -2,6 +2,7 @@ package com.Paint;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.Listeners.ChoseListener;
+import com.Listeners.MyShapesListener.TextListener;
 import com.MyShapes.BaseShape.MyShape;
 import com.Operations.ChildOperation.DrawShape;
 import com.Operations.ChildOperation.MoveShape;
@@ -210,6 +211,8 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         drawBoardPen_copy.setColor(c);
         if(drawListener instanceof ChoseListener){
             ((ChoseListener) drawListener).setChosenContentColor(c);
+        } else if(drawListener instanceof TextListener){
+            ((TextListener) drawListener).setFontColor(c);
         }
     }
 
@@ -233,6 +236,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     }
 
 
+    //巨恶心。。。。。这设置字体的代码
     private static final Color DEFAULT_BACKGROUND_COLOR = Color.WHITE;
     public void setTextFont(Font font){
         if(drawBoardPen == null){return;}
@@ -240,6 +244,42 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         drawBoardPen_copy.setFont(font);
         if(drawListener instanceof ChoseListener){
             ((ChoseListener) drawListener).setChosenContentFont(font, DEFAULT_BACKGROUND_COLOR);
+        } else if(drawListener instanceof TextListener){
+            ((TextListener) drawListener).setFont(font);
+        }
+    }
+    public void setTextFamily(String newFontFamily){
+        if(drawBoardPen == null){return;}
+        Font oldFont = drawBoardPen.getFont();
+        Font newFont = new Font(newFontFamily, oldFont.getStyle(), oldFont.getSize());
+        drawBoardPen.setFont(newFont); drawBoardPen_copy.setFont(newFont);
+        if(drawListener instanceof ChoseListener){
+            ((ChoseListener) drawListener).setChosenContentFontFamily(newFontFamily, DEFAULT_BACKGROUND_COLOR);
+        } else if(drawListener instanceof TextListener){
+            ((TextListener) drawListener).setFontFamily(newFontFamily);
+        }
+    }
+    public void setTextStyle(int newStyle){
+        if(drawBoardPen == null){return;}
+        Font oldFont = drawBoardPen.getFont();
+        Font newFont = new Font(oldFont.getFontName(), newStyle, oldFont.getSize());
+        drawBoardPen.setFont(newFont); drawBoardPen_copy.setFont(newFont);
+        if(drawListener instanceof ChoseListener){
+            ((ChoseListener) drawListener).setChosenContentFontStyle(newStyle, DEFAULT_BACKGROUND_COLOR);
+        } else if(drawListener instanceof TextListener){
+            ((TextListener) drawListener).setFontStyle(newStyle);
+        }
+    }
+    public void setTextSize(int newSize){
+        if(drawBoardPen == null){return;}
+        Font oldFont = drawBoardPen.getFont();
+        Font newFont = new Font(oldFont.getFontName(), oldFont.getStyle(), newSize);
+        drawBoardPen.setFont(newFont);
+        drawBoardPen_copy.setFont(newFont);
+        if(drawListener instanceof ChoseListener){
+            ((ChoseListener) drawListener).setChosenContentFontSize(newSize, DEFAULT_BACKGROUND_COLOR);
+        } else if(drawListener instanceof TextListener){
+            ((TextListener) drawListener).setFontSize(newSize);
         }
     }
 
