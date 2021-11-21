@@ -16,7 +16,7 @@ public class ImageShowBoard {
     }
 
     private final Vector<ImageIcon> copyGroup = new Vector<>();   //获得的PPT文件的副本组
-    private final JList<ImageIcon> copyShowBoard = new JList<>(copyGroup);    //副本的展示板
+    private JList<ImageIcon> copyShowBoard = new JList<>(copyGroup);    //副本的展示板
     private MyDrawPPTIml drawPPT;   //ppt滑动列表展示的ppt;
 
     public ImageShowBoard() {
@@ -41,6 +41,12 @@ public class ImageShowBoard {
             e.printStackTrace();
         }
 
+    }
+
+    public void clear(){
+        copyGroup.clear();
+        copyShowBoard = new JList<>(copyGroup);
+        copyShowBoard.setCellRenderer(new ImageCellRenderer()); //为List加入的单元渲染器
     }
 
     public JList<ImageIcon> getCopyShowBoard() {
