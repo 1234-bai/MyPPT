@@ -290,6 +290,18 @@ public class MyHome extends MyFrame {
                     public void mouseClicked(MouseEvent e) {
                         drawBoard.setBoardListener(new RectangleListener(true));
                     }
+                },
+                new MouseAdapter() {    //撤销监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e){
+                        drawBoard.revoke();
+                    }
+                },
+                new MouseAdapter() {    //重做监听器
+                    @Override
+                    public void mouseClicked(MouseEvent e){
+                        drawBoard.redo();
+                    }
                 }
         );
     }

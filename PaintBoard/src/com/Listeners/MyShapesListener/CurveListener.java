@@ -2,6 +2,7 @@ package com.Listeners.MyShapesListener;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.ChildrenShapes.MyCurve;
+import com.Operations.ChildOperation.DrawShape;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -22,6 +23,10 @@ public class CurveListener extends DrawListener {
                 getListenerPen().getColor(),
                 ((BasicStroke)getListenerPen().getStroke()).getLineWidth()
         );
+
+        //记录操作
+        DrawShape drawShape = new DrawShape();
+        drawShape.addOperation(getDrawBoard());
     }
 
     @Override

@@ -16,6 +16,13 @@ public class MyImage extends MyShape {
         this.path = path;
     }
 
+    //带偏移量的构造方法
+    public MyImage(Image image, double coordinateX, double coordinateY, double translateX, double translateY, Color color, float lineWidth, String path) {
+        super(coordinateX, coordinateY, translateX, translateY, color, lineWidth);
+        this.image = image;
+        this.path = path;
+    }
+
     @Override
     public boolean contains(double x, double y) {
         x-=translateX; y-=translateY;
