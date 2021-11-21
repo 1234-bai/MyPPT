@@ -1,6 +1,7 @@
 package com.Paint;
 
 import com.Listeners.BaseListener.DrawListener;
+import com.Listeners.ChoseListener;
 import com.MyShapes.BaseShape.MyShape;
 import com.Operations.ChildOperation.DrawShape;
 
@@ -91,6 +92,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     /**
      * 初始化画笔，是线条更加圆滑，减小锯齿。看起来更美观。
      */
+    public static final float BASE_LINE_WIDTH = 2F;
     private void penStyleInitial(){
         drawBoardPen.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         drawBoardPen.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);
@@ -98,7 +100,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         drawBoardPen_copy.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         drawBoardPen_copy.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);
 
-        setPenStyle(1.5f);
+        setPenStyle(BASE_LINE_WIDTH);
     }
 
 
@@ -205,6 +207,9 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         if(drawBoardPen == null){return;}
         drawBoardPen.setColor(c);
         drawBoardPen_copy.setColor(c);
+        if(drawListener instanceof ChoseListener){
+            ((ChoseListener) drawListener).setChosenContentColor(c);
+        }
     }
 
 
@@ -221,14 +226,20 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         BasicStroke stroke = new BasicStroke(lineWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
         drawBoardPen.setStroke(stroke);
         drawBoardPen_copy.setStroke(stroke);
+        if(drawListener instanceof ChoseListener){
+            ((ChoseListener) drawListener).setChosenContentLineWidth(lineWidth);
+        }
     }
 
 
-
+    private static final Color DEFAULT_BACKGROUND_COLOR = Color.WHITE;
     public void setTextFont(Font font){
         if(drawBoardPen == null){return;}
         drawBoardPen.setFont(font);
         drawBoardPen_copy.setFont(font);
+        if(drawListener instanceof ChoseListener){
+            ((ChoseListener) drawListener).setChosenContentFont(font, DEFAULT_BACKGROUND_COLOR);
+        }
     }
 
     /**

@@ -32,13 +32,15 @@ public interface ChoseListenerIml {
      */
     void setChosenContentLineWidth(float newLineWidth);
 
+    void setChosenContentFont(Font newFont, Color backgroundColor);
+
 //    /**
 //     * 改变选中的文本内容
 //     */
 //    void setChosenText(String newText);
 
     /**
-     * 将选中后的图形加入到图形栈中
+     * 将选中后的图形在副本上画出来
      */
     void saveChoseContent();
 }

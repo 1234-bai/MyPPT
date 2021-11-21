@@ -15,6 +15,7 @@ import com.Paint.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class MyHome extends MyFrame {
 
@@ -28,6 +29,14 @@ public class MyHome extends MyFrame {
             setBorder(BorderFactory.createLineBorder(Color.lightGray,1));
         }
     }
+
+
+
+    public void run(){
+        setVisible(true);
+        drawBoard.drawBoardPenInitial();
+    }
+
 
 
     //底部说明栏
@@ -304,6 +313,39 @@ public class MyHome extends MyFrame {
                     }
                 }
         );
+        //设置样式改变按钮的监听器
+        ArrayList<Float> lineWidthGroup = new ArrayList<>();
+        double minLineWidth = 1f;
+        for(int i = 1; i <= 30; ++i){
+            lineWidthGroup.add((float)i);
+        }
+        penStyleButtons.setButtonsListener(
+                new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        Color color = JColorChooser.showDialog(null,"选取颜色",Color.BLACK);
+                        if(color == null){return;}
+                        drawBoard.setPenStyle(color);
+                    }
+                },
+                new MouseAdapter() {
+
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        Float lineWidth = (Float)JOptionPane.showInputDialog(
+                                null,
+                                "请选择线宽",
+                                "选取线宽...",
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,
+                                lineWidthGroup.toArray(),
+                                minLineWidth
+                        );
+                        if(lineWidth == null){return;}
+                        drawBoard.setPenStyle(lineWidth);
+                    }
+                }
+        );
     }
 
 
@@ -346,7 +388,7 @@ public class MyHome extends MyFrame {
                 }
             }
         });
-        //画板加入实时更新的监听器
+        //画板加入类似实时更新的监听器
         drawBoard.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -379,11 +421,6 @@ public class MyHome extends MyFrame {
                 getHeight() - PPT_SHOW_BOARD_Y - BOTTOM_BAR_HEIGHT - PPT_BOTTOM_OFFSET
         );
         add(pptShowBoard);
-    }
-
-    public void run(){
-        setVisible(true);
-        drawBoard.drawBoardPenInitial();
     }
 
 }

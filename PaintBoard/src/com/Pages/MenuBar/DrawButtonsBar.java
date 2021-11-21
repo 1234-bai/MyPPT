@@ -19,8 +19,8 @@ public class DrawButtonsBar extends ClearPanel {
     private final ImageButton filledRectButton = new ImageButton("实心矩形","PaintBoard/images/MenuBar/Draw/filledRect.png");
 
     //图标帮我更新一下
-    private final ImageButton revokeButton = new ImageButton("撤销","PaintBoard/images/MenuBar/Draw/filledRect.png");
-    private final ImageButton redoButton = new ImageButton("重做","PaintBoard/images/MenuBar/Draw/filledRect.png");
+    private final ImageButton revokeButton = new ImageButton("撤销","PaintBoard/images/MenuBar/Draw/revoke.png");
+    private final ImageButton redoButton = new ImageButton("重做","PaintBoard/images/MenuBar/Draw/redo.png");
 
     public DrawButtonsBar() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
