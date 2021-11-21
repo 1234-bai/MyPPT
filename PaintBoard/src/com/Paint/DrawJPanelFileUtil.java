@@ -43,6 +43,8 @@ public class DrawJPanelFileUtil {
 
 
     /**
+     * 读取画板
+     * 已弃用
      *
      * @param file 要加载的文件形成的对象
      * @return 加载好的画板
@@ -226,8 +228,186 @@ public class DrawJPanelFileUtil {
     }
 
     /**
+     * String转换成画板
+     * 用于ppt的读取
      *
-     * @param file  要保存的文件路径形成的对象
+     * @param strings 图像构成的String数组
+     * @return 转换后的画板
+     */
+    public static DrawJPanel toDrawBoard(ArrayList<String> strings){
+        DrawJPanel drawBoard = new DrawJPanel();
+        for(String data:strings){
+            String[] dataSplit = data.split(" \\| ");    //对字符串按照设定规则进行分片
+            String type = dataSplit[0];
+            switch (type) {
+                case "MyLine": {
+
+                    //恢复Line2D
+                    double x1 = Double.parseDouble(dataSplit[1]);
+                    double y1 = Double.parseDouble(dataSplit[2]);
+                    double x2 = Double.parseDouble(dataSplit[3]);
+                    double y2 = Double.parseDouble(dataSplit[4]);
+                    Line2D line = new Line2D.Double(x1, y1, x2, y2);
+
+                    //恢复其他参数
+                    Color color = new Color(Integer.parseInt(dataSplit[7]));
+                    float lineWidth = Float.parseFloat(dataSplit[8]);
+
+                    //添加进图形栈
+                    drawBoard.getContentsGroup().add(new MyLine(line, color, lineWidth));
+
+                    break;
+                }
+                case "MyCircle": {
+
+                    //恢复Ellipse2D
+                    double x = Double.parseDouble(dataSplit[1]);
+                    double y = Double.parseDouble(dataSplit[2]);
+                    double w = Double.parseDouble(dataSplit[3]);
+                    double h = Double.parseDouble(dataSplit[4]);
+                    Ellipse2D ellipse = new Ellipse2D.Double(x, y, w, h);
+
+                    //恢复其他参数
+                    boolean isFilled = Boolean.parseBoolean(dataSplit[5]);
+                    double coordinateX = Double.parseDouble(dataSplit[6]);
+                    double coordinateY = Double.parseDouble(dataSplit[7]);
+                    Color color = new Color(Integer.parseInt(dataSplit[8]));
+                    float lineWidth = Float.parseFloat(dataSplit[9]);
+
+                    //添加进图形栈
+                    drawBoard.getContentsGroup().add(new MyCircle(ellipse, coordinateX, coordinateY, color, lineWidth, isFilled));
+
+                    break;
+                }
+                case "MyRectangle": {
+
+                    //恢复Rectangle2D
+                    double x = Double.parseDouble(dataSplit[1]);
+                    double y = Double.parseDouble(dataSplit[2]);
+                    double w = Double.parseDouble(dataSplit[3]);
+                    double h = Double.parseDouble(dataSplit[4]);
+                    Rectangle2D rectangle = new Rectangle2D.Double(x, y, w, h);
+
+                    //恢复其他参数
+                    boolean isFilled = Boolean.parseBoolean(dataSplit[5]);
+                    double coordinateX = Double.parseDouble(dataSplit[6]);
+                    double coordinateY = Double.parseDouble(dataSplit[7]);
+                    Color color = new Color(Integer.parseInt(dataSplit[8]));
+                    float lineWidth = Float.parseFloat(dataSplit[9]);
+
+                    //添加进图形栈
+                    drawBoard.getContentsGroup().add(new MyRectangle(rectangle, coordinateX, coordinateY, color, lineWidth, isFilled));
+
+                    break;
+                }
+                case "MyPolygon": {
+
+                    //恢复Polygon的坐标集合
+                    String[] ss1 = dataSplit[1].split("[\\[\\] ,]");
+                    Vector<Integer> x = new Vector<>();
+                    for (String s : ss1) {
+                        if (!s.equals("")) {
+                            x.add(Integer.parseInt(s));
+                        }
+                    }
+                    String[] ss2 = dataSplit[2].split("[\\[\\] ,]");
+                    Vector<Integer> y = new Vector<>();
+                    for (String s : ss2) {
+                        if (!s.equals("")) {
+                            y.add(Integer.parseInt(s));
+                        }
+                    }
+
+                    //恢复其他参数
+                    Color color = new Color(Integer.parseInt(dataSplit[6]));
+                    float lineWidth = Float.parseFloat(dataSplit[7]);
+
+                    //添加进图形栈
+                    drawBoard.getContentsGroup().add(new MyPolygon(x, y, color, lineWidth));
+
+                    break;
+                }
+                case "MyCurve": {
+
+                    //读取Curve的直线集合
+                    ArrayList<Line2D> lineGroup = new ArrayList<>();
+                    int size = Integer.parseInt(dataSplit[1]);
+                    for (int i = 0; i < size; i++) {
+                        double x1 = Double.parseDouble(dataSplit[i * 4 + 2]);
+                        double y1 = Double.parseDouble(dataSplit[i * 4 + 3]);
+                        double x2 = Double.parseDouble(dataSplit[i * 4 + 4]);
+                        double y2 = Double.parseDouble(dataSplit[i * 4 + 5]);
+                        Line2D line = new Line2D.Double(x1, y1, x2, y2);
+                        lineGroup.add(line);
+                    }
+
+                    //恢复其他参数
+                    double coordinateX = Double.parseDouble(dataSplit[size * 4 + 2]);
+                    double coordinateY = Double.parseDouble(dataSplit[size * 4 + 3]);
+                    Color color = new Color(Integer.parseInt(dataSplit[size * 4 + 4]));
+                    float lineWidth = Float.parseFloat(dataSplit[size * 4 + 5]);
+
+                    //添加进图形栈
+                    MyCurve myCurve = new MyCurve(coordinateX, coordinateY, color, lineWidth);
+                    myCurve.setLineGroup(lineGroup);
+                    drawBoard.getContentsGroup().add(myCurve);
+
+                    break;
+                }
+                case "MyText": {
+
+                    //恢复Font
+                    String name = dataSplit[1];
+                    int style = Integer.parseInt(dataSplit[2]);
+                    int size = Integer.parseInt(dataSplit[3]);
+                    Font font = new Font(name, style, size);
+
+                    //恢复其他属性
+                    int width = Integer.parseInt(dataSplit[4]);
+                    int height = Integer.parseInt(dataSplit[5]);
+                    String text = dataSplit[6];
+                    double coordinateX = Double.parseDouble(dataSplit[7]);
+                    double coordinateY = Double.parseDouble(dataSplit[8]);
+                    Color color = new Color(Integer.parseInt(dataSplit[9]));
+                    float lineWidth = Float.parseFloat(dataSplit[10]);
+
+                    //添加进图形栈
+                    drawBoard.getContentsGroup().add(new MyText(coordinateX, coordinateY, width, height, color, lineWidth, font, text));
+
+                    break;
+                }
+                case "MyImage": {
+
+                    //恢复Image
+                    String path = dataSplit[1];
+                    System.out.println(path);
+                    Image image = null;
+                    try {
+                        image = ImageIO.read(new File(path));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    //恢复其他属性
+                    double coordinateX = Double.parseDouble(dataSplit[2]);
+                    double coordinateY = Double.parseDouble(dataSplit[3]);
+                    Color color = new Color(Integer.parseInt(dataSplit[4]));
+                    float lineWidth = Float.parseFloat(dataSplit[5]);
+
+                    //添加进图形栈
+                    drawBoard.getContentsGroup().add(new MyImage(image, coordinateX, coordinateY, color, lineWidth, path));
+
+                    break;
+                }
+            }
+        }
+        return drawBoard;
+    }
+
+    /**
+     * 保存画板
+     *
+     * @param file      要保存的文件路径形成的对象
      * @param drawBoard 要保存的画板
      * @return 保存是否成功
      */
