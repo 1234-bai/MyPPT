@@ -20,6 +20,15 @@ public class MyText extends MyShape {
         this.text = text;
     }
 
+    //带偏移量的构造方法
+    public MyText(double coordinateX, double coordinateY, double translateX, double translateY, int width, int height, Color color, float lineWidth, Font font, String text) {
+        super(coordinateX, coordinateY, translateX, translateY, color, lineWidth);
+        this.font = font;
+        this.width = width;
+        this.height = height;
+        this.text = text;
+    }
+
     @Override
     public boolean contains(double x, double y) {
         x-=translateX; y-=translateY;

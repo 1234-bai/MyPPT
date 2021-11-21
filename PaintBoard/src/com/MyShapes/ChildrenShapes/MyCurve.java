@@ -16,6 +16,12 @@ public class MyCurve extends MyShape {
         ZERO_DIRECT = 1.0;
     }
 
+    //带偏移量的构造方法
+    public MyCurve(double coordinateX, double coordinateY, double translateX, double translateY, Color color, float lineWidth) {
+        super(coordinateX, coordinateY, translateX, translateY, color, lineWidth);
+        ZERO_DIRECT = 1.0;
+    }
+
     public void add(Line2D line){
         lineGroup.add(line);
     }
