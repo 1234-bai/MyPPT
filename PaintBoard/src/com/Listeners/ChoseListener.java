@@ -2,6 +2,7 @@ package com.Listeners;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
+import com.Operations.ChildOperation.MoveShape;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -13,6 +14,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class ChoseListener extends DrawListener implements ChoseListenerIml{
 
     private MyShape chosenContent = null;   //鼠标点击选中的对象
+
+    private double translateX, translateY;  //选中对象的原始偏移量
 
     private int preX = 0, preY = 0 ;    //拖动过程中，前一个点的坐标
 
@@ -102,6 +105,14 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
 
     private void clearContent(){
         if(chosenContent != null){  //保存之前选中的图形
+
+            //偏移量变化则认为发生了平移操作
+            if (translateX != chosenContent.getTranslateX() ||
+                    translateY != chosenContent.getTranslateY()) {
+                MoveShape moveShape = new MoveShape();
+                moveShape.addOperation(getDrawBoard(), translateX, translateY);
+            }
+
             saveChoseContent();
             chosenContent = null;
         }
@@ -115,6 +126,11 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
             MyShape myShape = contentsGroup.get(i);  //获得的是MyShape类
             if(myShape.contains(x, y)){
                 chosenContent = myShape;    //提取出选中的图形
+
+                //保存原始偏移量
+                translateX = chosenContent.getTranslateX();
+                translateY = chosenContent.getTranslateY();
+
                 contentsGroup.remove(i);
                 getDrawBoard().redraw();  //画板重画。重画后除了选中的图形，其余图形全部出现在副本上，但是原本还没有刷新，仍然能看到选中的图形
                 return true;
