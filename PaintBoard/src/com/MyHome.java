@@ -53,14 +53,9 @@ public class MyHome extends MyFrame {
 
     //幻灯片下拉列表
     private static final int SLIDE_BAR_WIDTH = 400;
-    private EmptyFillPanel imgSlideBar = new EmptyFillPanel(
-                0,
-                ALL_TOP_BAR_HEIGHT,
-                SLIDE_BAR_WIDTH,
-                getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT
-            ));
-    ImageShowBoard slide = new ImageShowBoard();    //图像列表
-    JScrollPane imgScrollPane = new JScrollPane(slide);    //下拉列表框，用来放置生成的图像列表，形成滚动条
+    private EmptyFillPanel imgSlideBar;
+    ImageShowBoard imageShowGroup;    //图像列表
+    JScrollPane imgScrollPane;    //下拉列表框，用来放置生成的图像列表，形成滚动条
 
     //PPT展示板
     //相对滑动板块定位
@@ -82,9 +77,9 @@ public class MyHome extends MyFrame {
         //菜单栏初始化
         initMenu();
 
-        imgScrollPane.setPreferredSize(new Dimension(350,getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)));
-        imgSlideBar.add(imgScrollPane);
-        add(imgSlideBar);
+        //下拉列表初始化
+        initSlideBar();
+
 
         //画板
         pptShowBoard.add(drawBoard);
@@ -212,8 +207,8 @@ public class MyHome extends MyFrame {
                 new MouseAdapter() {    //点击“新建”按钮的监听器
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        //填充创建一个新PPT的代码。
-                        //slide.setDrawPPT(new MyDrawPPT().getMyPPT());
+                        //新开一个页面，但是退出的时候，会全退出
+                        new MyHome().run();
                     }
                 },
                 new MouseAdapter() {    //点击“打开文件”按钮的监听器
@@ -222,7 +217,7 @@ public class MyHome extends MyFrame {
                         //填充加载代码。如下。
                         MyDrawPPT myDrawPPT = new MyDrawPPT();
                         myDrawPPT.loadPPT();
-                        slide.setDrawPPT(myDrawPPT);
+                        imageShowGroup.setDrawPPT(myDrawPPT);
                         imgSlideBar.validate();
                     }
                 },
@@ -230,7 +225,7 @@ public class MyHome extends MyFrame {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         //填充保存代码。如下。根据实际情况调整
-                        slide.getDrawPPT().savePPT();
+                        imageShowGroup.getDrawPPT().savePPT();
                     }
                 }
         );
@@ -240,7 +235,7 @@ public class MyHome extends MyFrame {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         //填充新建代码，以下代码有bug:不知道JList更新元素后咋更新
-                        slide.addNewPicture(new DrawJPanel());
+                        imageShowGroup.addNewPicture(new DrawJPanel());
                         imgScrollPane.validate();
                     }
                 },
@@ -310,14 +305,26 @@ public class MyHome extends MyFrame {
         );
     }
 
-
+    /**
+     * 初始化下拉列表
+     */
+    public void initSlideBar(){
+        imgSlideBar = new EmptyFillPanel(
+                0,
+                ALL_TOP_BAR_HEIGHT,
+                SLIDE_BAR_WIDTH,
+                getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT
+                ));
+        imageShowGroup = new ImageShowBoard();    //图像列表
+        imgScrollPane = new JScrollPane(imageShowGroup);    //下拉列表框，用来放置生成的图像列表，形成滚动条
+        imgScrollPane.setPreferredSize(new Dimension(350,getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)));    //设置下拉框大小
+        imgSlideBar.add(imgScrollPane);     //将滑动板加入到界面内
+        add(imgSlideBar);
+    }
 
     public void run(){
         setVisible(true);
         drawBoard.drawBoardPenInitial();
     }
 
-    public static void main(String[] args) {
-        new MyHome().run();
-    }
 }
