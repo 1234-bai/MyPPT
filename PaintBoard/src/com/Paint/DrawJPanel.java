@@ -4,6 +4,7 @@ import com.Listeners.BaseListener.DrawListener;
 import com.Listeners.ChoseListener;
 import com.MyShapes.BaseShape.MyShape;
 import com.Operations.ChildOperation.DrawShape;
+import com.Operations.ChildOperation.MoveShape;
 
 import javax.swing.*;
 import java.awt.*;
@@ -318,10 +319,16 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     public void revoke() {
         if (operations.size() != 0) {   //操作栈不为空时才能撤销
             String s = operations.get(operations.size() - 1);
-            switch (s){
-                case "DrawShape":{
+            switch (s) {
+                case "DrawShape": {
                     DrawShape drawShape = new DrawShape();
                     drawShape.revoke(this);
+                    break;
+                }
+                case "MoveShape": {
+                    MoveShape moveShape = new MoveShape();
+                    moveShape.revoke(this);
+                    break;
                 }
             }
         }
@@ -337,11 +344,17 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
      */
     public void redo() {
         if (redoOperations.size() != 0) {   //重做操作栈不为空时才能重做
-            String s = redoOperations.get(redoOperations.size()-1);
-            switch (s){
-                case "DrawShape":{
+            String s = redoOperations.get(redoOperations.size() - 1);
+            switch (s) {
+                case "DrawShape": {
                     DrawShape drawShape = new DrawShape();
                     drawShape.redo(this);
+                    break;
+                }
+                case "MoveShape": {
+                    MoveShape moveShape = new MoveShape();
+                    moveShape.redo(this);
+                    break;
                 }
             }
         }
