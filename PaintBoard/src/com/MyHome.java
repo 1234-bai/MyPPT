@@ -30,6 +30,14 @@ public class MyHome extends MyFrame {
     }
 
 
+
+    public void run(){
+        setVisible(true);
+        drawBoard.drawBoardPenInitial();
+    }
+
+
+
     //底部说明栏
     private static final int BOTTOM_BAR_HEIGHT = 30;
 
@@ -292,6 +300,23 @@ public class MyHome extends MyFrame {
                     }
                 }
         );
+        //设置样式改变按钮的监听器
+        penStyleButtons.setButtonsListener(
+                new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        Color color = JColorChooser.showDialog(null,"选取颜色",Color.BLACK);
+                        if(color == null){return;}
+                        drawBoard.setPenStyle(color);
+                    }
+                },
+                new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        super.mouseClicked(e);
+                    }
+                }
+        );
     }
 
 
@@ -334,7 +359,7 @@ public class MyHome extends MyFrame {
                 }
             }
         });
-        //画板加入实时更新的监听器
+        //画板加入类似实时更新的监听器
         drawBoard.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -367,11 +392,6 @@ public class MyHome extends MyFrame {
                 getHeight() - PPT_SHOW_BOARD_Y - BOTTOM_BAR_HEIGHT - PPT_BOTTOM_OFFSET
         );
         add(pptShowBoard);
-    }
-
-    public void run(){
-        setVisible(true);
-        drawBoard.drawBoardPenInitial();
     }
 
 }
