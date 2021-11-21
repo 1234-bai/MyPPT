@@ -4,6 +4,7 @@ import com.Listeners.ChoseListener;
 import com.Listeners.MyShapesListener.*;
 
 import com.Listeners.MyShapesListener.TextListener;
+import com.Operations.ChildOperation.MoveShape;
 import com.Pages.*;
 import com.Pages.BasePages.MyFrame;
 import com.Pages.BasePages.ClearPanel;
@@ -256,6 +257,11 @@ public class MyHome extends MyFrame {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         drawBoard.setBoardListener(new ChoseListener());
+
+                        //清空操作
+                        //意思是一旦进行了点击了选取按钮，之前的所有操作均不能撤销与重做
+                        MoveShape moveShape = new MoveShape();
+                        moveShape.clearOperation(drawBoard);
                     }
                 },
                 new MouseAdapter() {    //“直线”的监听器
