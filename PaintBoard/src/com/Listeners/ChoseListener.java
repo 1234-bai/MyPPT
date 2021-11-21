@@ -2,15 +2,10 @@ package com.Listeners;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
-import com.MyShapes.ChildrenShapes.MyText;
-import com.Paint.DrawJPanel;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseWheelEvent;
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * 能够实现的功能：选择图形，选中后改变样式。但是改变样式的菜单没有写。只有在
@@ -72,7 +67,7 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
     public void mouseMoved(MouseEvent e) {
         //此处代码复用做的不好，有时间再改
         int x = e.getX(), y = e.getY();
-        ArrayList<MyShape> contentsGroup = getContentsGroup();
+        CopyOnWriteArrayList<MyShape> contentsGroup = getContentsGroup();
         int length = contentsGroup.size();
         for (int i = length - 1; i >= 0; i--) { //从栈顶开始查询
             MyShape myShape = contentsGroup.get(i);  //获得的是MyShape类
@@ -114,7 +109,7 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
 
     @Override
     public boolean choseContent(double x, double y) {
-        ArrayList<MyShape> contentsGroup = getContentsGroup();
+        CopyOnWriteArrayList<MyShape> contentsGroup = getContentsGroup();
         int length = contentsGroup.size();
         for (int i = length - 1; i >= 0; i--) { //从栈顶开始查询
             MyShape myShape = contentsGroup.get(i);  //获得的是MyShape类

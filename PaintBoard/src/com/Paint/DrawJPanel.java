@@ -2,19 +2,11 @@ package com.Paint;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
-import com.MyShapes.ChildrenShapes.*;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
@@ -25,9 +17,9 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
     private DrawListener drawListener;  //画正在运行板的监听器，当按下不同的功能按钮的时候，将此监听器设置为按钮所对应的监听器
 
-    private ArrayList<MyShape> contentsGroup = new ArrayList<>();    //内容数组，存放画过的图形
+    private CopyOnWriteArrayList<MyShape> contentsGroup = new CopyOnWriteArrayList<>();    //内容数组，存放画过的图形
 
-    private final ArrayList<MyShape> redoContentsGroup = new ArrayList<>();   //重做内容数组，存放撤销操作删除的图形
+    private final CopyOnWriteArrayList<MyShape> redoContentsGroup = new CopyOnWriteArrayList<>();   //重做内容数组，存放撤销操作删除的图形
 
 
     /**
@@ -60,7 +52,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     }
 
 
-    public ArrayList<MyShape> getContentsGroup() {
+    public CopyOnWriteArrayList<MyShape> getContentsGroup() {
         return contentsGroup;
     }
 
@@ -152,7 +144,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
      * 重画，画笔更新，副本更新。
      * 选取时调用。没有父容器，重新载入副本时调用。
      */
-    public void redraw(){
+    public synchronized void redraw(){
 //        super.paint(drawBoardPen);  //只需要清空副本就可以了，不需要清空原本。
         drawBoardPen_copy = null; drawBoard_copy = null;    //清空副本，但是监听器不清空
         createCopy();   //重新获得全新的副本
@@ -166,7 +158,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
 
     /**
-     * 清空本画板的全部鼠标监听器
+     * 清空本画板的全部画画监听器
      */
     private void clearMouseListeners(){
         if(drawListener != null){
@@ -274,7 +266,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         redoContentsGroup.clear();
     }
 
-    public void setContentsGroup(ArrayList<MyShape> contentsGroup) {
+    public void setContentsGroup(CopyOnWriteArrayList<MyShape> contentsGroup) {
         this.contentsGroup = contentsGroup;
     }
 }
