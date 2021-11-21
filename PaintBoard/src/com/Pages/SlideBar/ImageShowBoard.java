@@ -30,6 +30,7 @@ public class ImageShowBoard extends JList<ImageIcon>{
 
     public void setDrawPPT(MyDrawPPTIml drawPP) {
         this.drawPPT = drawPP;
+        copyGroup.clear();
         for(DrawJPanel picture : drawPPT.getMyPPT()){
             picture.redraw();
             copyGroup.addElement(getFitIcon(picture.getDrawBoard_copy()));
