@@ -2,10 +2,12 @@ package com.Paint;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
+import com.Operations.ChildOperation.DrawShape;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class DrawJPanel extends JPanel implements DrawJPanelIml{
@@ -20,6 +22,10 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     private CopyOnWriteArrayList<MyShape> contentsGroup = new CopyOnWriteArrayList<>();    //内容数组，存放画过的图形
 
     private final CopyOnWriteArrayList<MyShape> redoContentsGroup = new CopyOnWriteArrayList<>();   //重做内容数组，存放撤销操作删除的图形
+
+    private ArrayList<String> operations = new ArrayList<>();   //操作数组，用于记录操作
+
+    private ArrayList<String> redoOperations = new ArrayList<>();   //重做操作数组
 
 
     /**
@@ -54,6 +60,10 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
     public CopyOnWriteArrayList<MyShape> getContentsGroup() {
         return contentsGroup;
+    }
+
+    public CopyOnWriteArrayList<MyShape> getRedoContentsGroup(){
+        return redoContentsGroup;
     }
 
     /**
@@ -235,28 +245,110 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     }
 
     /**
+     * 取得操作数组
+     * @return 操作数组
+     */
+    public ArrayList<String> getOperations(){
+        return operations;
+    }
+
+    /**
+     * 取得重做操作数组
+     * @return 重做操作数组
+     */
+    public ArrayList<String> getRedoOperations(){
+        return redoOperations;
+    }
+
+    public void operations_Push(String s) {
+        operations.add(s);
+    }
+
+    public String operations_Pop() {
+        String s = operations.get(operations.size() - 1);
+        operations.remove(operations.size() - 1);
+        return s;
+    }
+
+    public void redoOperations_Push(String s) {
+        redoOperations.add(s);
+    }
+
+    public String redoOperations_Pop() {
+        String s = redoOperations.get(redoOperations.size() - 1);
+        redoOperations.remove(redoOperations.size() - 1);
+        return s;
+    }
+
+    public void contentsGroup_Push(MyShape myShape) {
+        contentsGroup.add(myShape);
+    }
+
+    public MyShape contentsGroup_Pop() {
+        MyShape myShape = contentsGroup.get(contentsGroup.size() - 1);
+        contentsGroup.remove(contentsGroup.size() - 1);
+        return myShape;
+    }
+
+    public void redoContentsGroup_Push(MyShape myShape) {
+        redoContentsGroup.add(myShape);
+    }
+
+    public MyShape redoContentsGroup_Pop() {
+        MyShape myShape = redoContentsGroup.get(redoContentsGroup.size() - 1);
+        redoContentsGroup.remove(redoContentsGroup.size() - 1);
+        return myShape;
+    }
+
+    /**
      * 撤销
      * 存在问题：目前撤销与重做功能仅对画图功能有效，后续解决图像删除、平移等操作的撤销需要重写
      */
-    public void revoke(){
-        redoContentsGroup.add(contentsGroup.get(contentsGroup.size()-1));   //撤销图形移入重做图形栈
-        contentsGroup.remove(contentsGroup.size()-1);   //移除栈顶图形
-        redraw();
-        refresh();
+    public void revoke() {
+        if (operations.size() != 0) {   //操作栈不为空时才能撤销
+            String s = operations.get(operations.size() - 1);
+            switch (s){
+                case "DrawShape":{
+                    DrawShape drawShape = new DrawShape();
+                    drawShape.revoke(this);
+                }
+            }
+        }
+
+//        redoContentsGroup.add(contentsGroup.get(contentsGroup.size() - 1));   //撤销图形移入重做图形栈
+//        contentsGroup.remove(contentsGroup.size() - 1);   //移除栈顶图形
+//        redraw();
+//        refresh();
     }
 
     /**
      * 重做
      */
-    public void redo(){
-
-        //重做栈非空时才能重做
-        if(!redoContentsGroup.isEmpty()){
-            contentsGroup.add(redoContentsGroup.get(redoContentsGroup.size()-1));
-            redoContentsGroup.remove(redoContentsGroup.size()-1);
-            redraw();
-            refresh();
+    public void redo() {
+        if (redoOperations.size() != 0) {   //重做操作栈不为空时才能重做
+            String s = redoOperations.get(redoOperations.size()-1);
+            switch (s){
+                case "DrawShape":{
+                    DrawShape drawShape = new DrawShape();
+                    drawShape.redo(this);
+                }
+            }
         }
+
+//        //重做栈非空时才能重做
+//        if (!redoContentsGroup.isEmpty()) {
+//            contentsGroup.add(redoContentsGroup.get(redoContentsGroup.size() - 1));
+//            redoContentsGroup.remove(redoContentsGroup.size() - 1);
+//            redraw();
+//            refresh();
+//        }
+    }
+
+    /**
+     * 清空重做操作栈
+     */
+    public void clearRedoOperations(){
+        redoOperations.clear();
     }
 
     /**
