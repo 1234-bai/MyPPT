@@ -83,31 +83,6 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
         getDrawBoard().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));   //如果位置上有图形
     }
 
-//    /**
-//     * 用来做一些收尾工作。会导致无法在外界改变颜色
-//     * @param e
-//     */
-//    @Override
-//    public void mouseExited(MouseEvent e) {
-//        clearContent();
-//    }
-//
-//
-//    private void clearContent(){
-//        if(chosenContent != null){  //保存之前选中的图形
-//
-//            //偏移量变化则认为发生了平移操作
-//            if (translateX != chosenContent.getTranslateX() ||
-//                    translateY != chosenContent.getTranslateY()) {
-//                MoveShape moveShape = new MoveShape();
-//                moveShape.addOperation(getDrawBoard(), translateX, translateY);
-//            }
-//
-//            saveChoseContent();
-//            chosenContent = null;
-//        }
-//    }
-
     @Override
     public boolean choseContent(double x, double y) {
         CopyOnWriteArrayList<MyShape> contentsGroup = getContentsGroup();
@@ -117,9 +92,9 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
             if(myShape.contains(x, y)){
                 chosenContent = myShape;    //提取出选中的图形
 
-//                //保存原始偏移量
-//                translateX = chosenContent.getTranslateX();
-//                translateY = chosenContent.getTranslateY();
+                //保存原始偏移量
+                translateX = chosenContent.getTranslateX();
+                translateY = chosenContent.getTranslateY();
 
                 contentsGroup.remove(i);
                 getDrawBoard().redraw();  //画板重画。重画后除了选中的图形，其余图形全部出现在副本上，但是原本还没有刷新，仍然能看到选中的图形
@@ -185,6 +160,14 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
     @Override
     public void saveChoseContent() {
         chosenContent.draw(getListenerPen_copy());  //在副本上画出来，就是保存了
+
+        //偏移量变化则认为发生了平移操作
+        if (translateX != chosenContent.getTranslateX() ||
+                translateY != chosenContent.getTranslateY()) {
+            MoveShape moveShape = new MoveShape();
+            moveShape.addOperation(getDrawBoard(), translateX, translateY);
+        }
+
 //        getContentsGroup().add(chosenContent);
     }
 }
