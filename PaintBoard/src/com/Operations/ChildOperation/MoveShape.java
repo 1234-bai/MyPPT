@@ -9,6 +9,10 @@ public class MoveShape extends BaseOps {
     @Override
     public void addOperation(DrawJPanel drawBoard, double translateX, double translateY) {
 
+        //由于选取图像后的操作会改变图形栈的图形次序，为避免操作应用到错误的对象上，故清空操作栈
+        //意味着选取图像后重做只能返回到现在的操作前，再之前的操作无法重做
+        drawBoard.clearOperations();
+
         //逆序压栈
         drawBoard.operations_Push(String.valueOf(translateY));
         drawBoard.operations_Push(String.valueOf(translateX));
