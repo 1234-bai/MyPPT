@@ -3,6 +3,7 @@ package com;
 import com.Listeners.ChoseListener;
 import com.Listeners.MyShapesListener.*;
 
+import com.Listeners.MyShapesListener.TextListener;
 import com.Pages.*;
 import com.Pages.BasePages.MyFrame;
 import com.Pages.BasePages.ClearPanel;
@@ -13,10 +14,7 @@ import com.Paint.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class MyHome extends MyFrame {
 
@@ -336,13 +334,21 @@ public class MyHome extends MyFrame {
                 }
             }
         });
-        //开启一个线程不断更新之前选中的那一页
-        new Thread(() -> {
-            while (true){
+        //画板加入实时更新的监听器
+        drawBoard.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
                 imgSlideGroup.updateSelectedPicture();
                 imgSlideGroup.validate();
             }
-        }).start();
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                imgSlideGroup.updateSelectedPicture();
+                imgSlideGroup.validate();
+            }
+
+        });
     }
 
 
