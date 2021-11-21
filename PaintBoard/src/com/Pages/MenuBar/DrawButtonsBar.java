@@ -18,6 +18,10 @@ public class DrawButtonsBar extends ClearPanel {
     private final ImageButton rectButton = new ImageButton("矩形","PaintBoard/images/MenuBar/Draw/rect.png");
     private final ImageButton filledRectButton = new ImageButton("实心矩形","PaintBoard/images/MenuBar/Draw/filledRect.png");
 
+    //图标帮我更新一下
+    private final ImageButton revokeButton = new ImageButton("撤销","PaintBoard/images/MenuBar/Draw/filledRect.png");
+    private final ImageButton redoButton = new ImageButton("重做","PaintBoard/images/MenuBar/Draw/filledRect.png");
+
     public DrawButtonsBar() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
@@ -29,6 +33,9 @@ public class DrawButtonsBar extends ClearPanel {
         add(filledCircleButton);
         add(rectButton);
         add(filledRectButton);
+
+        add(revokeButton);
+        add(redoButton);
     }
 
     public ImageButton getChoseButton() {
@@ -71,7 +78,10 @@ public class DrawButtonsBar extends ClearPanel {
             MouseListener circleListener,
             MouseListener filledCircleListener,
             MouseListener rectangleListener,
-            MouseListener filledRectListener
+            MouseListener filledRectListener,
+
+            MouseListener revokeListener,
+            MouseListener redoListener
     ){
         choseButton.addMouseListener(choseListener);
         lineButton.addMouseListener(lineListener);
@@ -81,5 +91,8 @@ public class DrawButtonsBar extends ClearPanel {
         filledCircleButton.addMouseListener(filledCircleListener);
         rectButton.addMouseListener(rectangleListener);
         filledRectButton.addMouseListener(filledRectListener);
+
+        revokeButton.addMouseListener(revokeListener);
+        redoButton.addMouseListener(redoListener);
     }
 }

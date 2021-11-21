@@ -15,7 +15,11 @@ public class MyLine extends MyShape {
         this.line = line;
     }
 
-
+    //带偏移量的构造方法
+    public MyLine(Line2D line, double coordinateX, double coordinateY, double translateX, double translateY, Color color, float lineWidth) {
+        super(coordinateX, coordinateY, translateX, translateY, color, lineWidth);
+        this.line = line;
+    }
 
     /**
      * 由于line不为封闭图形，所以Line2D的contains()始终返回假，随意需要自己写contains。
