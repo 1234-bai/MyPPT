@@ -4,6 +4,7 @@ import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
 import com.MyShapes.ChildrenShapes.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -24,7 +25,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
 
     private DrawListener drawListener;  //画正在运行板的监听器，当按下不同的功能按钮的时候，将此监听器设置为按钮所对应的监听器
 
-    private final ArrayList<MyShape> contentsGroup = new ArrayList<>();    //内容数组，存放画过的图形
+    private ArrayList<MyShape> contentsGroup = new ArrayList<>();    //内容数组，存放画过的图形
 
     private final ArrayList<MyShape> redoContentsGroup = new ArrayList<>();   //重做内容数组，存放撤销操作删除的图形
 
@@ -37,19 +38,17 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         return drawBoardPen;
     }
 
+    @Override
+    public Image getDrawBoard_copy() {
+        return drawBoard_copy;
+    }
+
     /**
      *
      * @return 画板画笔的副本
      */
     public Graphics2D getDrawBoardPen_copy() {
         return drawBoardPen_copy;
-    }
-
-    /**
-     * 刷新本画板，将副本内容载入画板。
-     */
-    public void refresh(){
-        drawBoardPen.drawImage(drawBoard_copy, 0 ,0, null);
     }
 
     /**
@@ -78,22 +77,14 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         //this.setBorder(BorderFactory.createLineBorder(Color.red,3));
     }
 
-
     /**
-     * 重画，画笔更新，副本更新。
-     * 选取时调用。
+     * 刷新本画板，将副本内容载入画板。
      */
-    public void redraw(){
-//        super.paint(drawBoardPen);  //只需要清空副本就可以了，不需要清空原本。
-        drawBoardPen_copy = null; drawBoard_copy = null;    //清空副本，但是监听器不清空
-        createCopy();   //重新获得全新的副本
-        penStyleRecover(drawBoardPen, drawBoardPen_copy);
-
-        for(MyShape myShape : contentsGroup){    //因为重画后需要刷新，所以只在副本上画就可以了
-            myShape.draw(drawBoardPen_copy);
-        }
-//        refresh();  //载入副本。不需要载入副本，因为做着一切的时候，原本没有发生任何变化
+    public void refresh(){
+        drawBoardPen.drawImage(drawBoard_copy, 0 ,0, null);
     }
+
+
 
     /**
      * 初始化画笔，是线条更加圆滑，减小锯齿。看起来更美观。
@@ -118,17 +109,29 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     private void penStyleRecover(Graphics2D oldPen, Graphics2D newPen){
         newPen.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         newPen.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);    //还原圆润度
-        newPen.setColor(oldPen.getColor());    //还原颜色
-        newPen.setStroke(oldPen.getStroke());  //还原线宽
+        if(oldPen != null){
+            newPen.setColor(oldPen.getColor());    //还原颜色
+            newPen.setStroke(oldPen.getStroke());  //还原线宽
+        }
     }
 
+    public static final double WIDTH_RATE = 0.7;    //画板副本宽度占屏幕宽度的系数
+    public static final double HEIGHT_RATE = 0.7;   //副本高度占副本高度的系数
     /**
      * 创造本画板以及本画板画笔的副本
      */
     private void createCopy(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        drawBoard_copy = (BufferedImage) this.createImage((int)screenSize.getWidth(), (int)screenSize.getHeight());  //创建画板副本
+        int width = (int)(screenSize.getWidth()*WIDTH_RATE), height = (int)(screenSize.getHeight()*HEIGHT_RATE);
+//        drawBoard_copy = (BufferedImage) this.createImage((int)screenSize.getWidth(), (int)screenSize.getHeight());  //创建画板副本
+        drawBoard_copy = new BufferedImage(width, height,BufferedImage.TYPE_INT_ARGB);  //创建独立副本，脱离父容器的约束
+        for(int i = 0; i < width;++i){  //将副本渲染成白色
+            for(int j = 0; j < height;++j){
+                drawBoard_copy.setRGB(i,j,Color.WHITE.getRGB());
+            }
+        }
         drawBoardPen_copy = drawBoard_copy.createGraphics();  //创建副本画笔。
+        penStyleRecover(drawBoardPen, drawBoardPen_copy);
     }
 
     /**
@@ -145,7 +148,21 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         }
     }
 
+    /**
+     * 重画，画笔更新，副本更新。
+     * 选取时调用。没有父容器，重新载入副本时调用。
+     */
+    public void redraw(){
+//        super.paint(drawBoardPen);  //只需要清空副本就可以了，不需要清空原本。
+        drawBoardPen_copy = null; drawBoard_copy = null;    //清空副本，但是监听器不清空
+        createCopy();   //重新获得全新的副本
+        penStyleRecover(drawBoardPen, drawBoardPen_copy);
 
+        for(MyShape myShape : contentsGroup){    //因为重画后需要刷新，所以只在副本上画就可以了
+            myShape.draw(drawBoardPen_copy);
+        }
+//        refresh();  //载入副本。不需要载入副本，因为做着一切的时候，原本没有发生任何变化
+    }
 
 
     /**
@@ -220,173 +237,10 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (MyShape myShape : contentsGroup) {
-            if (myShape instanceof MyCircle ||
-                    myShape instanceof MyLine ||
-                    myShape instanceof MyPolygon ||
-                    myShape instanceof MyRectangle) {
-                stringBuilder.append(myShape);
-            }
+            stringBuilder.append(myShape);
         }
         return stringBuilder.toString();
     }
-
-    /**
-     * 保存画板内容
-     * 由于当前只有一个画板，故先写该类中，等后续相关功能完善后再做修改
-     */
-    public void saveDrawJPanel(){
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("另存为...");
-        fileChooser.setApproveButtonText("确定");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("*.myppt","myppt"));
-        fileChooser.setMultiSelectionEnabled(false);
-
-        int result = fileChooser.showSaveDialog(null);
-        if(result==JFileChooser.APPROVE_OPTION){
-            File file = fileChooser.getSelectedFile();
-            if(!file.getPath().endsWith(".txt")){
-                file = new File(file.getPath()+".myppt");
-            }
-            System.out.println("file path = "+file.getPath());
-            try{
-                if(!file.exists()){
-                    file.createNewFile();   //文件不存在则新建文件
-                }
-                BufferedWriter bufferedWriter = new BufferedWriter(
-                        new FileWriter(file.getAbsoluteFile())
-                );
-                bufferedWriter.write(this.toString());
-                bufferedWriter.flush(); //把缓冲区内容压入文件
-                bufferedWriter.close(); //关闭文件
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    /**
-     * 载入画板内容
-     * 由于当前只有一个画板，故先写该类中，等后续相关功能完善后再做修改
-     */
-    public void loadDrawJPanel(){
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("载入...");
-        fileChooser.setApproveButtonText("确定");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("*.myppt","myppt"));
-        fileChooser.setMultiSelectionEnabled(false);
-
-        int result = fileChooser.showOpenDialog(null);
-        if(result == JFileChooser.APPROVE_OPTION){
-            File file = fileChooser.getSelectedFile();
-
-            try {
-                BufferedReader bufferedReader = new BufferedReader(
-                        new InputStreamReader(
-                                new FileInputStream(file))
-                );
-                String data;
-
-                //按行读文件
-                while ((data = bufferedReader.readLine()) != null) {
-                    String[] dataSplit = data.split(" \\| ");    //对字符串按照设定规则进行分片
-                    String type = dataSplit[0];
-                    switch (type) {
-                        case "MyLine": {
-
-                            //恢复Line2D
-                            double x1 = Double.parseDouble(dataSplit[1]);
-                            double y1 = Double.parseDouble(dataSplit[2]);
-                            double x2 = Double.parseDouble(dataSplit[3]);
-                            double y2 = Double.parseDouble(dataSplit[4]);
-                            Line2D line = new Line2D.Double(x1, y1, x2, y2);
-
-                            //恢复其他参数
-                            Color color = new Color(Integer.parseInt(dataSplit[7]));
-                            float lineWidth = Float.parseFloat(dataSplit[8]);
-
-                            //添加进图形栈
-                            contentsGroup.add(new MyLine(line, color, lineWidth));
-
-                            break;
-                        }
-                        case "MyCircle": {
-
-                            //恢复Ellipse2D
-                            double x = Double.parseDouble(dataSplit[1]);
-                            double y = Double.parseDouble(dataSplit[2]);
-                            double w = Double.parseDouble(dataSplit[3]);
-                            double h = Double.parseDouble(dataSplit[4]);
-                            Ellipse2D ellipse = new Ellipse2D.Double(x, y, w, h);
-
-                            //恢复其他参数
-                            boolean isFilled = Boolean.parseBoolean(dataSplit[5]);
-                            double coordinateX = Double.parseDouble(dataSplit[6]);
-                            double coordinateY = Double.parseDouble(dataSplit[7]);
-                            Color color = new Color(Integer.parseInt(dataSplit[8]));
-                            float lineWidth = Float.parseFloat(dataSplit[9]);
-
-                            //添加进图形栈
-                            contentsGroup.add(new MyCircle(ellipse, coordinateX, coordinateY, color, lineWidth, isFilled));
-
-                            break;
-                        }
-                        case "MyRectangle": {
-
-                            //恢复Rectangle2D
-                            double x = Double.parseDouble(dataSplit[1]);
-                            double y = Double.parseDouble(dataSplit[2]);
-                            double w = Double.parseDouble(dataSplit[3]);
-                            double h = Double.parseDouble(dataSplit[4]);
-                            Rectangle2D rectangle = new Rectangle2D.Double(x, y, w, h);
-
-                            //恢复其他参数
-                            boolean isFilled = Boolean.parseBoolean(dataSplit[5]);
-                            double coordinateX = Double.parseDouble(dataSplit[6]);
-                            double coordinateY = Double.parseDouble(dataSplit[7]);
-                            Color color = new Color(Integer.parseInt(dataSplit[8]));
-                            float lineWidth = Float.parseFloat(dataSplit[9]);
-
-                            //添加进图形栈
-                            contentsGroup.add(new MyRectangle(rectangle, coordinateX, coordinateY, color, lineWidth, isFilled));
-
-                            break;
-                        }
-                        case "MyPolygon": {
-
-                            //恢复Polygon的坐标集合
-                            String[] ss1 = dataSplit[1].split("[\\[\\] ,]");
-                            Vector<Integer> x = new Vector<>();
-                            for (String s : ss1) {
-                                if (!s.equals("")) {
-                                    x.add(Integer.parseInt(s));
-                                }
-                            }
-                            String[] ss2 = dataSplit[2].split("[\\[\\] ,]");
-                            Vector<Integer> y = new Vector<>();
-                            for (String s : ss2) {
-                                if (!s.equals("")) {
-                                    y.add(Integer.parseInt(s));
-                                }
-                            }
-
-                            //恢复其他参数
-                            Color color = new Color(Integer.parseInt(dataSplit[6]));
-                            float lineWidth = Float.parseFloat(dataSplit[7]);
-
-                            //添加进图形栈
-                            contentsGroup.add(new MyPolygon(x, y, color, lineWidth));
-                            break;
-                        }
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        redraw();
-        refresh();   //将载入图像显示出来
-    }
-
 
     /**
      * 撤销
@@ -420,4 +274,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
         redoContentsGroup.clear();
     }
 
+    public void setContentsGroup(ArrayList<MyShape> contentsGroup) {
+        this.contentsGroup = contentsGroup;
+    }
 }

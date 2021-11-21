@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class MyCurve extends MyShape {
 
-    private final ArrayList<Line2D> lineGroup = new ArrayList<>();
+    private ArrayList<Line2D> lineGroup = new ArrayList<>();
 
     public MyCurve(double coordinateX, double coordinateY, Color color, float lineWidth) {
         super(coordinateX, coordinateY, color, lineWidth);
@@ -18,6 +18,10 @@ public class MyCurve extends MyShape {
 
     public void add(Line2D line){
         lineGroup.add(line);
+    }
+
+    public void setLineGroup(ArrayList<Line2D> lineGroup) {
+        this.lineGroup = lineGroup;
     }
 
     private final static int NUM_POINTS = 10;
@@ -45,5 +49,33 @@ public class MyCurve extends MyShape {
     @Override
     protected void drawInBoard(Graphics2D g){
         lineGroup.forEach(g::draw);
+    }
+
+    /**
+     * String开头的"MyCurve"用于标识图形类型
+     * MyCurve的恢复采用new MyCurve(double coordinateX, double coordinateY, Color color, float lineWidth)方法
+     */
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("MyCurve");
+        stringBuilder.append(" | ");
+
+        //保存直线条数以及每条直线的4个坐标
+        stringBuilder.append(lineGroup.size());
+        stringBuilder.append(" | ");
+        for (Line2D line : lineGroup) {
+            stringBuilder.append(line.getX1());
+            stringBuilder.append(" | ");
+            stringBuilder.append(line.getY1());
+            stringBuilder.append(" | ");
+            stringBuilder.append(line.getX2());
+            stringBuilder.append(" | ");
+            stringBuilder.append(line.getY2());
+            stringBuilder.append(" | ");
+        }
+
+        stringBuilder.append(super.toString());
+        return stringBuilder.toString();
     }
 }

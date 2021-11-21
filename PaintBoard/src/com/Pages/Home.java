@@ -4,23 +4,25 @@ import com.Listeners.BaseListener.DrawListener;
 import com.Listeners.ChoseListener;
 import com.Listeners.MyShapesListener.*;
 import com.Paint.DrawJPanel;
+import com.Paint.DrawJPanelFileUtil;
+import com.Paint.MyDrawPPT;
+
 import javax.swing.*;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 public class Home extends JFrame {
 
-    private final DrawJPanel drawBoard = new DrawJPanel();
+    private DrawJPanel drawBoard;
     private JPanel toolButtons = new JPanel();
 
 
-    private JButton createShapeButton(String name, DrawListener listener) {
-        JButton jButton = new JButton(name);
+    private JButton createShapeButton(DrawListener listener) {
+        JButton jButton = new JButton();
         jButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -35,7 +37,7 @@ public class Home extends JFrame {
 
 //------------------------------------------------------------------------------------------------------------------
         //直线
-        JButton lineButton = createShapeButton("", new LineListener());
+        JButton lineButton = createShapeButton(new LineListener());
         lineButton.setIcon(new ImageIcon("PaintBoard/images/line.png"));
         lineButton.setSize(200,200);
         lineButton.setBackground(new Color(230,230,230));
@@ -44,7 +46,7 @@ public class Home extends JFrame {
         lineButton.setFocusPainted(false);
 
         //多边形
-        JButton polyButton = createShapeButton("", new PolygonListener());
+        JButton polyButton = createShapeButton(new PolygonListener());
         polyButton.setIcon(new ImageIcon("PaintBoard/images/polygon.jpg"));
         polyButton.setSize(200,200);
         polyButton.setBackground(new Color(230,230,230));
@@ -53,7 +55,7 @@ public class Home extends JFrame {
         polyButton.setFocusPainted(false);
 
         //曲线
-        JButton curveButton = createShapeButton("", new CurveListener());
+        JButton curveButton = createShapeButton(new CurveListener());
         curveButton.setIcon(new ImageIcon("PaintBoard/images/curve.png"));
         curveButton.setSize(200,200);
         curveButton.setBackground(new Color(230,230,230));
@@ -62,7 +64,7 @@ public class Home extends JFrame {
         curveButton.setFocusPainted(false);
 
         //圆形
-        JButton circButton = createShapeButton("", new CircleListener(false));
+        JButton circButton = createShapeButton(new CircleListener(false));
         circButton.setIcon(new ImageIcon("PaintBoard/images/ellipse.png"));
         circButton.setSize(200,200);
         circButton.setBackground(new Color(230,230,230));
@@ -71,7 +73,7 @@ public class Home extends JFrame {
         circButton.setFocusPainted(false);
 
         //实心圆形
-        JButton fillCircButton = createShapeButton("", new CircleListener(true));
+        JButton fillCircButton = createShapeButton(new CircleListener(true));
         fillCircButton.setIcon(new ImageIcon("PaintBoard/images/filledellipse.png"));
         fillCircButton.setSize(200,200);
         fillCircButton.setBackground(new Color(230,230,230));
@@ -80,7 +82,7 @@ public class Home extends JFrame {
         fillCircButton.setFocusPainted(false);
 
         //矩形
-        JButton rectButton = createShapeButton("", new RectangleListener(false));
+        JButton rectButton = createShapeButton(new RectangleListener(false));
         rectButton.setIcon(new ImageIcon("PaintBoard/images/rectangle.png"));
         rectButton.setSize(200,200);
         rectButton.setBackground(new Color(230,230,230));
@@ -89,7 +91,7 @@ public class Home extends JFrame {
         rectButton.setFocusPainted(false);
 
         //实心矩形
-        JButton fillRectButton = createShapeButton("", new RectangleListener(true));
+        JButton fillRectButton = createShapeButton(new RectangleListener(true));
         fillRectButton.setIcon(new ImageIcon("PaintBoard/images/filledrectangle.png"));
         fillRectButton.setSize(200,200);
         fillRectButton.setBackground(new Color(230,230,230));
@@ -98,7 +100,7 @@ public class Home extends JFrame {
         fillRectButton.setFocusPainted(false);
 
         //插入图片
-        JButton imageButton = createShapeButton("", new ImageListener());
+        JButton imageButton = createShapeButton(new ImageListener());
         imageButton.setIcon(new ImageIcon("PaintBoard/images/insert.png"));
         imageButton.setSize(200,200);
         imageButton.setBackground(new Color(230,230,230));
@@ -252,9 +254,9 @@ public class Home extends JFrame {
         JMenu menu1 = new JMenu("File  ");
         JMenuItem Save = new JMenuItem("Save");
         ImageIcon Savelogo = new ImageIcon("PaintBoard/images/savefile.png");
-        Image SaveoldLogo = Savelogo.getImage().getScaledInstance(20,15,Image.SCALE_SMOOTH);
-        ImageIcon SavenewLogo = new ImageIcon(SaveoldLogo);
-        Save.setIcon(SavenewLogo);
+//        Image SaveoldLogo = Savelogo.getImage().getScaledInstance(20,15,Image.SCALE_SMOOTH);
+//        ImageIcon SavenewLogo = new ImageIcon(SaveoldLogo);
+        Save.setIcon(Savelogo);
         JMenuItem Open = new JMenuItem("Open");
         ImageIcon Openlogo = new ImageIcon("PaintBoard/images/openfile.png");
         Image OpenoldLogo = Openlogo.getImage().getScaledInstance(20,15,Image.SCALE_SMOOTH);
@@ -284,7 +286,23 @@ public class Home extends JFrame {
         Open.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if(e.getSource()==Open){
-                    drawBoard.loadDrawJPanel();
+
+                    //测试
+                    MyDrawPPT myDrawPPT = new MyDrawPPT();
+                    myDrawPPT.loadPPT();
+                    System.out.println(myDrawPPT.getMyPPT().size());    //输出ppt页数
+
+                    //过期测试
+//                    File file = DrawJPanelFileUtil.choseFile("myppt", "载入...", "确定", "open");
+//                    DrawJPanel DP1 = DrawJPanelFileUtil.loadDrawBoard(file);
+//                    if (DP1 != null) {
+//                        DP1.setBounds((int) screenSize.getWidth() / 2 - 750, 130, screenSize.width - 40, screenSize.width / 2 + 80);
+//                        add(DP1);
+//                        validate();
+//                        DP1.drawBoardPenInitial();
+//                        DP1.redraw();
+//                        DP1.refresh();
+//                    }
                 }
             }
         });
@@ -292,7 +310,11 @@ public class Home extends JFrame {
         Save.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
                if(e.getSource()==Save){
-                   drawBoard.saveDrawJPanel();
+                   File file = DrawJPanelFileUtil.choseFile("myppt","另存为...","确定","save");
+                   boolean b = DrawJPanelFileUtil.saveDrawBoard(file,drawBoard);
+                   if(b){
+                       System.out.println("保存成功");
+                   }
                }
            }
         });
@@ -328,22 +350,17 @@ public class Home extends JFrame {
             e1.printStackTrace();
         }
 
-        //画板大小
-        drawBoard.setBounds((int) screenSize.getWidth()/2-750, 130, screenSize.width-400, screenSize.width/2+80);
+
 
         add(slidesList);
         add(emptyPanel1);
         add(emptyPanel2);
         add(emptyPanel3);
-        add(drawBoard);
-
-
 
     }
 
     public void Run() {
         setVisible(true);
-        drawBoard.drawBoardPenInitial();
     }
 
     public static void main(String[] args) {

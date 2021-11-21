@@ -1,0 +1,58 @@
+package com.Pages.MenuBar;
+
+import com.Pages.BasePages.ImageButton;
+import com.Pages.BasePages.ClearPanel;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class DrawButtonsBar extends ClearPanel {
+
+    private final ImageButton lineButton = new ImageButton("直线","PaintBoard/images/MenuBar/Draw/line.png");
+    private final ImageButton curveButton = new ImageButton("曲线","PaintBoard/images/MenuBar/Draw/curve.png");
+    private final ImageButton polyButton = new ImageButton("多边形","PaintBoard/images/MenuBar/Draw/poly.png");
+    private final ImageButton circleButton = new ImageButton("圆形","PaintBoard/images/MenuBar/Draw/circle.png");
+    private final ImageButton filledCircleButton = new ImageButton("实心圆形","PaintBoard/images/MenuBar/Draw/filledCircle.png");
+    private final ImageButton rectButton = new ImageButton("矩形","PaintBoard/images/MenuBar/Draw/rect.png");
+    private final ImageButton filledRectButton = new ImageButton("实心矩形","PaintBoard/images/MenuBar/Draw/filledRect.png");
+
+    public DrawButtonsBar() {
+        setLayout(new FlowLayout(FlowLayout.LEFT));
+
+        add(lineButton);
+        add(curveButton);
+        add(polyButton);
+        add(circleButton);
+        add(filledCircleButton);
+        add(rectButton);
+        add(filledRectButton);
+    }
+
+    public JButton getLineButton() {
+        return lineButton.getButton();
+    }
+
+    public JButton getCurveButton() {
+        return curveButton.getButton();
+    }
+
+    public JButton getPolyButton() {
+        return polyButton.getButton();
+    }
+
+    public JButton getCircleButton() {
+        return circleButton.getButton();
+    }
+
+    public JButton getFilledCircleButton() {
+        return filledCircleButton.getButton();
+    }
+
+    public JButton getRectButton() {
+        return rectButton.getButton();
+    }
+
+    public JButton getFilledRectButton() {
+        return filledRectButton.getButton();
+    }
+}

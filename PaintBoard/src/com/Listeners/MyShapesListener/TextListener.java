@@ -56,9 +56,7 @@ public class TextListener extends DrawListener{
 
         drawBoard.setPenStyle(oldColor);    //恢复原来的颜色
 
-        drawBoard.remove(textField);   //移除组件
-        textField = null;   //文本框清空
-        drawBoard.refresh();   //刷新，将添加的组件在画板上移除
+        clearTextField();
     }
 
     private class FontKeyListener extends KeyAdapter {
@@ -93,13 +91,32 @@ public class TextListener extends DrawListener{
     private final static int TEXT_FIELD_OFFSET = -15;   //为了让鼠标点击后，鼠标在显示的文本框正中间，文本框出现的偏移量
     @Override
     public void mouseClicked(MouseEvent e) {
+        clear();
+        putTextField(clickX = e.getX(), clickY = e.getY(), 100, 30, null);
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        int x = e.getX(), y = e.getY();
+        if(getDrawBoard().contains(x, y)){return;}
+        clear();
+    }
+
+    private void clearTextField(){
+        if(textField == null) return;
+        DrawJPanel drawBoard = getDrawBoard();
+        drawBoard.remove(textField);   //移除组件
+        textField = null;   //文本框清空
+        drawBoard.refresh();   //刷新，将添加的组件在画板上移除
+    }
+    private void clear(){
         if(textField != null){  //存在正在输入的文本框
             if(!textField.getText().equals("")){
                 drawString();
+            } else{
+                clearTextField();
             }
-            return;
         }
-        putTextField(clickX = e.getX(), clickY = e.getY(), 100, 30, null);
     }
 
     private void putTextField(int x, int y, int width, int length, String placeHolder){
