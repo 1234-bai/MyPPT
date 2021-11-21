@@ -24,6 +24,17 @@ public class MyPolygon extends MyShape {
         polygon = new Polygon(xx, yy, size);
     }
 
+    //带偏移量的构造方法
+    public MyPolygon(Vector<Integer> x, Vector<Integer> y, int size,double coordinateX, double coordinateY, double translateX, double translateY, Color color, float lineWidth) throws IndexOutOfBoundsException {
+        super(coordinateX, coordinateY, translateX, translateY, color, lineWidth);
+        int[] xx = new int[size];
+        int[] yy = new int[size];
+        for (int i = 0; i < size; i++) {
+            xx[i] = x.get(i);
+            yy[i] = y.get(i);
+        }
+        polygon = new Polygon(xx, yy, size);
+    }
 
     @Override
     public boolean contains(double x, double y) {

@@ -17,6 +17,13 @@ public class MyRectangle extends MyShape{
         this.isFilled = isFilled;
     }
 
+    //带偏移量的构造方法
+    public MyRectangle(Rectangle2D rectangle, double coordinateX, double coordinateY, double translateX, double translateY, Color color, float lineWidth, boolean isFilled) {
+        super(coordinateX, coordinateY, translateX, translateY, color, lineWidth);
+        this.rectangle = rectangle;
+        this.isFilled = isFilled;
+    }
+
     @Override
     public boolean contains(double x, double y) {
         return rectangle.contains(x-translateX, y-translateY);

@@ -12,7 +12,7 @@ import com.Pages.SlideBar.ImageShowBoard;
 import com.Paint.DrawJPanel;
 import com.Paint.DrawJPanelFileUtil;
 import com.Paint.MyDrawPPTIml;
-import com.Paint.testPPT;
+//import com.Paint.testPPT;
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,21 +88,21 @@ public class MyHome extends MyFrame {
 
         //下拉列表
         //测试用
-        File file = DrawJPanelFileUtil.choseFile("myppt", "载入...", "确定", "open");
-        DrawJPanel DP1 = DrawJPanelFileUtil.loadDrawBoard(file);
-        DrawJPanel DP2 = DrawJPanelFileUtil.loadDrawBoard(file);
-        DrawJPanel DP3 = DrawJPanelFileUtil.loadDrawBoard(file);
-        DrawJPanel DP4 = DrawJPanelFileUtil.loadDrawBoard(file);
-        DrawJPanel DP5 = DrawJPanelFileUtil.loadDrawBoard(file);
-        DrawJPanel DP6 = DrawJPanelFileUtil.loadDrawBoard(file);
-        testPPT testPPT = new testPPT();
-        testPPT.getMyPPT().add(DP1);testPPT.getMyPPT().add(DP2);testPPT.getMyPPT().add(DP3);testPPT.getMyPPT().add(DP4);testPPT.getMyPPT().add(DP5);testPPT.getMyPPT().add(DP6);
-
-        slide.setDrawPPT(testPPT);
-        imgSrollPane = new JScrollPane(slide.getCopyShowBoard());
-        imgSrollPane.setPreferredSize(new Dimension(350,getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)));
-        imgSlideBar.add(imgSrollPane);
-        add(imgSlideBar);
+//        File file = DrawJPanelFileUtil.choseFile("myppt", "载入...", "确定", "open");
+//        DrawJPanel DP1 = DrawJPanelFileUtil.loadDrawBoard(file);
+//        DrawJPanel DP2 = DrawJPanelFileUtil.loadDrawBoard(file);
+//        DrawJPanel DP3 = DrawJPanelFileUtil.loadDrawBoard(file);
+//        DrawJPanel DP4 = DrawJPanelFileUtil.loadDrawBoard(file);
+//        DrawJPanel DP5 = DrawJPanelFileUtil.loadDrawBoard(file);
+//        DrawJPanel DP6 = DrawJPanelFileUtil.loadDrawBoard(file);
+//        testPPT testPPT = new testPPT();
+//        testPPT.getMyPPT().add(DP1);testPPT.getMyPPT().add(DP2);testPPT.getMyPPT().add(DP3);testPPT.getMyPPT().add(DP4);testPPT.getMyPPT().add(DP5);testPPT.getMyPPT().add(DP6);
+//
+//        slide.setDrawPPT(testPPT);
+//        imgSrollPane = new JScrollPane(slide.getCopyShowBoard());
+//        imgSrollPane.setPreferredSize(new Dimension(350,getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)));
+//        imgSlideBar.add(imgSrollPane);
+//        add(imgSlideBar);
 
         //画板
         pptShowBoard.add(drawBoard);

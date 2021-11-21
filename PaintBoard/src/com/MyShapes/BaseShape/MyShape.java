@@ -24,6 +24,16 @@ public abstract class MyShape implements Serializable {
         translateX = translateY = 0;
     }
 
+    //带偏移量的构造方法
+    public MyShape(double coordinateX, double coordinateY, double translateX, double translateY, Color color, float lineWidth) {
+        this.coordinateX = coordinateX;
+        this.coordinateY = coordinateY;
+        this.translateX = translateX;
+        this.translateY = translateY;
+        this.color = color;
+        this.lineWidth = lineWidth;
+    }
+
     /**
      * 判断鼠标点击的点是否在图形内。
      * 因为肉眼看到的图形实际上原图形经过偏移得到的。所以在判断点是否在里面的时候，要将点偏移回去。
@@ -129,6 +139,8 @@ public abstract class MyShape implements Serializable {
     public String toString() {
         return coordinateX + " | " +
                 coordinateY + " | " +
+                translateX + " | " +
+                translateY + " | " +
                 color.getRGB() + " | " +
                 lineWidth + "\r\n";
     }
