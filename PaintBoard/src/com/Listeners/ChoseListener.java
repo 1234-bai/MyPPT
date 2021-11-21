@@ -2,8 +2,8 @@ package com.Listeners;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.BaseShape.MyShape;
-import com.Operations.ChildOperation.MoveShape;
 import com.MyShapes.ChildrenShapes.MyText;
+import com.Operations.ChildOperation.MoveShape;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -17,6 +17,7 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
     private MyShape chosenContent = null;   //鼠标点击选中的对象
 
     private double translateX, translateY;  //选中对象的原始偏移量
+    private Color color;    //选中对象的原始颜色
 
     private int preX = 0, preY = 0 ;    //拖动过程中，前一个点的坐标
 
@@ -91,11 +92,6 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
             MyShape myShape = contentsGroup.get(i);  //获得的是MyShape类
             if(myShape.contains(x, y)){
                 chosenContent = myShape;    //提取出选中的图形
-
-                //保存原始偏移量
-                translateX = chosenContent.getTranslateX();
-                translateY = chosenContent.getTranslateY();
-
                 contentsGroup.remove(i);
                 getDrawBoard().redraw();  //画板重画。重画后除了选中的图形，其余图形全部出现在副本上，但是原本还没有刷新，仍然能看到选中的图形
                 contentsGroup.add(chosenContent);   //加入图形栈但是不画在副本上。所以和图形数组（实际含有图形）只差一个选中图形
@@ -138,7 +134,9 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
      */
     @Override
     public void setChosenContentColor(Color newColor) {
-        if(chosenContent == null){return;}
+        if (chosenContent == null) {
+            return;
+        }
         chosenContent.setColor(newColor);   //改变图形内容
         chosenContent.draw(getListenerPen());     //肉眼看到的再画一遍，覆盖掉原来的部分。
     }
@@ -154,14 +152,6 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
     @Override
     public void saveChoseContent() {
         chosenContent.draw(getListenerPen_copy());  //在副本上画出来，就是保存了
-
-        //偏移量变化则认为发生了平移操作
-        if (translateX != chosenContent.getTranslateX() ||
-                translateY != chosenContent.getTranslateY()) {
-            MoveShape moveShape = new MoveShape();
-            moveShape.addOperation(getDrawBoard(), translateX, translateY);
-        }
-
 //        getContentsGroup().add(chosenContent);
     }
 

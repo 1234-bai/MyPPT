@@ -373,10 +373,7 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
             }
         }
 
-//        redoContentsGroup.add(contentsGroup.get(contentsGroup.size() - 1));   //撤销图形移入重做图形栈
-//        contentsGroup.remove(contentsGroup.size() - 1);   //移除栈顶图形
-//        redraw();
-//        refresh();
+
     }
 
     /**
@@ -399,13 +396,14 @@ public class DrawJPanel extends JPanel implements DrawJPanelIml{
             }
         }
 
-//        //重做栈非空时才能重做
-//        if (!redoContentsGroup.isEmpty()) {
-//            contentsGroup.add(redoContentsGroup.get(redoContentsGroup.size() - 1));
-//            redoContentsGroup.remove(redoContentsGroup.size() - 1);
-//            redraw();
-//            refresh();
-//        }
+
+    }
+
+    /**
+     * 清空操作栈
+     */
+    public void clearOperations() {
+        operations.clear();
     }
 
     /**
