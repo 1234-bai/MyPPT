@@ -74,14 +74,28 @@ public abstract class MyShape implements Serializable {
         g.setColor(oldColor);   //还原原来的颜色
     }
 
+    public double getTranslateX() {
+        return translateX;
+    }
+
+    public double getTranslateY() {
+        return translateY;
+    }
 
     public Color getColor() {
         return color;
     }
 
-
     public float getLineWidth() {
         return lineWidth;
+    }
+
+    public void setTranslateX(double translateX) {
+        this.translateX = translateX;
+    }
+
+    public void setTranslateY(double translateY) {
+        this.translateY = translateY;
     }
 
     public void setColor(Color color) {
