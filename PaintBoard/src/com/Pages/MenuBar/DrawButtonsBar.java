@@ -9,13 +9,13 @@ import java.awt.event.MouseListener;
 
 public class DrawButtonsBar extends ClearPanel {
 
-    private final ImageButton lineButton = new ImageButton("直线","PaintBoard/images/MenuBar/Draw/line.png");
-    private final ImageButton curveButton = new ImageButton("曲线","PaintBoard/images/MenuBar/Draw/curve.png");
-    private final ImageButton polyButton = new ImageButton("多边形","PaintBoard/images/MenuBar/Draw/poly.png");
-    private final ImageButton circleButton = new ImageButton("圆形","PaintBoard/images/MenuBar/Draw/circle.png");
-    private final ImageButton filledCircleButton = new ImageButton("实心圆形","PaintBoard/images/MenuBar/Draw/filledCircle.png");
-    private final ImageButton rectButton = new ImageButton("矩形","PaintBoard/images/MenuBar/Draw/rect.png");
-    private final ImageButton filledRectButton = new ImageButton("实心矩形","PaintBoard/images/MenuBar/Draw/filledRect.png");
+    private final ImageButton lineButton = new ImageButton("直线",getRightResourceFilePath("images/MenuBar/Draw/line.png"));
+    private final ImageButton curveButton = new ImageButton("曲线",getRightResourceFilePath("images/MenuBar/Draw/curve.png"));
+    private final ImageButton polyButton = new ImageButton("多边形",getRightResourceFilePath("images/MenuBar/Draw/poly.png"));
+    private final ImageButton circleButton = new ImageButton("圆形",getRightResourceFilePath("images/MenuBar/Draw/circle.png"));
+    private final ImageButton filledCircleButton = new ImageButton("实心圆形",getRightResourceFilePath("images/MenuBar/Draw/filledCircle.png"));
+    private final ImageButton rectButton = new ImageButton("矩形",getRightResourceFilePath("images/MenuBar/Draw/rect.png"));
+    private final ImageButton filledRectButton = new ImageButton("实心矩形",getRightResourceFilePath("images/MenuBar/Draw/filledRect.png"));
 
     public DrawButtonsBar() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
