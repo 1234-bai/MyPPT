@@ -9,10 +9,10 @@ import java.awt.event.MouseListener;
 
 public class OperationBar extends ClearPanel {
 
-    private final ImageButton choseButton = new ImageButton("选取","PaintBoard/images/MenuBar/Operation/chose.png");
-    private final ImageButton revokeButton = new ImageButton("撤销","PaintBoard/images/MenuBar/Operation/revoke.png");
-    private final ImageButton redoButton = new ImageButton("重做","PaintBoard/images/MenuBar/Operation/redo.png");
-    private final ImageButton deleteButton = new ImageButton("删除","PaintBoard/images/MenuBar/Operation/delete.png");
+    private final ImageButton choseButton = new ImageButton("选取",getRightResourceFilePath("images/MenuBar/Operation/chose.png"));
+    private final ImageButton revokeButton = new ImageButton("撤销",getRightResourceFilePath("images/MenuBar/Operation/revoke.png"));
+    private final ImageButton redoButton = new ImageButton("重做",getRightResourceFilePath("images/MenuBar/Operation/redo.png"));
+    private final ImageButton deleteButton = new ImageButton("删除",getRightResourceFilePath("images/MenuBar/Operation/delete.png"));
 
     public OperationBar() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
