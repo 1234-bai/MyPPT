@@ -179,31 +179,31 @@ public class MyHome extends MyFrame {
         menuBar.setButtonsListener(
                 new MouseAdapter() {    //点击“文件”按钮时发生的动作
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         changeTopBarButtons(fileButtons);
                     }
                 },
                 new MouseAdapter() {    //点击“插入”按钮时发生的动作
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         changeTopBarButtons(insertButtons);
                     }
                 },
                 new MouseAdapter() {    //点击“绘画”按钮时发生的动作
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         changeTopBarButtons(drawButtons);
                     }
                 },
                 new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         changeTopBarButtons(operationBar);
                     }
                 },
         new MouseAdapter() {    //点击“画笔”按钮时发生的动作
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         changeTopBarButtons(penStyleButtons);
                     }
                 }
@@ -217,14 +217,14 @@ public class MyHome extends MyFrame {
         fileButtons.setButtonsListener(
                 new MouseAdapter() {    //点击“新建”按钮的监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         //新开一个页面，但是退出的时候，会全退出
                         new MyHome().run();
                     }
                 },
                 new MouseAdapter() {    //点击“打开文件”按钮的监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         //填充加载代码。如下。
                         MyDrawPPT myDrawPPT = new MyDrawPPT();
                         myDrawPPT.loadPPT();
@@ -234,7 +234,7 @@ public class MyHome extends MyFrame {
                 },
                 new MouseAdapter() {    //点击“保存文件”按钮的监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         //填充保存代码。如下。根据实际情况调整
                         imgSlideGroup.getDrawPPT().savePPT();
                     }
@@ -244,20 +244,20 @@ public class MyHome extends MyFrame {
         insertButtons.setButtonsListener(
                 new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         imgSlideGroup.addNewPicture(new DrawJPanel());
                         imgScrollPane.validate();
                     }
                 },
                 new MouseAdapter() {    //“插入图片”的监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.setBoardListener(new ImageListener());
                     }
                 },
                 new MouseAdapter() {    //“插入文字”的监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.setBoardListener(new TextListener());
                     }
                 }
@@ -266,7 +266,7 @@ public class MyHome extends MyFrame {
         drawButtons.setButtonsListener(
                 new MouseAdapter() {    //“直线”的监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.setBoardListener(new LineListener());
                     }
                 },
@@ -278,31 +278,31 @@ public class MyHome extends MyFrame {
                 },
                 new MouseAdapter() {    //多边形监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.setBoardListener(new PolygonListener());
                     }
                 },
                 new MouseAdapter() {    //圆形监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.setBoardListener(new CircleListener(false));
                     }
                 },
                 new MouseAdapter() {    //实心圆形监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.setBoardListener(new CircleListener(true));
                     }
                 },
                 new MouseAdapter() {    //矩形监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.setBoardListener(new RectangleListener(false));
                     }
                 },
                 new MouseAdapter() {    //实心矩形监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.setBoardListener(new RectangleListener(true));
                     }
                 }
@@ -310,7 +310,7 @@ public class MyHome extends MyFrame {
         operationBar.setButtonsListener(
                 new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.setBoardListener(new ChoseListener());
                         
                         //清空操作
@@ -321,19 +321,19 @@ public class MyHome extends MyFrame {
                 },
                 new MouseAdapter() {    //撤销监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.revoke();
                     }
                 },
                 new MouseAdapter() {    //重做监听器
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         drawBoard.redo();
                     }
                 },
                 new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         DrawListener drawListener = drawBoard.getDrawListener();
                         if(drawListener instanceof ChoseListener){
                             ((ChoseListener) drawListener).deleteChosenContent();
@@ -356,7 +356,7 @@ public class MyHome extends MyFrame {
         penStyleButtons.setButtonsListener(
                 new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         Color color = JColorChooser.showDialog(null, "选取颜色", Color.BLACK);
                         if (color == null) {
                             return;
@@ -366,7 +366,7 @@ public class MyHome extends MyFrame {
                 },
                 new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         Float lineWidth = (Float) JOptionPane.showInputDialog(
                                 null,
                                 "请选择线宽",
@@ -384,7 +384,7 @@ public class MyHome extends MyFrame {
                 },
                 new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         String family = (String) JOptionPane.showInputDialog(
                                 null,
                                 "请选择字体",
@@ -402,7 +402,7 @@ public class MyHome extends MyFrame {
                 },
                 new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         Integer size = (Integer) JOptionPane.showInputDialog(
                                 null,
                                 "请选择字号",

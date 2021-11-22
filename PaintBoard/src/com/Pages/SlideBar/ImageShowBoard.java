@@ -11,7 +11,7 @@ import java.awt.*;
 public class ImageShowBoard extends JList<ImageIcon>{
 
     public static ImageIcon getFitIcon(Image img){
-        Image newImg = img.getScaledInstance(300,300,Image.SCALE_SMOOTH);
+        Image newImg = img.getScaledInstance(300,170,Image.SCALE_SMOOTH);
         return new ImageIcon(newImg);
     }
 
