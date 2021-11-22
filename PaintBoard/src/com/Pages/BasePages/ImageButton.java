@@ -3,6 +3,7 @@ package com.Pages.BasePages;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
+import java.net.URL;
 
 public class ImageButton extends ClearPanel {
 
@@ -16,7 +17,7 @@ public class ImageButton extends ClearPanel {
         }
     }
 
-    public ImageButton(String text, String imgPath) {
+    public ImageButton(String text, URL imgPath) {
         setLayout(new BorderLayout());
 
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));   //设置鼠标进入的是变为手型

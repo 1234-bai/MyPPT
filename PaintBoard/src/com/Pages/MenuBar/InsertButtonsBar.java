@@ -8,9 +8,9 @@ import java.awt.*;
 import java.awt.event.MouseListener;
 
 public class InsertButtonsBar extends ClearPanel {
-    private final ImageButton emptyPageButton = new ImageButton("插入空白页",getRightResourceFilePath("images/MenuBar/Insert/emptyPage.png"));
-    private final ImageButton pictureButton = new ImageButton("插入图片",getRightResourceFilePath("images/MenuBar/Insert/picture.png"));
-    private final ImageButton textButton = new ImageButton("插入文字",getRightResourceFilePath("images/MenuBar/Insert/text.png"));
+    private final ImageButton emptyPageButton = new ImageButton("插入空白页",getClass().getResource("/images/MenuBar/Insert/emptyPage.png"));
+    private final ImageButton pictureButton = new ImageButton("插入图片",getClass().getResource("/images/MenuBar/Insert/picture.png"));
+    private final ImageButton textButton = new ImageButton("插入文字",getClass().getResource("/images/MenuBar/Insert/text.png"));
 
     public InsertButtonsBar() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
