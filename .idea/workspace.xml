@@ -9,43 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="修改名称">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/MyPPT_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="最后一个bug">
+      <change afterPath="$PROJECT_DIR$/20194701.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java大作业报告.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/说明文档 .md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/circle.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Draw/circle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/curve.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Draw/curve.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/filledCircle.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Draw/filledCircle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/filledRect.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Draw/filledRect.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/line.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Draw/line.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/poly.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Draw/poly.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/rect.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Draw/rect.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/File/newFile.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/File/newFile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/File/open.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/File/open.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/File/save.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/File/save.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Insert/emptyPage.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Insert/emptyPage.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Insert/picture.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Insert/picture.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Insert/text.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Insert/text.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Operation/chose.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Operation/chose.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Operation/delete.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Operation/delete.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Operation/redo.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Operation/redo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Operation/revoke.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/Operation/revoke.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/PenStyle/colorBoard.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/PenStyle/colorBoard.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/PenStyle/fontChange.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/PenStyle/fontChange.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/PenStyle/fontsize.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/PenStyle/fontsize.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/PenStyle/strokewidth.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/MenuBar/PenStyle/strokewidth.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/TitleBar/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/TitleBar/close.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/TitleBar/maximize.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/TitleBar/maximize.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/TitleBar/minimize.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/TitleBar/minimize.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/Resource/images/TitleBar/normal-size.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/images/TitleBar/normal-size.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/BasePages/ImageButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/BasePages/ImageButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/BasePages/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/BasePages/MyFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/DrawButtonsBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/DrawButtonsBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/FileButtonsBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/FileButtonsBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/InsertButtonsBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/InsertButtonsBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/OperationBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/OperationBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/PenStyleBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/PenStyleBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/questions.md" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/questions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/MenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/MenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanelIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanelIml.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +121,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.START_NOW" />
+        <item itemvalue="Application.START_NOW" />
       </list>
     </recent_temporary>
   </component>
@@ -185,6 +156,10 @@
       <workItem from="1636726117273" duration="5298000" />
       <workItem from="1636894950540" duration="5310000" />
       <workItem from="1637367243971" duration="22062000" />
+      <workItem from="1637573077066" duration="346000" />
+      <workItem from="1637573442474" duration="7016000" />
+      <workItem from="1637586077455" duration="1202000" />
+      <workItem from="1637587733245" duration="5636000" />
     </task>
     <task id="LOCAL-00001" summary="初始化提交">
       <created>1636189148998</created>
@@ -361,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637375881787</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="最后一个bug">
+      <created>1637567349681</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1637567349681</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,6 +395,11 @@
     <MESSAGE value="界面菜单栏部分" />
     <MESSAGE value="界面菜单栏切换动画部分" />
     <MESSAGE value="修改名称" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改名称" />
+    <MESSAGE value="最后一个bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="最后一个bug" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

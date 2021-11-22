@@ -35,21 +35,21 @@ public class MenuBar extends JPanel {
         add(penStyleMenu);
     }
 
-    public JButton getFileMenu() {
-        return fileMenu;
-    }
-
-    public JButton getInsertMenu() {
-        return insertMenu;
-    }
-
-    public JButton getDrawMenu() {
-        return drawMenu;
-    }
-
-    public JButton getPenStyleMenu() {
-        return penStyleMenu;
-    }
+//    public JButton getFileMenu() {
+//        return fileMenu;
+//    }
+//
+//    public JButton getInsertMenu() {
+//        return insertMenu;
+//    }
+//
+//    public JButton getDrawMenu() {
+//        return drawMenu;
+//    }
+//
+//    public JButton getPenStyleMenu() {
+//        return penStyleMenu;
+//    }
 
     public void setButtonsListener(
             MouseListener fileMenuListener,     //点击文件按钮的监听器
