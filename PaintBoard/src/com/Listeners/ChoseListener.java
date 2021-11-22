@@ -27,6 +27,9 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
      */
     @Override
     public void mousePressed(MouseEvent e) {
+        if(chosenContent != null){
+            chosenContent.draw(getListenerPen());
+        }
         preX = preY = 0;
         int x = e.getX(), y = e.getY();
         if(choseContent(x, y)){
@@ -124,8 +127,9 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml{
      * 测试用！！！
      */
     private void choseStatus(){
-//        Color color = chosenContent.getColor();
-//        setChosenContentColor(color.getColorComponents());
+        Color color = chosenContent.getColor();
+        setChosenContentColor(Color.RED);
+        chosenContent.setColor(color);
     }
 
     /**
