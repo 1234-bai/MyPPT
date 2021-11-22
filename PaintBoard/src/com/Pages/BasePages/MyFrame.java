@@ -10,7 +10,7 @@ import java.awt.event.*;
  * 自定义外边框。
  */
 public class MyFrame extends JFrame {
-
+    
     protected static class TitleBarButton extends JButton{
         public TitleBarButton() {
             setOpaque(false);   //透明
@@ -59,17 +59,17 @@ public class MyFrame extends JFrame {
          * 实例化简单组件
          */
         TitleBarButton miniButton = new TitleBarButton();
-        miniButton.setIcon(new ImageIcon("PaintBoard/images/TitleBar/minimize.png"));
+        miniButton.setIcon(new ImageIcon(CONSTANTS.getRightResourceFilePath("images/TitleBar/minimize.png")));
         TitleBarButton maxNormalButton = new TitleBarButton();
-        maxNormalButton.setIcon(new ImageIcon("PaintBoard/images/TitleBar/normal-size.png"));
+        maxNormalButton.setIcon(new ImageIcon(CONSTANTS.getRightResourceFilePath("images/TitleBar/normal-size.png")));
         TitleBarButton closeButton = new TitleBarButton();
-        closeButton.setIcon(new ImageIcon("PaintBoard/images/TitleBar/close.png"));
+        closeButton.setIcon(new ImageIcon(CONSTANTS.getRightResourceFilePath("images/TitleBar/close.png")));
 
         miniButton.addActionListener(e -> setExtendedState(JFrame.ICONIFIED));
         maxNormalButton.addActionListener(new ActionListener() {
             boolean normal = true;
-            final ImageIcon normalImg = new ImageIcon("PaintBoard/images/TitleBar/normal-size.png");
-            final ImageIcon maxImg = new ImageIcon("PaintBoard/images/TitleBar/maximize.png");
+            final ImageIcon normalImg = new ImageIcon(CONSTANTS.getRightResourceFilePath("images/TitleBar/normal-size.png"));
+            final ImageIcon maxImg = new ImageIcon(CONSTANTS.getRightResourceFilePath("images/TitleBar/maximize.png"));
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,7 +86,7 @@ public class MyFrame extends JFrame {
                 titleBar.setBounds(0,0, getWidth(), TITLE_BAR_HEIGHT);
             }
         });
-        closeButton.addActionListener(e -> System.exit(0));
+        closeButton.addActionListener(e -> dispose());
 
         titleCloseButtons.setBackground(CONSTANTS.MY_COLOR.TITLE_BAR_COLOR);
         titleCloseButtons.setLayout(new GridLayout(1, 3));

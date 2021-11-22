@@ -4,22 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="修改名称">
-      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/SlideBar/DrawBoardSlideBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/SlideBar/ImageCellRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/testPPT.java" afterDir="false" />
+    <list default="true" id="6a0fb7e4-2e27-4645-aca9-e6a68f3af6a3" name="Changes" comment="最后的润色">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/MyHome.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/MyHome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyPPT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyPPT.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Draw/circle.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/circle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Draw/curve.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/curve.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Draw/filledCircle.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/filledCircle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Draw/filledRect.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/filledRect.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Draw/line.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/line.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Draw/poly.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/poly.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Draw/rect.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Draw/rect.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/File/newFile.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/File/newFile.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/File/open.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/File/open.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/File/save.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/File/save.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Insert/emptyPage.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Insert/emptyPage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Insert/picture.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Insert/picture.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Insert/text.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Insert/text.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Operation/chose.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Operation/chose.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Operation/delete.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Operation/delete.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Operation/redo.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Operation/redo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/Operation/revoke.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/Operation/revoke.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/PenStyle/colorBoard.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/PenStyle/colorBoard.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/PenStyle/fontChange.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/PenStyle/fontChange.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/PenStyle/fontsize.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/PenStyle/fontsize.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/MenuBar/PenStyle/strokewidth.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/MenuBar/PenStyle/strokewidth.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/TitleBar/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/TitleBar/close.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/TitleBar/maximize.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/TitleBar/maximize.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/TitleBar/minimize.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/TitleBar/minimize.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/images/TitleBar/normal-size.png" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/Resource/images/TitleBar/normal-size.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/BasePages/ClearPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/BasePages/ClearPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/BasePages/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/BasePages/MyFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/CONSTANTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/CONSTANTS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/Home.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/DrawButtonsBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/DrawButtonsBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/FileButtonsBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/FileButtonsBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/InsertButtonsBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/InsertButtonsBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/MenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/MenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/OperationBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/OperationBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/PenStyleBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Pages/MenuBar/PenStyleBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/DrawJPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaintBoard/src/com/Paint/MyDrawPPTIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBoard/src/com/Paint/MyDrawPPTIml.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,19 +55,19 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <favorite-branches>
+    <excluded-from-favorite>
       <branch-storage>
         <map>
-          <entry type="REMOTE">
+          <entry type="LOCAL">
             <value>
               <list>
-                <branch-info repo="$PROJECT_DIR$" source="origin/Zihao" />
+                <branch-info repo="$PROJECT_DIR$" source="master" />
               </list>
             </value>
           </entry>
         </map>
       </branch-storage>
-    </favorite-branches>
+    </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -80,7 +100,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/PaintBoard/images/MenuBar/PenStyle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PaintBoard/Resource" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -89,23 +109,27 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="com.gitee.ui.GiteeSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/PaintBoard/src/com/Listeners/DrawListener.java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\Resource" />
+      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\images\MenuBar\Operation" />
       <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\images\MenuBar\PenStyle" />
-      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\src\com\Pages\MenuBar" />
       <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\images\MenuBar\Draw" />
       <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\images\MenuBar\Insert" />
-      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\images\MenuBar\File" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\src" />
+      <recent name="D:\_NewCode\JavaPro\MyPPT\PaintBoard\images\MenuBar\Operation" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.Pages.MenuBar" />
       <recent name="com.Pages.BasePage" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MyHome ">
+  <component name="RunManager" selected="Application.START_NOW">
     <configuration name="Home" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.Pages.Home" />
       <module name="MyPPT" />
@@ -119,8 +143,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyHome " type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.MyHome" />
+    <configuration name="START_NOW" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.START_NOW" />
       <module name="MyPPT" />
       <extension name="coverage">
         <pattern>
@@ -134,11 +158,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.Home" />
-      <item itemvalue="Application.MyHome " />
+      <item itemvalue="Application.START_NOW" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MyHome " />
+        <item itemvalue="Application.START_NOW" />
         <item itemvalue="Application.Home" />
       </list>
     </recent_temporary>
@@ -173,7 +197,11 @@
       <workItem from="1636715076825" duration="1145000" />
       <workItem from="1636726117273" duration="5298000" />
       <workItem from="1636894950540" duration="5310000" />
-      <workItem from="1637367243971" duration="22062000" />
+      <workItem from="1637367243971" duration="24813000" />
+      <workItem from="1637404604501" duration="10517000" />
+      <workItem from="1637417333184" duration="11823000" />
+      <workItem from="1637456292632" duration="10055000" />
+      <workItem from="1637472918407" duration="44271000" />
     </task>
     <task id="LOCAL-00001" summary="初始化提交">
       <created>1636189148998</created>
@@ -350,11 +378,141 @@
       <option name="project" value="LOCAL" />
       <updated>1637375881787</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="界面左边的PPT滑动板。">
+      <created>1637398989480</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1637398989480</updated>
+    </task>
+    <task id="LOCAL-00027" summary="基础界面完成">
+      <created>1637413319012</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1637413319012</updated>
+    </task>
+    <task id="LOCAL-00028" summary="redraw函数定义位置调整。加入了使两个画笔趋向一致的代码。">
+      <created>1637419633430</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1637419633430</updated>
+    </task>
+    <task id="LOCAL-00029" summary="部分监听器的添加">
+      <created>1637430049159</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1637430049159</updated>
+    </task>
+    <task id="LOCAL-00030" summary="界面完善，以及部分功能的完善">
+      <created>1637463589502</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1637463589502</updated>
+    </task>
+    <task id="LOCAL-00031" summary="插入空白页功能的完成">
+      <created>1637466257405</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1637466257405</updated>
+    </task>
+    <task id="LOCAL-00032" summary="界面微调">
+      <created>1637474675940</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1637474675940</updated>
+    </task>
+    <task id="LOCAL-00033" summary="画板同滑动框进行绑定。同时改变ArrayList为CopyOnWriteArrayList。解决多线程读写冲突问题">
+      <created>1637486522056</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1637486522056</updated>
+    </task>
+    <task id="LOCAL-00034" summary="解决因为多线程导致的切换报错问题">
+      <created>1637487641355</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1637487641355</updated>
+    </task>
+    <task id="LOCAL-00035" summary="回退">
+      <created>1637489617989</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1637489617989</updated>
+    </task>
+    <task id="LOCAL-00036" summary="加入声音监听器">
+      <created>1637496800087</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1637496800087</updated>
+    </task>
+    <task id="LOCAL-00037" summary="加入撤销重做图标，加入调整线宽的选取器">
+      <created>1637500483296</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1637500483296</updated>
+    </task>
+    <task id="LOCAL-00038" summary="选取器改进。但字体还差点意思">
+      <created>1637504391875</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1637504391875</updated>
+    </task>
+    <task id="LOCAL-00039" summary="字体的大部分功能（加粗，加斜没有做）">
+      <created>1637518390759</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1637518390759</updated>
+    </task>
+    <task id="LOCAL-00040" summary="关闭当前窗口，全部窗口都会关闭的问题解决">
+      <created>1637518926114</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1637518926114</updated>
+    </task>
+    <task id="LOCAL-00041" summary="删除旧页面">
+      <created>1637519184830</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1637519184830</updated>
+    </task>
+    <task id="LOCAL-00042" summary="最后的润色">
+      <created>1637546194021</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1637546194021</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -367,7 +525,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/BaiQianYi" />
+                        <option value="BaiQianYi" />
                       </list>
                     </value>
                   </entry>
@@ -382,18 +540,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="初始化提交" />
-    <MESSAGE value="解决了窗口变化画板上的图形重绘问题" />
-    <MESSAGE value="多边形监听器" />
-    <MESSAGE value="解决鼠标拖动过程中的产生的问题" />
-    <MESSAGE value="增加了最近发现的两个bug以及对应解决方案" />
-    <MESSAGE value="删去了一些不必要的重载函数名。对副本使用函数名做了对应的修改。修改了副本的使用语句。" />
-    <MESSAGE value="看起来没做修改" />
-    <MESSAGE value="增加了对新增功能的测试" />
-    <MESSAGE value="对代码的小小重构。对问题6和问题7的解决。增加了线条的润滑度。修改了副本的名字。" />
-    <MESSAGE value="项目的其余部分" />
-    <MESSAGE value="test" />
-    <MESSAGE value="修复了矩形向左上拉拽问题" />
     <MESSAGE value="。" />
     <MESSAGE value="现有按钮添加了图标，添加了颜色选择器。" />
     <MESSAGE value="菜单测试" />
@@ -402,6 +548,34 @@
     <MESSAGE value="界面菜单栏部分" />
     <MESSAGE value="界面菜单栏切换动画部分" />
     <MESSAGE value="修改名称" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改名称" />
+    <MESSAGE value="界面左边的PPT滑动板。" />
+    <MESSAGE value="基础界面完成" />
+    <MESSAGE value="redraw函数定义位置调整。加入了使两个画笔趋向一致的代码。" />
+    <MESSAGE value="部分监听器的添加" />
+    <MESSAGE value="界面完善，以及部分功能的完善" />
+    <MESSAGE value="插入空白页功能的完成" />
+    <MESSAGE value="界面微调" />
+    <MESSAGE value="画板同滑动框进行绑定。同时改变ArrayList为CopyOnWriteArrayList。解决多线程读写冲突问题" />
+    <MESSAGE value="解决因为多线程导致的切换报错问题" />
+    <MESSAGE value="回退" />
+    <MESSAGE value="加入声音监听器" />
+    <MESSAGE value="加入撤销重做图标，加入调整线宽的选取器" />
+    <MESSAGE value="选取器改进。但字体还差点意思" />
+    <MESSAGE value="字体的大部分功能（加粗，加斜没有做）" />
+    <MESSAGE value="关闭当前窗口，全部窗口都会关闭的问题解决" />
+    <MESSAGE value="删除旧页面" />
+    <MESSAGE value="最后的润色" />
+    <option name="LAST_COMMIT_MESSAGE" value="最后的润色" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/PaintBoard/src/com/Listeners/MyShapesListener/LineListener.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

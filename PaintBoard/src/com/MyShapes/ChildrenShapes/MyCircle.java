@@ -3,7 +3,6 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 
 public class MyCircle extends MyShape {
@@ -16,16 +15,23 @@ public class MyCircle extends MyShape {
         this.isFilled = isFilled;
     }
 
+    //带偏移量的构造方法
+    public MyCircle(Ellipse2D ellipse, double coordinateX, double coordinateY, double translateX, double translateY, Color color, float lineWidth, boolean isFilled) {
+        super(coordinateX, coordinateY, translateX, translateY, color, lineWidth);
+        this.ellipse = ellipse;
+        this.isFilled = isFilled;
+    }
+
     @Override
     public boolean contains(double x, double y) {
-        return ellipse.contains(x-translateX, y-translateY);
+        return ellipse.contains(x - translateX, y - translateY);
     }
 
     @Override
     protected void drawInBoard(Graphics2D g) {
-        if(isFilled){
+        if (isFilled) {
             g.fill(ellipse);
-        } else{
+        } else {
             g.draw(ellipse);
         }
     }

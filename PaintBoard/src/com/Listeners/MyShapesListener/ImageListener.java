@@ -2,6 +2,7 @@ package com.Listeners.MyShapesListener;
 
 import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.ChildrenShapes.MyImage;
+import com.Operations.ChildOperation.DrawShape;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -34,26 +35,29 @@ public class ImageListener extends DrawListener {
         if (JFileChooser.APPROVE_OPTION == result) {
             String path = fileChooser.getSelectedFile().getPath();
 
-            //测试输出
-            System.out.println("path: " + path);
-
+            //画出图像
             Image image = null;
             try {
                 image = ImageIO.read(new File(path));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            getListenerPen().drawImage(image, x, y,null);
+            getListenerPen().drawImage(image, x, y, null);
             getListenerPen_copy().drawImage(image, x, y, null);
 
+            //图像压栈
             getContentsGroup().add(new MyImage(
                     image,
                     x,
                     y,
                     getListenerPen().getColor(),
-                    ((BasicStroke)getListenerPen().getStroke()).getLineWidth(),
+                    ((BasicStroke) getListenerPen().getStroke()).getLineWidth(),
                     path
             ));
+
+            //记录操作
+            DrawShape drawShape = new DrawShape();
+            drawShape.addOperation(getDrawBoard());
         }
     }
 }

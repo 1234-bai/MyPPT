@@ -1,8 +1,8 @@
 package com.Listeners.MyShapesListener;
 
 import com.Listeners.BaseListener.DrawListener;
-import com.MyShapes.ChildrenShapes.MyLine;
 import com.MyShapes.ChildrenShapes.MyText;
+import com.Operations.ChildOperation.DrawShape;
 import com.Paint.DrawJPanel;
 
 import javax.swing.*;
@@ -54,6 +54,10 @@ public class TextListener extends DrawListener{
                 str
         ));
 
+        //记录操作
+        DrawShape drawShape = new DrawShape();
+        drawShape.addOperation(getDrawBoard());
+
         drawBoard.setPenStyle(oldColor);    //恢复原来的颜色
 
         clearTextField();
@@ -78,21 +82,24 @@ public class TextListener extends DrawListener{
          */
         @Override
         public void keyReleased(KeyEvent e) {
-            if(textField.getWidth() < textField.getText().length() * 15){
+            int fontWidth = textFont.getSize() / 2;
+            if(textField.getWidth() < (textField.getText().length()+1) * fontWidth){
                 int width = textField.getWidth();
                 String text = textField.getText();
                 getDrawBoard().remove(textField);   //移除组件
-                putTextField(clickX, clickY, width+40, 30, text);
+                putTextField(clickX, clickY, width+2*fontWidth, textFieldHeight, text);
             }
         }
     }
 
 
     private final static int TEXT_FIELD_OFFSET = -15;   //为了让鼠标点击后，鼠标在显示的文本框正中间，文本框出现的偏移量
+    private  static final int TEXT_FIELD_DEFAULT_WIDTH = 100;
+    private  int textFieldHeight = 30;
     @Override
     public void mouseClicked(MouseEvent e) {
         clear();
-        putTextField(clickX = e.getX(), clickY = e.getY(), 100, 30, null);
+        putTextField(clickX = e.getX(), clickY = e.getY(), TEXT_FIELD_DEFAULT_WIDTH, textFieldHeight, null);
     }
 
     @Override
@@ -119,10 +126,10 @@ public class TextListener extends DrawListener{
         }
     }
 
-    private void putTextField(int x, int y, int width, int length, String placeHolder){
+    private void putTextField(int x, int y, int width, int height, String placeHolder){
         textField = createTextField(textFont, textColor, placeHolder);  //输入的文本框
         textField.addKeyListener(new FontKeyListener());    //添加按键监听器，当按下回车。就画图
-        textField.setBounds(x, y+ TEXT_FIELD_OFFSET, width, length);
+        textField.setBounds(x, y+ TEXT_FIELD_OFFSET, width, height);
         getDrawBoard().add(textField);
         textRefresh();
         textField.requestFocus();   //文本框获得焦点。
@@ -133,8 +140,8 @@ public class TextListener extends DrawListener{
 //        jTextField.setOpaque(false);
         if(font != null){
             jTextField.setFont(font);
-            jTextField.setForeground(color); //设置文本框字体
         }
+        jTextField.setForeground(color); //设置文本框字体
         jTextField.setBorder(BorderFactory.createLineBorder(Color.RED));    //设置红色边框
         return jTextField;
     }
@@ -172,11 +179,8 @@ public class TextListener extends DrawListener{
      */
     public void setFontSize(int size){
         textFont = new Font(textFont.getFontName(), textFont.getStyle(), size);
-        if(size * 1.5 > textField.getHeight()){
-            putTextField(clickX, clickY, textField.getWidth(), (int) (size*1.5), textField.getText());//放置里面自带刷新
-        } else{
-            textRefresh();
-        }
+        textFieldHeight = (int)(size*1.5);
+        textRefresh();
     }
 
     /**
