@@ -22,8 +22,9 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml {
      */
     @Override
     public void mousePressed(MouseEvent e) {
-        if (chosenContent != null) {
-            chosenContent.draw(getListenerPen());
+        if (chosenContent != null) {//点击丢弃上一个选中的角色
+//            chosenContent.draw(getListenerPen());
+            chosenContent = null;
         }
         preX = preY = 0;
         int x = e.getX(), y = e.getY();
@@ -51,7 +52,7 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml {
     @Override
     public void mouseReleased(MouseEvent e) {
         getDrawBoard().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-        saveChoseContent();
+        if(chosenContent != null)saveChoseContent();
     }
 
 
@@ -123,9 +124,9 @@ public class ChoseListener extends DrawListener implements ChoseListenerIml {
      * 测试用！！！
      */
     private void choseStatus() {
-        Color color = chosenContent.getColor();
-        setChosenContentColor(Color.RED);
-        chosenContent.setColor(color);
+//        Color color = chosenContent.getColor();
+//        setChosenContentColor(Color.RED);
+//        chosenContent.setColor(color);
     }
 
     /**
