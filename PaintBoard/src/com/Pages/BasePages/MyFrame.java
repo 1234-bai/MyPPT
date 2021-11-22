@@ -5,13 +5,14 @@ import com.Pages.CONSTANTS;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 
 /**
  * 自定义外边框。
  */
 public class MyFrame extends JFrame {
-    
-    protected static class TitleBarButton extends JButton{
+
+    protected static class TitleBarButton extends JButton {
         public TitleBarButton() {
             setOpaque(false);   //透明
             setBorderPainted(false);    //取消边框
@@ -30,11 +31,12 @@ public class MyFrame extends JFrame {
     // 设置窗体位置,使其在屏幕居中
     protected static final int LOCATION_X;
     protected static final int LOCATION_Y;
+
     static {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        SCREEN_WIDTH = (int)toolkit.getScreenSize().getWidth();
-        SCREEN_HEIGHT = (int)toolkit.getScreenSize().getHeight();
-        DEFAULT_WIDTH = (int)(SCREEN_WIDTH * 0.8);
+        SCREEN_WIDTH = (int) toolkit.getScreenSize().getWidth();
+        SCREEN_HEIGHT = (int) toolkit.getScreenSize().getHeight();
+        DEFAULT_WIDTH = (int) (SCREEN_WIDTH * 0.8);
         DEFAULT_HEIGHT = (int) (SCREEN_HEIGHT * 0.8);
         LOCATION_X = (SCREEN_WIDTH - DEFAULT_WIDTH) / 2;
         LOCATION_Y = (SCREEN_HEIGHT - DEFAULT_HEIGHT) / 2;
@@ -51,7 +53,7 @@ public class MyFrame extends JFrame {
 
         setUndecorated(true);//设置窗体的标题栏不可见
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //设置窗口关闭按钮类型
-        setBounds(LOCATION_X, LOCATION_Y,DEFAULT_WIDTH, DEFAULT_HEIGHT);    // 设置窗体默认大小和位置,使其适应屏幕大小
+        setBounds(LOCATION_X, LOCATION_Y, DEFAULT_WIDTH, DEFAULT_HEIGHT);    // 设置窗体默认大小和位置,使其适应屏幕大小
         setLayout(null);    //设置布局为绝对布局
         draggedEnable = true;   //开始为正常大小，可拖动
 
@@ -59,31 +61,30 @@ public class MyFrame extends JFrame {
          * 实例化简单组件
          */
         TitleBarButton miniButton = new TitleBarButton();
-        miniButton.setIcon(new ImageIcon(CONSTANTS.getRightResourceFilePath("images/TitleBar/minimize.png")));
+        miniButton.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/TitleBar/minimize.png"))));
         TitleBarButton maxNormalButton = new TitleBarButton();
-        maxNormalButton.setIcon(new ImageIcon(CONSTANTS.getRightResourceFilePath("images/TitleBar/normal-size.png")));
+        maxNormalButton.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/TitleBar/normal-size.png"))));
         TitleBarButton closeButton = new TitleBarButton();
-        closeButton.setIcon(new ImageIcon(CONSTANTS.getRightResourceFilePath("images/TitleBar/close.png")));
-
+        closeButton.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/TitleBar/close.png"))));
         miniButton.addActionListener(e -> setExtendedState(JFrame.ICONIFIED));
         maxNormalButton.addActionListener(new ActionListener() {
             boolean normal = true;
-            final ImageIcon normalImg = new ImageIcon(CONSTANTS.getRightResourceFilePath("images/TitleBar/normal-size.png"));
-            final ImageIcon maxImg = new ImageIcon(CONSTANTS.getRightResourceFilePath("images/TitleBar/maximize.png"));
+            final ImageIcon normalImg = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/TitleBar/normal-size.png")));
+            final ImageIcon maxImg = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/TitleBar/maximize.png")));
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(normal){
+                if (normal) {
                     setExtendedState(JFrame.MAXIMIZED_BOTH);
                     maxNormalButton.setIcon(maxImg);
                     normal = false;
-                }else {
+                } else {
                     setExtendedState(JFrame.NORMAL);
                     maxNormalButton.setIcon(normalImg);
                     normal = true;
                 }
                 draggedEnable = normal;
-                titleBar.setBounds(0,0, getWidth(), TITLE_BAR_HEIGHT);
+                titleBar.setBounds(0, 0, getWidth(), TITLE_BAR_HEIGHT);
             }
         });
         closeButton.addActionListener(e -> dispose());
@@ -95,7 +96,7 @@ public class MyFrame extends JFrame {
         titleCloseButtons.add(closeButton);
 
 
-        titleBar.setBounds(0,0, DEFAULT_WIDTH, TITLE_BAR_HEIGHT);
+        titleBar.setBounds(0, 0, DEFAULT_WIDTH, TITLE_BAR_HEIGHT);
         titleBar.setBackground(CONSTANTS.MY_COLOR.TITLE_BAR_COLOR);
         titleBar.setLayout(new BorderLayout());
 
@@ -106,7 +107,9 @@ public class MyFrame extends JFrame {
         titleBar.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if(!draggedEnable){return;}
+                if (!draggedEnable) {
+                    return;
+                }
                 mouseStartX = e.getX();
                 mouseStartY = e.getY();
             }
@@ -114,19 +117,13 @@ public class MyFrame extends JFrame {
         titleBar.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                if(!draggedEnable){return;}
-                setLocation((e.getXOnScreen()- mouseStartX),(e.getYOnScreen()- mouseStartY));//设置拖拽后，窗口的位置
+                if (!draggedEnable) {
+                    return;
+                }
+                setLocation((e.getXOnScreen() - mouseStartX), (e.getYOnScreen() - mouseStartY));//设置拖拽后，窗口的位置
             }
         });
 
         add(titleBar);
     }
-
-
-
-//    public static void main(String[] args) {
-//        new MyFrame().setVisible(true);
-//    }
-
-
 }
