@@ -3,7 +3,6 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 
 public class MyText extends MyShape {
 
@@ -31,14 +30,15 @@ public class MyText extends MyShape {
 
     @Override
     public boolean contains(double x, double y) {
-        x-=translateX; y-=translateY;
+        x -= translateX;
+        y -= translateY;
         int deltaX = (int) (x - coordinateX), deltaY = (int) (coordinateY - y);
         //因为画板画string和画其他图形是不一样的画法。其他图形是在点击点的右下角画，而String是点击点的右上角，所以算deltaY的时候需要反一下
         return (deltaX >= 0 && deltaX <= width) && (deltaY >= 0 && deltaY <= height);
     }
 
     //为了以后选取器能够修改选中的文本内容
-    public void setFont(Font font){
+    public void setFont(Font font) {
         this.font = font;
     }
 
@@ -60,7 +60,7 @@ public class MyText extends MyShape {
 
     @Override
     protected void drawInBoard(Graphics2D g) {
-        g.drawString(text, (int)coordinateX, (int)coordinateY);
+        g.drawString(text, (int) coordinateX, (int) coordinateY);
     }
 
     @Override

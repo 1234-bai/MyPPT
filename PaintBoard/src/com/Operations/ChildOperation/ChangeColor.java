@@ -8,6 +8,8 @@ import java.awt.*;
 
 /**
  * 受程序逻辑限制，相关功能无法继续实现，该类在整个工程中没有使用
+ *
+ * @deprecated
  */
 public class ChangeColor extends BaseOps {
 
@@ -62,5 +64,4 @@ public class ChangeColor extends BaseOps {
         drawBoard.redraw();
         drawBoard.refresh();
     }
-
 }

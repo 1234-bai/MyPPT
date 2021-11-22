@@ -3,27 +3,28 @@ package com.Paint;
 import java.io.*;
 import java.util.ArrayList;
 
-public class MyDrawPPT extends MyDrawPPTIml{
+public class MyDrawPPT extends MyDrawPPTIml {
+
     @Override
     public boolean loadPPT() {
         File file = DrawJPanelFileUtil.choseFile("myppt", "载入...", "确定", "open");
-        if(file==null){
+        if (file == null) {
             return false;
         }
-        try{
+        try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
             String data;
             DrawJPanel drawBoard;
             ArrayList<String> strings = new ArrayList<>();
 
             //按行读文件
-            while((data = bufferedReader.readLine())!=null){
-                if(!data.equals("end")){
+            while ((data = bufferedReader.readLine()) != null) {
+                if (!data.equals("end")) {
                     strings.add(data);
-                }else{
+                } else {
                     drawBoard = DrawJPanelFileUtil.toDrawBoard(strings);
                     myPPT.add(drawBoard);
-                    strings=new ArrayList<>();
+                    strings = new ArrayList<>();
                 }
             }
         } catch (IOException e) {
@@ -37,13 +38,13 @@ public class MyDrawPPT extends MyDrawPPTIml{
 
         //生成整个PPT的String
         StringBuilder stringBuilder = new StringBuilder();
-        for(DrawJPanel drawJPanel:myPPT){
+        for (DrawJPanel drawJPanel : myPPT) {
             stringBuilder.append(drawJPanel.toString());
             stringBuilder.append("end\r\n");    //end作为一页ppt结束的标识
         }
 
         //存入文件中
-        File file = DrawJPanelFileUtil.choseFile("myppt","另存为...","确定","save");
+        File file = DrawJPanelFileUtil.choseFile("myppt", "另存为...", "确定", "save");
         if (file == null) {
             return false;
         }

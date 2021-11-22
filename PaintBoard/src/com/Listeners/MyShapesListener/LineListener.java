@@ -4,7 +4,6 @@ import com.Listeners.BaseListener.DrawListener;
 import com.MyShapes.ChildrenShapes.MyLine;
 import com.Operations.ChildOperation.DrawShape;
 
-
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Line2D;
@@ -46,8 +45,8 @@ public class LineListener extends DrawListener {
     }
 
     @Override
-    public void mouseDragged(MouseEvent e) {
-        getDrawBoard().refresh();
+    public void mouseDragged(MouseEvent e) {    //鼠标拖动时显示动态效果
+        getDrawBoard().refresh();   //刷新画板
 
         //记录终点位置
         endX = e.getX();
@@ -56,6 +55,4 @@ public class LineListener extends DrawListener {
         Line2D line = new Line2D.Double(startX, startY, endX, endY);
         getListenerPen().draw(line);
     }
-
-
 }

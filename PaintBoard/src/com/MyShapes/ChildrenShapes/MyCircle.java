@@ -3,7 +3,6 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 
 public class MyCircle extends MyShape {
@@ -25,14 +24,14 @@ public class MyCircle extends MyShape {
 
     @Override
     public boolean contains(double x, double y) {
-        return ellipse.contains(x-translateX, y-translateY);
+        return ellipse.contains(x - translateX, y - translateY);
     }
 
     @Override
     protected void drawInBoard(Graphics2D g) {
-        if(isFilled){
+        if (isFilled) {
             g.fill(ellipse);
-        } else{
+        } else {
             g.draw(ellipse);
         }
     }
