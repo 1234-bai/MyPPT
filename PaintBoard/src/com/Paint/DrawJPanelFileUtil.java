@@ -42,13 +42,13 @@ public class DrawJPanelFileUtil {
         return null;
     }
 
-
     /**
      * 读取画板
      * 已弃用
      *
      * @param file 要加载的文件形成的对象
      * @return 加载好的画板
+     * @deprecated
      */
     public static DrawJPanel loadDrawBoard(File file) {
         if (file == null) {
@@ -256,7 +256,7 @@ public class DrawJPanelFileUtil {
                     double coordinateX = Double.parseDouble(dataSplit[5]);
                     double coordinateY = Double.parseDouble(dataSplit[6]);
                     double translateX = Double.parseDouble(dataSplit[7]);
-                    double translateY  = Double.parseDouble(dataSplit[8]);
+                    double translateY = Double.parseDouble(dataSplit[8]);
                     Color color = new Color(Integer.parseInt(dataSplit[9]));
                     float lineWidth = Float.parseFloat(dataSplit[10]);
 
@@ -292,7 +292,7 @@ public class DrawJPanelFileUtil {
                     double coordinateX = Double.parseDouble(dataSplit[6]);
                     double coordinateY = Double.parseDouble(dataSplit[7]);
                     double translateX = Double.parseDouble(dataSplit[8]);
-                    double translateY  = Double.parseDouble(dataSplit[9]);
+                    double translateY = Double.parseDouble(dataSplit[9]);
                     Color color = new Color(Integer.parseInt(dataSplit[10]));
                     float lineWidth = Float.parseFloat(dataSplit[11]);
 
@@ -329,7 +329,7 @@ public class DrawJPanelFileUtil {
                     double coordinateX = Double.parseDouble(dataSplit[6]);
                     double coordinateY = Double.parseDouble(dataSplit[7]);
                     double translateX = Double.parseDouble(dataSplit[8]);
-                    double translateY  = Double.parseDouble(dataSplit[9]);
+                    double translateY = Double.parseDouble(dataSplit[9]);
                     Color color = new Color(Integer.parseInt(dataSplit[10]));
                     float lineWidth = Float.parseFloat(dataSplit[11]);
 
@@ -527,10 +527,12 @@ public class DrawJPanelFileUtil {
 
     /**
      * 保存画板
+     * 已弃用
      *
      * @param file      要保存的文件路径形成的对象
      * @param drawBoard 要保存的画板
      * @return 保存是否成功
+     * @deprecated
      */
     public static boolean saveDrawBoard(File file, DrawJPanel drawBoard) {
         if (file == null) return false;

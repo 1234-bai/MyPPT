@@ -26,9 +26,6 @@ public class PolygonListener extends DrawListener {
         y.add(nowY);
         n++;
 
-        //测试用，控制台显示鼠标点击的坐标
-        System.out.println(nowX + ", " + nowY);
-
         //当前点与第一个点的距离在lastDict以内，则形成收尾相连的多边形
         int startX = x.get(0), startY = y.get(0);
         if ((nowX - startX) * (nowX - startX) + (nowY - startY) * (nowY - startY) <= lastDict * lastDict && n > 2) {
@@ -73,7 +70,6 @@ public class PolygonListener extends DrawListener {
             getListenerPen().draw(line);
             getListenerPen_copy().draw(line);
         }
-
     }
 
     @Override
@@ -86,5 +82,4 @@ public class PolygonListener extends DrawListener {
             getListenerPen().draw(line);
         }
     }
-
 }

@@ -3,7 +3,6 @@ package com.MyShapes.ChildrenShapes;
 import com.MyShapes.BaseShape.MyShape;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 
 public class MyImage extends MyShape {
 
@@ -25,16 +24,17 @@ public class MyImage extends MyShape {
 
     @Override
     public boolean contains(double x, double y) {
-        x-=translateX; y-=translateY;
+        x -= translateX;
+        y -= translateY;
         int width = image.getWidth(null);
         int height = image.getHeight(null);
-        int deltaX = (int) (x -coordinateX), deltaY = (int) (y - coordinateY);
+        int deltaX = (int) (x - coordinateX), deltaY = (int) (y - coordinateY);
         return (deltaX >= 0 && deltaX <= width) && (deltaY >= 0 && deltaY <= height);
     }
 
     @Override
     protected void drawInBoard(Graphics2D g) {
-        g.drawImage(image, (int)coordinateX, (int)coordinateY, null);
+        g.drawImage(image, (int) coordinateX, (int) coordinateY, null);
     }
 
     /**
@@ -47,5 +47,4 @@ public class MyImage extends MyShape {
                 path + " | " +
                 super.toString();
     }
-
 }

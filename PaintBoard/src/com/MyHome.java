@@ -24,22 +24,18 @@ public class MyHome extends MyFrame {
     /**
      * 幻灯片内部的空白填充框类
      */
-    private static class EmptyFillPanel extends JPanel{
+    private static class EmptyFillPanel extends JPanel {
         public EmptyFillPanel(int x, int y, int width, int height) {
             setBounds(x, y, width, height);
             setBackground(CONSTANTS.MY_COLOR.EMPTY_AREA_COLOR);
-            setBorder(BorderFactory.createLineBorder(Color.lightGray,1));
+            setBorder(BorderFactory.createLineBorder(Color.lightGray, 1));
         }
     }
 
-
-
-    public void run(){
+    public void run() {
         setVisible(true);
         drawBoard.drawBoardPenInitial();
     }
-
-
 
     //底部说明栏
     private static final int BOTTOM_BAR_HEIGHT = 30;
@@ -56,7 +52,6 @@ public class MyHome extends MyFrame {
     private static final int TOP_BAR_HEIGHT = 130;
     private EmptyFillPanel topBar;
     private ClearPanel topButtons; //当前topBar里含有的buttons
-
 
     //顶部全部栏目的高度，包括标题栏，菜单栏，菜单栏包括菜单和菜单按键
     private static final int ALL_TOP_BAR_HEIGHT = TITLE_BAR_HEIGHT + MENU_BAR_HEIGHT + TOP_BAR_HEIGHT;
@@ -75,8 +70,8 @@ public class MyHome extends MyFrame {
     private static final int PPT_RIGHT_OFFSET = 50;     //距离右边界的偏移量
     private static final int PPT_SHOW_BOARD_X = SLIDE_BAR_WIDTH + PPT_SLID_X_OFFSET;    //展示板的横坐标
     private static final int PPT_SHOW_BOARD_Y = ALL_TOP_BAR_HEIGHT + PPT_SLID_Y_OFFSET;     //展示板的纵坐标
-    private static final int DRAW_BOARD_COPY_WIDTH = (int)(SCREEN_WIDTH * DrawJPanel.WIDTH_RATE);    //副本真实宽度
-    private static final int DRAW_BOARD_COPY_HEIGHT = (int)(SCREEN_HEIGHT * DrawJPanel.HEIGHT_RATE);     //副本真实高度
+    private static final int DRAW_BOARD_COPY_WIDTH = (int) (SCREEN_WIDTH * DrawJPanel.WIDTH_RATE);    //副本真实宽度
+    private static final int DRAW_BOARD_COPY_HEIGHT = (int) (SCREEN_HEIGHT * DrawJPanel.HEIGHT_RATE);     //副本真实高度
     private JPanel pptShowBoard;
     private DrawJPanel drawBoard;
 
@@ -95,12 +90,13 @@ public class MyHome extends MyFrame {
     }
 
     //刷新组件
-    private void refresh(Container con){
+    private void refresh(Container con) {
         con.setVisible(false);
         con.setVisible(true);
     }
+
     //刷新本界面
-    private void refresh(){
+    private void refresh() {
         refresh(this);
     }
 
@@ -108,7 +104,7 @@ public class MyHome extends MyFrame {
      * 窗口大小发生变化时，其中组件的大小也要发生变化。
      * 因此设置监听窗口变化时，变化组件大小的监听器
      */
-    private void setComponentChangeListener(){
+    private void setComponentChangeListener() {
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
@@ -119,11 +115,11 @@ public class MyHome extends MyFrame {
                         0,
                         ALL_TOP_BAR_HEIGHT,
                         SLIDE_BAR_WIDTH,
-                        height -(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)
+                        height - (ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)
                 );
                 imgScrollPane.setPreferredSize(new Dimension(
                         350,
-                        height -(ALL_TOP_BAR_HEIGHT+ BOTTOM_BAR_HEIGHT)
+                        height - (ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)
                 ));
                 imgSlideBar.validate();
                 pptShowBoard.setBounds(
@@ -141,7 +137,8 @@ public class MyHome extends MyFrame {
     /**
      * 初始化菜单栏的相关操作
      */
-    private void initMenu(){
+    private void initMenu() {
+
         //菜单栏定义
         menuBar = new MenuBar();
         fileButtons = new FileButtonsBar();
@@ -149,33 +146,39 @@ public class MyHome extends MyFrame {
         drawButtons = new DrawButtonsBar();
         penStyleButtons = new PenStyleBar();
         operationBar = new OperationBar();
+
         //菜单的按键栏（topBar）定义
         topBar = new EmptyFillPanel(0, TITLE_BAR_HEIGHT + MENU_BAR_HEIGHT, SCREEN_WIDTH, TOP_BAR_HEIGHT);
         menuBar.setBounds(0, TITLE_BAR_HEIGHT, SCREEN_WIDTH, MENU_BAR_HEIGHT);
         add(menuBar);
+
         //设置菜单栏的初始情况
         topBar.setLayout(new FlowLayout(FlowLayout.LEFT));
         topBar.add(fileButtons);    //最开始加入文件菜单项
         topButtons = fileButtons;
         add(topBar);
+
         //设置菜单切换栏监听器
         setMenuChangeListener();
+
         //设置菜单按钮监听器
         setMenuButtonsListener();
     }
+
     /**
-     *     改变菜单栏的按钮群
+     * 改变菜单栏的按钮群
      */
-    private void changeTopBarButtons(ClearPanel nextButtons){
+    private void changeTopBarButtons(ClearPanel nextButtons) {
         topBar.remove(topButtons);
         topBar.add(nextButtons);
         topButtons = nextButtons;
         refresh(topBar);
     }
+
     /**
      * 设置菜单栏的切换监听器
      */
-    private void setMenuChangeListener(){
+    private void setMenuChangeListener() {
         menuBar.setButtonsListener(
                 new MouseAdapter() {    //点击“文件”按钮时发生的动作
                     @Override
@@ -201,7 +204,7 @@ public class MyHome extends MyFrame {
                         changeTopBarButtons(operationBar);
                     }
                 },
-        new MouseAdapter() {    //点击“画笔”按钮时发生的动作
+                new MouseAdapter() {    //点击“画笔”按钮时发生的动作
                     @Override
                     public void mousePressed(MouseEvent e) {
                         changeTopBarButtons(penStyleButtons);
@@ -209,10 +212,11 @@ public class MyHome extends MyFrame {
                 }
         );
     }
+
     /**
      * 设置菜单栏各个按钮的监听器
      */
-    private void setMenuButtonsListener(){
+    private void setMenuButtonsListener() {
         //设置文件按钮们的监听器
         fileButtons.setButtonsListener(
                 new MouseAdapter() {    //点击“新建”按钮的监听器
@@ -312,7 +316,7 @@ public class MyHome extends MyFrame {
                     @Override
                     public void mousePressed(MouseEvent e) {
                         drawBoard.setBoardListener(new ChoseListener());
-                        
+
                         //清空操作
                         //意思是一旦进行了点击了选取按钮，之前的所有操作均不能撤销与重做
                         MoveShape moveShape = new MoveShape();
@@ -335,7 +339,7 @@ public class MyHome extends MyFrame {
                     @Override
                     public void mousePressed(MouseEvent e) {
                         DrawListener drawListener = drawBoard.getDrawListener();
-                        if(drawListener instanceof ChoseListener){
+                        if (drawListener instanceof ChoseListener) {
                             ((ChoseListener) drawListener).deleteChosenContent();
                         }
                     }
@@ -344,14 +348,14 @@ public class MyHome extends MyFrame {
         //设置样式改变按钮的监听器
         ArrayList<Float> lineWidthGroup = new ArrayList<>();
         double minLineWidth = 1f;
-        for(int i = 1; i <= 30; ++i){
-            lineWidthGroup.add((float)i);
+        for (int i = 1; i <= 30; ++i) {
+            lineWidthGroup.add((float) i);
         }
-        String[] fontFamily = {"微软雅黑","仿宋","宋体","黑体","楷体"};
+        String[] fontFamily = {"微软雅黑", "仿宋", "宋体", "黑体", "楷体"};
         ArrayList<Integer> fontsizeGroup = new ArrayList<>();
         int minFontsize = 20;
-        for(int i = 1; i <= 36; ++i){
-            fontsizeGroup.add(minFontsize + 5*i);
+        for (int i = 1; i <= 36; ++i) {
+            fontsizeGroup.add(minFontsize + 5 * i);
         }
         penStyleButtons.setButtonsListener(
                 new MouseAdapter() {
@@ -421,21 +425,20 @@ public class MyHome extends MyFrame {
         );
     }
 
-
     /**
      * 初始化下拉列表
      * 一定要在初始化展示画板后执行，因为画板为空的话是无法加入监听器的。
      */
-    private void initSlideBar(){
+    private void initSlideBar() {
         imgSlideBar = new EmptyFillPanel(
                 0,
                 ALL_TOP_BAR_HEIGHT,
                 SLIDE_BAR_WIDTH,
-                getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT
+                getHeight() - (ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT
                 ));
         imgSlideGroup = new ImageShowBoard();    //图像列表
         imgScrollPane = new JScrollPane(imgSlideGroup);    //下拉列表框，用来放置生成的图像列表，形成滚动条
-        imgScrollPane.setPreferredSize(new Dimension(350,getHeight()-(ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)));    //设置下拉框大小
+        imgScrollPane.setPreferredSize(new Dimension(350, getHeight() - (ALL_TOP_BAR_HEIGHT + BOTTOM_BAR_HEIGHT)));    //设置下拉框大小
         imgSlideBar.add(imgScrollPane);     //将滑动板加入到界面内
         add(imgSlideBar);
 
@@ -448,12 +451,12 @@ public class MyHome extends MyFrame {
      * 使得当点击滑动框的时候，能够在画板上显示。
      * 当画板上画画时，滑动框对应的滑板也会生成相同的图像
      */
-    private void setSlideBarListener(){
+    private void setSlideBarListener() {
         //设置滑动框的监听器
         imgSlideGroup.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(e.getButton() == MouseEvent.BUTTON1){
+                if (e.getButton() == MouseEvent.BUTTON1) {
                     final DrawJPanel selectedPicture = imgSlideGroup.getSelectedPicture();
                     drawBoard.setContentsGroup(selectedPicture.getContentsGroup());
                     drawBoard.redraw();
@@ -474,17 +477,15 @@ public class MyHome extends MyFrame {
                 imgSlideGroup.updateSelectedPicture();
                 imgSlideGroup.validate();
             }
-
         });
     }
-
 
 
     /**
      * 初始化展示面板
      */
-    private void initShowBoard(){
-        pptShowBoard = new JPanel(new GridLayout(1,1));
+    private void initShowBoard() {
+        pptShowBoard = new JPanel(new GridLayout(1, 1));
         drawBoard = new DrawJPanel();
         pptShowBoard.add(drawBoard);
         pptShowBoard.setBounds(
@@ -495,5 +496,4 @@ public class MyHome extends MyFrame {
         );
         add(pptShowBoard);
     }
-
 }
